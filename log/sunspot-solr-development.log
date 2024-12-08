@@ -1,0 +1,760 @@
+2024-07-21 19:02:04.764 INFO  (main) [   ] o.e.j.u.log Logging initialized @214ms
+2024-07-21 19:02:04.871 INFO  (main) [   ] o.e.j.s.Server jetty-9.2.11.v20150529
+2024-07-21 19:02:04.881 WARN  (main) [   ] o.e.j.s.h.RequestLogHandler !RequestLog
+2024-07-21 19:02:04.882 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/contexts/] at interval 0
+2024-07-21 19:02:05.503 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2024-07-21 19:02:05.510 WARN  (main) [   ] o.e.j.s.SecurityHandler ServletContext@o.e.j.w.WebAppContext@13deb50e{/solr,file:/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp/,STARTING}{/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp} has uncovered http methods for path: /
+2024-07-21 19:02:05.516 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init(): WebAppClassLoader=1225439493@490ab905
+2024-07-21 19:02:05.538 INFO  (main) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+2024-07-21 19:02:05.538 INFO  (main) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: /home/gabe/desarrollo/cuymonapp/solr
+2024-07-21 19:02:05.539 INFO  (main) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/'
+2024-07-21 19:02:05.676 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from /home/gabe/desarrollo/cuymonapp/solr/solr.xml
+2024-07-21 19:02:05.760 INFO  (main) [   ] o.a.s.c.CoresLocator Config-defined core root directory: /home/gabe/desarrollo/cuymonapp/solr
+2024-07-21 19:02:05.780 INFO  (main) [   ] o.a.s.c.CoreContainer New CoreContainer 1092572064
+2024-07-21 19:02:05.781 INFO  (main) [   ] o.a.s.c.CoreContainer Loading cores into CoreContainer [instanceDir=/home/gabe/desarrollo/cuymonapp/solr/]
+2024-07-21 19:02:05.781 INFO  (main) [   ] o.a.s.c.CoreContainer loading shared library: /home/gabe/desarrollo/cuymonapp/solr/lib
+2024-07-21 19:02:05.781 WARN  (main) [   ] o.a.s.c.SolrResourceLoader Can't find (or read) directory to add to classloader: lib (resolved as: /home/gabe/desarrollo/cuymonapp/solr/lib).
+2024-07-21 19:02:05.801 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory created with socketTimeout : 600000,connTimeout : 60000,maxConnectionsPerHost : 20,maxConnections : 10000,corePoolSize : 0,maximumPoolSize : 2147483647,maxThreadIdleTime : 5,sizeOfQueue : -1,fairnessPolicy : false,useRetries : false,
+2024-07-21 19:02:05.965 INFO  (main) [   ] o.a.s.u.UpdateShardHandler Creating UpdateShardHandler HTTP client with params: socketTimeout=600000&connTimeout=60000&retry=true
+2024-07-21 19:02:05.966 INFO  (main) [   ] o.a.s.l.LogWatcher SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+2024-07-21 19:02:05.966 INFO  (main) [   ] o.a.s.l.LogWatcher Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+2024-07-21 19:02:05.967 INFO  (main) [   ] o.a.s.c.CoreContainer Security conf doesn't exist. Skipping setup for authorization module.
+2024-07-21 19:02:05.967 INFO  (main) [   ] o.a.s.c.CoreContainer No authentication plugin used.
+2024-07-21 19:02:05.990 INFO  (main) [   ] o.a.s.c.CoresLocator Looking for core definitions underneath /home/gabe/desarrollo/cuymonapp/solr
+2024-07-21 19:02:06.011 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=development, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/gabe/desarrollo/cuymonapp/solr/development, absoluteInstDir=/home/gabe/desarrollo/cuymonapp/solr/development/, configSet=sunspot, dataDir=./data}
+2024-07-21 19:02:06.011 INFO  (main) [   ] o.a.s.c.CoresLocator Found core development in /home/gabe/desarrollo/cuymonapp/solr/development/
+2024-07-21 19:02:06.012 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=test, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/gabe/desarrollo/cuymonapp/solr/test, absoluteInstDir=/home/gabe/desarrollo/cuymonapp/solr/test/, configSet=sunspot, dataDir=./data}
+2024-07-21 19:02:06.012 INFO  (main) [   ] o.a.s.c.CoresLocator Found core test in /home/gabe/desarrollo/cuymonapp/solr/test/
+2024-07-21 19:02:06.012 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=default, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/gabe/desarrollo/cuymonapp/solr/default, absoluteInstDir=/home/gabe/desarrollo/cuymonapp/solr/default/, configSet=sunspot, dataDir=./data}
+2024-07-21 19:02:06.012 INFO  (main) [   ] o.a.s.c.CoresLocator Found core default in /home/gabe/desarrollo/cuymonapp/solr/default/
+2024-07-21 19:02:06.012 INFO  (main) [   ] o.a.s.c.CoresLocator Found 3 core definitions
+2024-07-21 19:02:06.014 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/'
+2024-07-21 19:02:06.014 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/'
+2024-07-21 19:02:06.014 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/'
+2024-07-21 19:02:06.015 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter user.dir=/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server
+2024-07-21 19:02:06.015 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init() done
+2024-07-21 19:02:06.023 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@13deb50e{/solr,file:/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp/,AVAILABLE}{/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp}
+2024-07-21 19:02:06.045 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.SolrConfig current version of requestparams : -1
+2024-07-21 19:02:06.045 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig current version of requestparams : -1
+2024-07-21 19:02:06.045 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig current version of requestparams : -1
+2024-07-21 19:02:06.141 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.u.SolrIndexConfig IndexWriter infoStream solr logging is enabled
+2024-07-21 19:02:06.141 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.u.SolrIndexConfig IndexWriter infoStream solr logging is enabled
+2024-07-21 19:02:06.141 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.u.SolrIndexConfig IndexWriter infoStream solr logging is enabled
+2024-07-21 19:02:06.145 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.0.0
+2024-07-21 19:02:06.146 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.0.0
+2024-07-21 19:02:06.146 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.0.0
+2024-07-21 19:02:06.174 INFO  (main) [   ] o.e.j.s.ServerConnector Started ServerConnector@5f049ea1{HTTP/1.1}{0.0.0.0:8982}
+2024-07-21 19:02:06.174 INFO  (main) [   ] o.e.j.s.Server Started @1625ms
+2024-07-21 19:02:06.218 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2024-07-21 19:02:06.218 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2024-07-21 19:02:06.218 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2024-07-21 19:02:06.223 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf/schema.xml
+2024-07-21 19:02:06.223 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf/schema.xml
+2024-07-21 19:02:06.223 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf/schema.xml
+2024-07-21 19:02:06.237 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema [default] Schema name=sunspot
+2024-07-21 19:02:06.237 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema [development] Schema name=sunspot
+2024-07-21 19:02:06.238 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema [test] Schema name=sunspot
+2024-07-21 19:02:06.402 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema default search field in schema is text
+2024-07-21 19:02:06.402 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema default search field in schema is text
+2024-07-21 19:02:06.402 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema query parser default operator is AND
+2024-07-21 19:02:06.402 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema default search field in schema is text
+2024-07-21 19:02:06.402 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema query parser default operator is AND
+2024-07-21 19:02:06.402 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema query parser default operator is AND
+2024-07-21 19:02:06.402 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema unique key field: id
+2024-07-21 19:02:06.402 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema unique key field: id
+2024-07-21 19:02:06.402 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema unique key field: id
+2024-07-21 19:02:06.404 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf'
+2024-07-21 19:02:06.404 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf'
+2024-07-21 19:02:06.404 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf'
+2024-07-21 19:02:06.404 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.CoreContainer Creating SolrCore 'development' using configuration from configset /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot
+2024-07-21 19:02:06.404 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.CoreContainer Creating SolrCore 'test' using configuration from configset /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot
+2024-07-21 19:02:06.404 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.CoreContainer Creating SolrCore 'default' using configuration from configset /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot
+2024-07-21 19:02:06.404 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2024-07-21 19:02:06.404 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2024-07-21 19:02:06.404 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2024-07-21 19:02:06.412 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore [[development] ] Opening new SolrCore at [/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/], dataDir=[null]
+2024-07-21 19:02:06.412 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore [[test] ] Opening new SolrCore at [/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/], dataDir=[null]
+2024-07-21 19:02:06.412 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore [[default] ] Opening new SolrCore at [/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/], dataDir=[null]
+2024-07-21 19:02:06.414 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2024-07-21 19:02:06.414 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2024-07-21 19:02:06.414 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2024-07-21 19:02:06.421 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/development/data
+2024-07-21 19:02:06.421 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/test/data
+2024-07-21 19:02:06.421 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/default/data
+2024-07-21 19:02:06.421 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore New index directory detected: old=null new=/home/gabe/desarrollo/cuymonapp/solr/development/data/index/
+2024-07-21 19:02:06.421 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore New index directory detected: old=null new=/home/gabe/desarrollo/cuymonapp/solr/test/data/index/
+2024-07-21 19:02:06.422 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/development/data/index
+2024-07-21 19:02:06.421 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore New index directory detected: old=null new=/home/gabe/desarrollo/cuymonapp/solr/default/data/index/
+2024-07-21 19:02:06.422 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/test/data/index
+2024-07-21 19:02:06.422 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/default/data/index
+2024-07-21 19:02:06.428 INFO  (OldIndexDirectoryCleanupThreadForCore-default) [   x:default] o.a.s.c.SolrCore Looking for old index directories to cleanup for core default in /home/gabe/desarrollo/cuymonapp/solr/default/data/
+2024-07-21 19:02:06.429 INFO  (OldIndexDirectoryCleanupThreadForCore-test) [   x:test] o.a.s.c.SolrCore Looking for old index directories to cleanup for core test in /home/gabe/desarrollo/cuymonapp/solr/test/data/
+2024-07-21 19:02:06.429 INFO  (OldIndexDirectoryCleanupThreadForCore-development) [   x:development] o.a.s.c.SolrCore Looking for old index directories to cleanup for core development in /home/gabe/desarrollo/cuymonapp/solr/development/data/
+2024-07-21 19:02:06.492 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2024-07-21 19:02:06.492 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2024-07-21 19:02:06.492 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2024-07-21 19:02:06.511 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.511 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.511 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.512 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.512 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.512 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.512 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.513 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.513 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.513 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.513 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.513 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-07-21 19:02:06.520 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2024-07-21 19:02:06.520 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2024-07-21 19:02:06.520 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2024-07-21 19:02:06.520 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2024-07-21 19:02:06.520 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2024-07-21 19:02:06.520 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2024-07-21 19:02:06.521 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2024-07-21 19:02:06.521 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2024-07-21 19:02:06.521 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2024-07-21 19:02:06.522 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/update/csv,/select,/admin/segments,/mlt,/admin/system,/replication,/config,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/debug/dump,/terms
+2024-07-21 19:02:06.522 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/update/csv,/select,/admin/segments,/mlt,/admin/system,/replication,/config,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/debug/dump,/terms
+2024-07-21 19:02:06.522 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/update/csv,/select,/admin/segments,/mlt,/admin/system,/replication,/config,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/debug/dump,/terms
+2024-07-21 19:02:06.528 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2024-07-21 19:02:06.528 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2024-07-21 19:02:06.528 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2024-07-21 19:02:06.533 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-07-21 19:02:06.533 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-07-21 19:02:06.533 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-07-21 19:02:06.533 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-07-21 19:02:06.534 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-07-21 19:02:06.534 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-07-21 19:02:06.545 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2024-07-21 19:02:06.545 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2024-07-21 19:02:06.546 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2024-07-21 19:02:06.546 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2024-07-21 19:02:06.547 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2024-07-21 19:02:06.547 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2024-07-21 19:02:06.563 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/default/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3b934835; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_3,generation=3}
+2024-07-21 19:02:06.563 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/test/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3b934835; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2024-07-21 19:02:06.563 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore newest commit generation = 3
+2024-07-21 19:02:06.563 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3b934835; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2024-07-21 19:02:06.563 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore newest commit generation = 1
+2024-07-21 19:02:06.563 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore newest commit generation = 1
+2024-07-21 19:02:06.571 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.s.SolrIndexSearcher Opening Searcher@899c1b5[test] main
+2024-07-21 19:02:06.571 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.s.SolrIndexSearcher Opening Searcher@737e39b0[development] main
+2024-07-21 19:02:06.577 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-07-21 19:02:06.577 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf}
+2024-07-21 19:02:06.577 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-07-21 19:02:06.577 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf}
+2024-07-21 19:02:06.594 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-07-21 19:02:06.594 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-07-21 19:02:06.594 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResourceStorage Loaded LinkedHashMap at path _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-07-21 19:02:06.594 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResource Loaded initArgs {} for /rest/managed
+2024-07-21 19:02:06.594 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResourceStorage Loaded LinkedHashMap at path _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-07-21 19:02:06.595 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResource Loaded initArgs {} for /rest/managed
+2024-07-21 19:02:06.596 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2024-07-21 19:02:06.595 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2024-07-21 19:02:06.601 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2024-07-21 19:02:06.601 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2024-07-21 19:02:06.610 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-07-21 19:02:06.610 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-07-21 19:02:06.614 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.s.DirectSolrSpellChecker init: {name=example,field=title_text,buildOnOptimize=true,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2024-07-21 19:02:06.614 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.s.DirectSolrSpellChecker init: {name=example,field=title_text,buildOnOptimize=true,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2024-07-21 19:02:06.614 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: example
+2024-07-21 19:02:06.614 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: example
+2024-07-21 19:02:06.614 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.s.SolrIndexSearcher Opening Searcher@6a47d4e0[default] main
+2024-07-21 19:02:06.614 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-07-21 19:02:06.615 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf}
+2024-07-21 19:02:06.615 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-07-21 19:02:06.615 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResourceStorage Loaded LinkedHashMap at path _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-07-21 19:02:06.615 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResource Loaded initArgs {} for /rest/managed
+2024-07-21 19:02:06.615 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2024-07-21 19:02:06.615 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2024-07-21 19:02:06.615 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-07-21 19:02:06.615 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.s.DirectSolrSpellChecker init: {name=example,field=title_text,buildOnOptimize=true,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2024-07-21 19:02:06.616 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: example
+2024-07-21 19:02:06.618 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2024-07-21 19:02:06.618 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2024-07-21 19:02:06.618 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2024-07-21 19:02:06.619 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2024-07-21 19:02:06.619 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2024-07-21 19:02:06.619 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2024-07-21 19:02:06.619 INFO  (searcherExecutor-7-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-07-21 19:02:06.619 INFO  (searcherExecutor-9-thread-1-processing-x:default) [   x:default] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-07-21 19:02:06.619 INFO  (searcherExecutor-7-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: example
+2024-07-21 19:02:06.619 INFO  (searcherExecutor-7-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-07-21 19:02:06.619 INFO  (searcherExecutor-9-thread-1-processing-x:default) [   x:default] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: example
+2024-07-21 19:02:06.619 INFO  (searcherExecutor-9-thread-1-processing-x:default) [   x:default] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-07-21 19:02:06.619 INFO  (searcherExecutor-8-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-07-21 19:02:06.619 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2024-07-21 19:02:06.619 INFO  (searcherExecutor-9-thread-1-processing-x:default) [   x:default] o.a.s.c.SolrCore [default] Registered new searcher Searcher@6a47d4e0[default] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_1(5.3.1):C3)))}
+2024-07-21 19:02:06.619 INFO  (searcherExecutor-7-thread-1-processing-x:development) [   x:development] o.a.s.c.SolrCore [development] Registered new searcher Searcher@737e39b0[development] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2024-07-21 19:02:06.630 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2024-07-21 19:02:06.630 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2024-07-21 19:02:06.631 INFO  (searcherExecutor-8-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: example
+2024-07-21 19:02:06.631 INFO  (searcherExecutor-8-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-07-21 19:02:06.631 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2024-07-21 19:02:06.631 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2024-07-21 19:02:06.631 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.VersionInfo No terms found for _version_, cannot seed version bucket highest value from index
+2024-07-21 19:02:06.631 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2024-07-21 19:02:06.631 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1805216410900627456
+2024-07-21 19:02:06.631 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.VersionInfo No terms found for _version_, cannot seed version bucket highest value from index
+2024-07-21 19:02:06.631 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1805216410900627456
+2024-07-21 19:02:06.631 INFO  (searcherExecutor-8-thread-1-processing-x:test) [   x:test] o.a.s.c.SolrCore [test] Registered new searcher Searcher@899c1b5[test] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2024-07-21 19:02:06.634 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.VersionInfo Found MAX value 1800193740656082944 from Terms for _version_ in index
+2024-07-21 19:02:06.650 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Took 20 ms to seed version buckets with highest version 1805216410900627456
+2024-07-21 19:02:06.650 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.CoreContainer registering core: test
+2024-07-21 19:02:06.650 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Took 19 ms to seed version buckets with highest version 1805216410900627456
+2024-07-21 19:02:06.650 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.CoreContainer registering core: development
+2024-07-21 19:02:06.651 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateLog Took 21 ms to seed version buckets with highest version 1800193740656082944
+2024-07-21 19:02:06.651 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.CoreContainer registering core: default
+2024-12-08 17:08:21.807 INFO  (main) [   ] o.e.j.u.log Logging initialized @353ms
+2024-12-08 17:08:21.997 INFO  (main) [   ] o.e.j.s.Server jetty-9.2.11.v20150529
+2024-12-08 17:08:22.012 WARN  (main) [   ] o.e.j.s.h.RequestLogHandler !RequestLog
+2024-12-08 17:08:22.014 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/contexts/] at interval 0
+2024-12-08 17:08:22.385 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2024-12-08 17:08:22.396 WARN  (main) [   ] o.e.j.s.SecurityHandler ServletContext@o.e.j.w.WebAppContext@13deb50e{/solr,file:/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp/,STARTING}{/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp} has uncovered http methods for path: /
+2024-12-08 17:08:22.406 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init(): WebAppClassLoader=1225439493@490ab905
+2024-12-08 17:08:22.437 INFO  (main) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+2024-12-08 17:08:22.437 INFO  (main) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: /home/gabe/desarrollo/cuymonapp/solr
+2024-12-08 17:08:22.440 INFO  (main) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/'
+2024-12-08 17:08:22.603 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from /home/gabe/desarrollo/cuymonapp/solr/solr.xml
+2024-12-08 17:08:22.743 INFO  (main) [   ] o.a.s.c.CoresLocator Config-defined core root directory: /home/gabe/desarrollo/cuymonapp/solr
+2024-12-08 17:08:22.795 INFO  (main) [   ] o.a.s.c.CoreContainer New CoreContainer 1092572064
+2024-12-08 17:08:22.796 INFO  (main) [   ] o.a.s.c.CoreContainer Loading cores into CoreContainer [instanceDir=/home/gabe/desarrollo/cuymonapp/solr/]
+2024-12-08 17:08:22.796 INFO  (main) [   ] o.a.s.c.CoreContainer loading shared library: /home/gabe/desarrollo/cuymonapp/solr/lib
+2024-12-08 17:08:22.796 WARN  (main) [   ] o.a.s.c.SolrResourceLoader Can't find (or read) directory to add to classloader: lib (resolved as: /home/gabe/desarrollo/cuymonapp/solr/lib).
+2024-12-08 17:08:22.818 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory created with socketTimeout : 600000,connTimeout : 60000,maxConnectionsPerHost : 20,maxConnections : 10000,corePoolSize : 0,maximumPoolSize : 2147483647,maxThreadIdleTime : 5,sizeOfQueue : -1,fairnessPolicy : false,useRetries : false,
+2024-12-08 17:08:23.068 INFO  (main) [   ] o.a.s.u.UpdateShardHandler Creating UpdateShardHandler HTTP client with params: socketTimeout=600000&connTimeout=60000&retry=true
+2024-12-08 17:08:23.071 INFO  (main) [   ] o.a.s.l.LogWatcher SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+2024-12-08 17:08:23.072 INFO  (main) [   ] o.a.s.l.LogWatcher Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+2024-12-08 17:08:23.074 INFO  (main) [   ] o.a.s.c.CoreContainer Security conf doesn't exist. Skipping setup for authorization module.
+2024-12-08 17:08:23.074 INFO  (main) [   ] o.a.s.c.CoreContainer No authentication plugin used.
+2024-12-08 17:08:23.116 INFO  (main) [   ] o.a.s.c.CoresLocator Looking for core definitions underneath /home/gabe/desarrollo/cuymonapp/solr
+2024-12-08 17:08:23.137 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=development, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/gabe/desarrollo/cuymonapp/solr/development, absoluteInstDir=/home/gabe/desarrollo/cuymonapp/solr/development/, configSet=sunspot, dataDir=./data}
+2024-12-08 17:08:23.138 INFO  (main) [   ] o.a.s.c.CoresLocator Found core development in /home/gabe/desarrollo/cuymonapp/solr/development/
+2024-12-08 17:08:23.139 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=test, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/gabe/desarrollo/cuymonapp/solr/test, absoluteInstDir=/home/gabe/desarrollo/cuymonapp/solr/test/, configSet=sunspot, dataDir=./data}
+2024-12-08 17:08:23.139 INFO  (main) [   ] o.a.s.c.CoresLocator Found core test in /home/gabe/desarrollo/cuymonapp/solr/test/
+2024-12-08 17:08:23.140 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=default, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/gabe/desarrollo/cuymonapp/solr/default, absoluteInstDir=/home/gabe/desarrollo/cuymonapp/solr/default/, configSet=sunspot, dataDir=./data}
+2024-12-08 17:08:23.140 INFO  (main) [   ] o.a.s.c.CoresLocator Found core default in /home/gabe/desarrollo/cuymonapp/solr/default/
+2024-12-08 17:08:23.142 INFO  (main) [   ] o.a.s.c.CoresLocator Found 3 core definitions
+2024-12-08 17:08:23.144 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/'
+2024-12-08 17:08:23.145 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/'
+2024-12-08 17:08:23.144 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/'
+2024-12-08 17:08:23.146 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter user.dir=/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server
+2024-12-08 17:08:23.146 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init() done
+2024-12-08 17:08:23.158 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@13deb50e{/solr,file:/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp/,AVAILABLE}{/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp}
+2024-12-08 17:08:23.189 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.SolrConfig current version of requestparams : -1
+2024-12-08 17:08:23.189 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig current version of requestparams : -1
+2024-12-08 17:08:23.205 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig current version of requestparams : -1
+2024-12-08 17:08:23.255 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.u.SolrIndexConfig IndexWriter infoStream solr logging is enabled
+2024-12-08 17:08:23.260 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.u.SolrIndexConfig IndexWriter infoStream solr logging is enabled
+2024-12-08 17:08:23.267 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.0.0
+2024-12-08 17:08:23.267 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.0.0
+2024-12-08 17:08:23.276 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.u.SolrIndexConfig IndexWriter infoStream solr logging is enabled
+2024-12-08 17:08:23.277 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.0.0
+2024-12-08 17:08:23.300 INFO  (main) [   ] o.e.j.s.ServerConnector Started ServerConnector@15043a2f{HTTP/1.1}{0.0.0.0:8982}
+2024-12-08 17:08:23.300 INFO  (main) [   ] o.e.j.s.Server Started @1849ms
+2024-12-08 17:08:23.398 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2024-12-08 17:08:23.398 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2024-12-08 17:08:23.398 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2024-12-08 17:08:23.407 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf/schema.xml
+2024-12-08 17:08:23.409 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf/schema.xml
+2024-12-08 17:08:23.409 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf/schema.xml
+2024-12-08 17:08:23.427 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema [default] Schema name=sunspot
+2024-12-08 17:08:23.432 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema [development] Schema name=sunspot
+2024-12-08 17:08:23.435 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema [test] Schema name=sunspot
+2024-12-08 17:08:23.610 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema default search field in schema is text
+2024-12-08 17:08:23.611 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema query parser default operator is AND
+2024-12-08 17:08:23.611 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema unique key field: id
+2024-12-08 17:08:23.614 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema default search field in schema is text
+2024-12-08 17:08:23.614 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf'
+2024-12-08 17:08:23.614 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema query parser default operator is AND
+2024-12-08 17:08:23.614 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.CoreContainer Creating SolrCore 'default' using configuration from configset /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot
+2024-12-08 17:08:23.614 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema unique key field: id
+2024-12-08 17:08:23.614 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2024-12-08 17:08:23.615 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema default search field in schema is text
+2024-12-08 17:08:23.615 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf'
+2024-12-08 17:08:23.615 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.CoreContainer Creating SolrCore 'test' using configuration from configset /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot
+2024-12-08 17:08:23.615 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema query parser default operator is AND
+2024-12-08 17:08:23.615 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2024-12-08 17:08:23.615 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema unique key field: id
+2024-12-08 17:08:23.617 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf'
+2024-12-08 17:08:23.617 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.CoreContainer Creating SolrCore 'development' using configuration from configset /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot
+2024-12-08 17:08:23.617 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2024-12-08 17:08:23.627 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore [[development] ] Opening new SolrCore at [/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/], dataDir=[null]
+2024-12-08 17:08:23.627 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore [[test] ] Opening new SolrCore at [/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/], dataDir=[null]
+2024-12-08 17:08:23.627 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore [[default] ] Opening new SolrCore at [/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/], dataDir=[null]
+2024-12-08 17:08:23.630 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2024-12-08 17:08:23.631 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2024-12-08 17:08:23.631 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2024-12-08 17:08:23.648 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/test/data
+2024-12-08 17:08:23.648 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/development/data
+2024-12-08 17:08:23.648 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/default/data
+2024-12-08 17:08:23.649 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore New index directory detected: old=null new=/home/gabe/desarrollo/cuymonapp/solr/development/data/index/
+2024-12-08 17:08:23.649 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore New index directory detected: old=null new=/home/gabe/desarrollo/cuymonapp/solr/test/data/index/
+2024-12-08 17:08:23.650 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore New index directory detected: old=null new=/home/gabe/desarrollo/cuymonapp/solr/default/data/index/
+2024-12-08 17:08:23.651 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/test/data/index
+2024-12-08 17:08:23.651 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/default/data/index
+2024-12-08 17:08:23.651 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/development/data/index
+2024-12-08 17:08:23.664 INFO  (OldIndexDirectoryCleanupThreadForCore-default) [   x:default] o.a.s.c.SolrCore Looking for old index directories to cleanup for core default in /home/gabe/desarrollo/cuymonapp/solr/default/data/
+2024-12-08 17:08:23.664 INFO  (OldIndexDirectoryCleanupThreadForCore-test) [   x:test] o.a.s.c.SolrCore Looking for old index directories to cleanup for core test in /home/gabe/desarrollo/cuymonapp/solr/test/data/
+2024-12-08 17:08:23.664 INFO  (OldIndexDirectoryCleanupThreadForCore-development) [   x:development] o.a.s.c.SolrCore Looking for old index directories to cleanup for core development in /home/gabe/desarrollo/cuymonapp/solr/development/data/
+2024-12-08 17:08:23.753 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2024-12-08 17:08:23.765 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2024-12-08 17:08:23.769 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2024-12-08 17:08:23.804 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.804 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.804 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.806 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.806 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.806 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.807 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.807 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.807 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.807 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.807 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.808 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:08:23.818 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2024-12-08 17:08:23.818 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2024-12-08 17:08:23.820 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2024-12-08 17:08:23.823 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/update/csv,/select,/admin/segments,/mlt,/admin/system,/replication,/config,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/debug/dump,/terms
+2024-12-08 17:08:23.824 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2024-12-08 17:08:23.830 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2024-12-08 17:08:23.830 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2024-12-08 17:08:23.830 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2024-12-08 17:08:23.830 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/update/csv,/select,/admin/segments,/mlt,/admin/system,/replication,/config,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/debug/dump,/terms
+2024-12-08 17:08:23.830 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2024-12-08 17:08:23.831 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2024-12-08 17:08:23.831 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2024-12-08 17:08:23.831 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/update/csv,/select,/admin/segments,/mlt,/admin/system,/replication,/config,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/debug/dump,/terms
+2024-12-08 17:08:23.831 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2024-12-08 17:08:23.849 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2024-12-08 17:08:23.856 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-12-08 17:08:23.857 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-12-08 17:08:23.857 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-12-08 17:08:23.849 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-12-08 17:08:23.886 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-12-08 17:08:23.857 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-12-08 17:08:23.906 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2024-12-08 17:08:23.906 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2024-12-08 17:08:23.908 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2024-12-08 17:08:23.908 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2024-12-08 17:08:23.909 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2024-12-08 17:08:23.909 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2024-12-08 17:08:23.944 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/default/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@7d096d6c; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_3,generation=3}
+2024-12-08 17:08:23.944 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/test/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@7d096d6c; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2024-12-08 17:08:23.944 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@7d096d6c; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2024-12-08 17:08:23.944 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore newest commit generation = 3
+2024-12-08 17:08:23.944 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore newest commit generation = 1
+2024-12-08 17:08:23.944 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore newest commit generation = 1
+2024-12-08 17:08:23.962 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.s.SolrIndexSearcher Opening Searcher@4da35f36[development] main
+2024-12-08 17:08:23.962 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.s.SolrIndexSearcher Opening Searcher@8db7866[test] main
+2024-12-08 17:08:23.976 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:08:23.976 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:08:23.976 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf}
+2024-12-08 17:08:23.976 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf}
+2024-12-08 17:08:23.990 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:08:23.991 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:08:23.992 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResourceStorage Loaded LinkedHashMap at path _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:08:23.992 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResourceStorage Loaded LinkedHashMap at path _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:08:23.992 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResource Loaded initArgs {} for /rest/managed
+2024-12-08 17:08:23.992 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResource Loaded initArgs {} for /rest/managed
+2024-12-08 17:08:23.992 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2024-12-08 17:08:23.993 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2024-12-08 17:08:24.002 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2024-12-08 17:08:24.003 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2024-12-08 17:08:24.018 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-12-08 17:08:24.018 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-12-08 17:08:24.022 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.s.DirectSolrSpellChecker init: {name=example,field=title_text,buildOnOptimize=true,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2024-12-08 17:08:24.022 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: example
+2024-12-08 17:08:24.023 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.s.DirectSolrSpellChecker init: {name=example,field=title_text,buildOnOptimize=true,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2024-12-08 17:08:24.023 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: example
+2024-12-08 17:08:24.028 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.s.SolrIndexSearcher Opening Searcher@3566d372[default] main
+2024-12-08 17:08:24.028 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:08:24.028 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf}
+2024-12-08 17:08:24.028 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:08:24.029 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResourceStorage Loaded LinkedHashMap at path _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:08:24.029 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResource Loaded initArgs {} for /rest/managed
+2024-12-08 17:08:24.029 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2024-12-08 17:08:24.029 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2024-12-08 17:08:24.030 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-12-08 17:08:24.030 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.s.DirectSolrSpellChecker init: {name=example,field=title_text,buildOnOptimize=true,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2024-12-08 17:08:24.030 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: example
+2024-12-08 17:08:24.036 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2024-12-08 17:08:24.036 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2024-12-08 17:08:24.036 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2024-12-08 17:08:24.038 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2024-12-08 17:08:24.038 INFO  (searcherExecutor-9-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-12-08 17:08:24.039 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2024-12-08 17:08:24.039 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2024-12-08 17:08:24.039 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2024-12-08 17:08:24.039 INFO  (searcherExecutor-8-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-12-08 17:08:24.039 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2024-12-08 17:08:24.039 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2024-12-08 17:08:24.039 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.VersionInfo No terms found for _version_, cannot seed version bucket highest value from index
+2024-12-08 17:08:24.039 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.VersionInfo No terms found for _version_, cannot seed version bucket highest value from index
+2024-12-08 17:08:24.040 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1817892832191447040
+2024-12-08 17:08:24.040 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2024-12-08 17:08:24.040 INFO  (searcherExecutor-7-thread-1-processing-x:default) [   x:default] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-12-08 17:08:24.040 INFO  (searcherExecutor-8-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: example
+2024-12-08 17:08:24.040 INFO  (searcherExecutor-8-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-12-08 17:08:24.040 INFO  (searcherExecutor-7-thread-1-processing-x:default) [   x:default] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: example
+2024-12-08 17:08:24.040 INFO  (searcherExecutor-7-thread-1-processing-x:default) [   x:default] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-12-08 17:08:24.041 INFO  (searcherExecutor-7-thread-1-processing-x:default) [   x:default] o.a.s.c.SolrCore [default] Registered new searcher Searcher@3566d372[default] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_1(5.3.1):C3)))}
+2024-12-08 17:08:24.041 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2024-12-08 17:08:24.040 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1817892832191447040
+2024-12-08 17:08:24.040 INFO  (searcherExecutor-8-thread-1-processing-x:test) [   x:test] o.a.s.c.SolrCore [test] Registered new searcher Searcher@8db7866[test] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2024-12-08 17:08:24.040 INFO  (searcherExecutor-9-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: example
+2024-12-08 17:08:24.041 INFO  (searcherExecutor-9-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-12-08 17:08:24.041 INFO  (searcherExecutor-9-thread-1-processing-x:development) [   x:development] o.a.s.c.SolrCore [development] Registered new searcher Searcher@4da35f36[development] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2024-12-08 17:08:24.041 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2024-12-08 17:08:24.048 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Took 9 ms to seed version buckets with highest version 1817892832191447040
+2024-12-08 17:08:24.048 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Took 9 ms to seed version buckets with highest version 1817892832191447040
+2024-12-08 17:08:24.049 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.CoreContainer registering core: development
+2024-12-08 17:08:24.049 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.CoreContainer registering core: test
+2024-12-08 17:08:24.049 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.VersionInfo Found MAX value 1800193740656082944 from Terms for _version_ in index
+2024-12-08 17:08:24.052 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateLog Took 11 ms to seed version buckets with highest version 1800193740656082944
+2024-12-08 17:08:24.053 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.CoreContainer registering core: default
+2024-12-08 17:09:52.388 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=43 
+2024-12-08 17:09:52.614 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:09:52.785 INFO  (qtp1555845260-18) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:09:53.625 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:09:53.707 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:04.623 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:04.785 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:04.934 INFO  (qtp1555845260-18) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:05.079 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:07.585 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=d&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:07.794 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=da&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:08.629 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=dar&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:08.810 INFO  (qtp1555845260-18) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=dara&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:11.675 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=dara@&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:12.810 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=dara&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:12.987 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=dar&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:13.147 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=da&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:10:13.290 INFO  (qtp1555845260-18) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=d&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:19.667 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=s&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:19.796 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=su&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:20.263 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=sus&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=3 
+2024-12-08 17:11:20.382 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=suso&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:24.505 INFO  (qtp1555845260-18) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=susod&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:24.689 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=susode&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:24.814 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=susodes&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:25.166 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=susode&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:25.332 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=susod&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:25.479 INFO  (qtp1555845260-18) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=suso&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:25.633 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=sus&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:25.781 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=su&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:25.934 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=s&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:26.786 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=c&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:27.070 INFO  (qtp1555845260-18) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:11:27.216 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuy&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:27.508 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuym&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:27.634 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuymo&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:27.793 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuymon&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:28.520 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuymond&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:28.609 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuymondo&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:28.841 INFO  (qtp1555845260-18) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuymondol&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:28.979 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuymondoll&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:29.617 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuymondol&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=0 
+2024-12-08 17:11:29.779 INFO  (qtp1555845260-19) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuymondo&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:11:30.353 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cuymond&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=0 
+2024-12-08 17:13:04.308 INFO  (main) [   ] o.e.j.u.log Logging initialized @374ms
+2024-12-08 17:13:04.481 INFO  (main) [   ] o.e.j.s.Server jetty-9.2.11.v20150529
+2024-12-08 17:13:04.494 WARN  (main) [   ] o.e.j.s.h.RequestLogHandler !RequestLog
+2024-12-08 17:13:04.496 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/contexts/] at interval 0
+2024-12-08 17:13:04.856 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2024-12-08 17:13:04.868 WARN  (main) [   ] o.e.j.s.SecurityHandler ServletContext@o.e.j.w.WebAppContext@13deb50e{/solr,file:/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp/,STARTING}{/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp} has uncovered http methods for path: /
+2024-12-08 17:13:04.877 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init(): WebAppClassLoader=1225439493@490ab905
+2024-12-08 17:13:04.896 INFO  (main) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+2024-12-08 17:13:04.897 INFO  (main) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: /home/gabe/desarrollo/cuymonapp/solr
+2024-12-08 17:13:04.900 INFO  (main) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/'
+2024-12-08 17:13:05.038 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from /home/gabe/desarrollo/cuymonapp/solr/solr.xml
+2024-12-08 17:13:05.127 INFO  (main) [   ] o.a.s.c.CoresLocator Config-defined core root directory: /home/gabe/desarrollo/cuymonapp/solr
+2024-12-08 17:13:05.159 INFO  (main) [   ] o.a.s.c.CoreContainer New CoreContainer 1092572064
+2024-12-08 17:13:05.159 INFO  (main) [   ] o.a.s.c.CoreContainer Loading cores into CoreContainer [instanceDir=/home/gabe/desarrollo/cuymonapp/solr/]
+2024-12-08 17:13:05.159 INFO  (main) [   ] o.a.s.c.CoreContainer loading shared library: /home/gabe/desarrollo/cuymonapp/solr/lib
+2024-12-08 17:13:05.159 WARN  (main) [   ] o.a.s.c.SolrResourceLoader Can't find (or read) directory to add to classloader: lib (resolved as: /home/gabe/desarrollo/cuymonapp/solr/lib).
+2024-12-08 17:13:05.174 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory created with socketTimeout : 600000,connTimeout : 60000,maxConnectionsPerHost : 20,maxConnections : 10000,corePoolSize : 0,maximumPoolSize : 2147483647,maxThreadIdleTime : 5,sizeOfQueue : -1,fairnessPolicy : false,useRetries : false,
+2024-12-08 17:13:05.396 INFO  (main) [   ] o.a.s.u.UpdateShardHandler Creating UpdateShardHandler HTTP client with params: socketTimeout=600000&connTimeout=60000&retry=true
+2024-12-08 17:13:05.398 INFO  (main) [   ] o.a.s.l.LogWatcher SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+2024-12-08 17:13:05.399 INFO  (main) [   ] o.a.s.l.LogWatcher Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+2024-12-08 17:13:05.401 INFO  (main) [   ] o.a.s.c.CoreContainer Security conf doesn't exist. Skipping setup for authorization module.
+2024-12-08 17:13:05.401 INFO  (main) [   ] o.a.s.c.CoreContainer No authentication plugin used.
+2024-12-08 17:13:05.440 INFO  (main) [   ] o.a.s.c.CoresLocator Looking for core definitions underneath /home/gabe/desarrollo/cuymonapp/solr
+2024-12-08 17:13:05.462 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=development, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/gabe/desarrollo/cuymonapp/solr/development, absoluteInstDir=/home/gabe/desarrollo/cuymonapp/solr/development/, configSet=sunspot, dataDir=./data}
+2024-12-08 17:13:05.463 INFO  (main) [   ] o.a.s.c.CoresLocator Found core development in /home/gabe/desarrollo/cuymonapp/solr/development/
+2024-12-08 17:13:05.464 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=test, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/gabe/desarrollo/cuymonapp/solr/test, absoluteInstDir=/home/gabe/desarrollo/cuymonapp/solr/test/, configSet=sunspot, dataDir=./data}
+2024-12-08 17:13:05.464 INFO  (main) [   ] o.a.s.c.CoresLocator Found core test in /home/gabe/desarrollo/cuymonapp/solr/test/
+2024-12-08 17:13:05.465 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=default, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/gabe/desarrollo/cuymonapp/solr/default, absoluteInstDir=/home/gabe/desarrollo/cuymonapp/solr/default/, configSet=sunspot, dataDir=./data}
+2024-12-08 17:13:05.465 INFO  (main) [   ] o.a.s.c.CoresLocator Found core default in /home/gabe/desarrollo/cuymonapp/solr/default/
+2024-12-08 17:13:05.467 INFO  (main) [   ] o.a.s.c.CoresLocator Found 3 core definitions
+2024-12-08 17:13:05.470 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/'
+2024-12-08 17:13:05.470 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/'
+2024-12-08 17:13:05.470 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/'
+2024-12-08 17:13:05.471 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter user.dir=/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server
+2024-12-08 17:13:05.471 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init() done
+2024-12-08 17:13:05.484 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@13deb50e{/solr,file:/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp/,AVAILABLE}{/home/gabe/.rvm/gems/ruby-3.1.0/gems/sunspot_solr-2.6.0/solr/server/solr-webapp/webapp}
+2024-12-08 17:13:05.511 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.SolrConfig current version of requestparams : -1
+2024-12-08 17:13:05.511 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig current version of requestparams : -1
+2024-12-08 17:13:05.511 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig current version of requestparams : -1
+2024-12-08 17:13:05.555 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.u.SolrIndexConfig IndexWriter infoStream solr logging is enabled
+2024-12-08 17:13:05.558 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.u.SolrIndexConfig IndexWriter infoStream solr logging is enabled
+2024-12-08 17:13:05.560 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.u.SolrIndexConfig IndexWriter infoStream solr logging is enabled
+2024-12-08 17:13:05.564 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.0.0
+2024-12-08 17:13:05.565 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.0.0
+2024-12-08 17:13:05.564 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.0.0
+2024-12-08 17:13:05.656 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2024-12-08 17:13:05.656 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2024-12-08 17:13:05.656 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2024-12-08 17:13:05.656 INFO  (main) [   ] o.e.j.s.ServerConnector Started ServerConnector@15043a2f{HTTP/1.1}{0.0.0.0:8982}
+2024-12-08 17:13:05.656 INFO  (main) [   ] o.e.j.s.Server Started @1723ms
+2024-12-08 17:13:05.663 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf/schema.xml
+2024-12-08 17:13:05.663 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf/schema.xml
+2024-12-08 17:13:05.663 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf/schema.xml
+2024-12-08 17:13:05.686 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema [default] Schema name=sunspot
+2024-12-08 17:13:05.687 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema [development] Schema name=sunspot
+2024-12-08 17:13:05.689 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema [test] Schema name=sunspot
+2024-12-08 17:13:05.865 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema default search field in schema is text
+2024-12-08 17:13:05.866 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema query parser default operator is AND
+2024-12-08 17:13:05.866 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema default search field in schema is text
+2024-12-08 17:13:05.867 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.s.IndexSchema unique key field: id
+2024-12-08 17:13:05.867 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema query parser default operator is AND
+2024-12-08 17:13:05.867 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema unique key field: id
+2024-12-08 17:13:05.870 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf'
+2024-12-08 17:13:05.870 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf'
+2024-12-08 17:13:05.871 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.CoreContainer Creating SolrCore 'development' using configuration from configset /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot
+2024-12-08 17:13:05.871 INFO  (coreLoadExecutor-6-thread-2) [   ] o.a.s.c.CoreContainer Creating SolrCore 'test' using configuration from configset /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot
+2024-12-08 17:13:05.871 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema default search field in schema is text
+2024-12-08 17:13:05.872 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema query parser default operator is AND
+2024-12-08 17:13:05.872 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2024-12-08 17:13:05.872 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2024-12-08 17:13:05.872 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.s.IndexSchema unique key field: id
+2024-12-08 17:13:05.873 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf'
+2024-12-08 17:13:05.873 INFO  (coreLoadExecutor-6-thread-3) [   ] o.a.s.c.CoreContainer Creating SolrCore 'default' using configuration from configset /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot
+2024-12-08 17:13:05.873 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2024-12-08 17:13:05.887 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore [[development] ] Opening new SolrCore at [/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/], dataDir=[null]
+2024-12-08 17:13:05.887 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore [[default] ] Opening new SolrCore at [/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/], dataDir=[null]
+2024-12-08 17:13:05.887 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore [[test] ] Opening new SolrCore at [/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/], dataDir=[null]
+2024-12-08 17:13:05.890 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2024-12-08 17:13:05.890 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2024-12-08 17:13:05.890 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2024-12-08 17:13:05.905 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/development/data
+2024-12-08 17:13:05.905 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/test/data
+2024-12-08 17:13:05.905 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/default/data
+2024-12-08 17:13:05.906 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore New index directory detected: old=null new=/home/gabe/desarrollo/cuymonapp/solr/default/data/index/
+2024-12-08 17:13:05.906 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore New index directory detected: old=null new=/home/gabe/desarrollo/cuymonapp/solr/development/data/index/
+2024-12-08 17:13:05.907 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore New index directory detected: old=null new=/home/gabe/desarrollo/cuymonapp/solr/test/data/index/
+2024-12-08 17:13:05.907 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/default/data/index
+2024-12-08 17:13:05.907 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/test/data/index
+2024-12-08 17:13:05.907 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.CachingDirectoryFactory return new directory for /home/gabe/desarrollo/cuymonapp/solr/development/data/index
+2024-12-08 17:13:05.920 INFO  (OldIndexDirectoryCleanupThreadForCore-default) [   x:default] o.a.s.c.SolrCore Looking for old index directories to cleanup for core default in /home/gabe/desarrollo/cuymonapp/solr/default/data/
+2024-12-08 17:13:05.921 INFO  (OldIndexDirectoryCleanupThreadForCore-development) [   x:development] o.a.s.c.SolrCore Looking for old index directories to cleanup for core development in /home/gabe/desarrollo/cuymonapp/solr/development/data/
+2024-12-08 17:13:05.921 INFO  (OldIndexDirectoryCleanupThreadForCore-test) [   x:test] o.a.s.c.SolrCore Looking for old index directories to cleanup for core test in /home/gabe/desarrollo/cuymonapp/solr/test/data/
+2024-12-08 17:13:06.006 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2024-12-08 17:13:06.006 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2024-12-08 17:13:06.023 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2024-12-08 17:13:06.041 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.041 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.041 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.043 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.043 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.043 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.044 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.044 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.044 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.044 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.045 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.045 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2024-12-08 17:13:06.054 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2024-12-08 17:13:06.054 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2024-12-08 17:13:06.056 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2024-12-08 17:13:06.058 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2024-12-08 17:13:06.058 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2024-12-08 17:13:06.059 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2024-12-08 17:13:06.059 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/update/csv,/select,/admin/segments,/mlt,/admin/system,/replication,/config,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/debug/dump,/terms
+2024-12-08 17:13:06.059 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/update/csv,/select,/admin/segments,/mlt,/admin/system,/replication,/config,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/debug/dump,/terms
+2024-12-08 17:13:06.060 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2024-12-08 17:13:06.060 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2024-12-08 17:13:06.060 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2024-12-08 17:13:06.060 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2024-12-08 17:13:06.060 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2024-12-08 17:13:06.060 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.RequestHandlers Registered paths: /admin/mbeans,/update/json/docs,/admin/luke,/export,/get,/admin/properties,/update/json,/admin/threads,/query,/analysis/field,/analysis/document,/update/csv,/select,/admin/segments,/mlt,/admin/system,/replication,/config,/schema,/admin/plugins,/admin/logging,/admin/ping,/update,/admin/file,/debug/dump,/terms
+2024-12-08 17:13:06.061 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2024-12-08 17:13:06.070 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-12-08 17:13:06.070 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-12-08 17:13:06.070 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-12-08 17:13:06.070 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-12-08 17:13:06.070 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-12-08 17:13:06.071 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-12-08 17:13:06.101 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2024-12-08 17:13:06.101 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2024-12-08 17:13:06.102 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2024-12-08 17:13:06.102 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2024-12-08 17:13:06.102 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2024-12-08 17:13:06.102 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2024-12-08 17:13:06.134 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@1d240689; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2024-12-08 17:13:06.135 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.SolrCore newest commit generation = 1
+2024-12-08 17:13:06.137 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/test/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@1d240689; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2024-12-08 17:13:06.137 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.SolrCore newest commit generation = 1
+2024-12-08 17:13:06.137 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/default/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@1d240689; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_3,generation=3}
+2024-12-08 17:13:06.137 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.SolrCore newest commit generation = 3
+2024-12-08 17:13:06.149 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.s.SolrIndexSearcher Opening Searcher@640f3fd0[development] main
+2024-12-08 17:13:06.149 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.s.SolrIndexSearcher Opening Searcher@1bc8653d[test] main
+2024-12-08 17:13:06.161 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:13:06.161 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:13:06.161 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf}
+2024-12-08 17:13:06.161 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf}
+2024-12-08 17:13:06.174 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:13:06.174 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:13:06.175 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResourceStorage Loaded LinkedHashMap at path _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:13:06.175 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResourceStorage Loaded LinkedHashMap at path _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:13:06.175 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.ManagedResource Loaded initArgs {} for /rest/managed
+2024-12-08 17:13:06.175 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.ManagedResource Loaded initArgs {} for /rest/managed
+2024-12-08 17:13:06.175 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2024-12-08 17:13:06.175 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2024-12-08 17:13:06.184 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2024-12-08 17:13:06.184 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2024-12-08 17:13:06.200 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-12-08 17:13:06.200 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-12-08 17:13:06.207 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.s.DirectSolrSpellChecker init: {name=example,field=title_text,buildOnOptimize=true,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2024-12-08 17:13:06.207 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.s.DirectSolrSpellChecker init: {name=example,field=title_text,buildOnOptimize=true,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2024-12-08 17:13:06.207 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: example
+2024-12-08 17:13:06.207 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: example
+2024-12-08 17:13:06.217 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2024-12-08 17:13:06.217 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2024-12-08 17:13:06.218 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.s.SolrIndexSearcher Opening Searcher@6e788fb5[default] main
+2024-12-08 17:13:06.218 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:13:06.218 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf}
+2024-12-08 17:13:06.218 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2024-12-08 17:13:06.218 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:13:06.218 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2024-12-08 17:13:06.219 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResourceStorage Loaded LinkedHashMap at path _rest_managed.json using file:dir=/home/gabe/desarrollo/cuymonapp/solr/configsets/sunspot/conf
+2024-12-08 17:13:06.219 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.ManagedResource Loaded initArgs {} for /rest/managed
+2024-12-08 17:13:06.219 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2024-12-08 17:13:06.219 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2024-12-08 17:13:06.219 INFO  (searcherExecutor-8-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-12-08 17:13:06.220 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-12-08 17:13:06.220 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.s.DirectSolrSpellChecker init: {name=example,field=title_text,buildOnOptimize=true,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2024-12-08 17:13:06.220 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: example
+2024-12-08 17:13:06.220 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2024-12-08 17:13:06.220 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2024-12-08 17:13:06.220 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2024-12-08 17:13:06.220 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2024-12-08 17:13:06.220 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2024-12-08 17:13:06.221 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2024-12-08 17:13:06.221 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.VersionInfo No terms found for _version_, cannot seed version bucket highest value from index
+2024-12-08 17:13:06.221 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1817893128079671296
+2024-12-08 17:13:06.221 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2024-12-08 17:13:06.221 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2024-12-08 17:13:06.221 INFO  (searcherExecutor-8-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: example
+2024-12-08 17:13:06.222 INFO  (searcherExecutor-8-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-12-08 17:13:06.222 INFO  (searcherExecutor-8-thread-1-processing-x:development) [   x:development] o.a.s.c.SolrCore [development] Registered new searcher Searcher@640f3fd0[development] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2024-12-08 17:13:06.222 INFO  (searcherExecutor-7-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-12-08 17:13:06.223 INFO  (searcherExecutor-7-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: example
+2024-12-08 17:13:06.223 INFO  (searcherExecutor-7-thread-1-processing-x:test) [   x:test] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-12-08 17:13:06.223 INFO  (searcherExecutor-7-thread-1-processing-x:test) [   x:test] o.a.s.c.SolrCore [test] Registered new searcher Searcher@1bc8653d[test] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2024-12-08 17:13:06.220 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.VersionInfo No terms found for _version_, cannot seed version bucket highest value from index
+2024-12-08 17:13:06.221 INFO  (searcherExecutor-9-thread-1-processing-x:default) [   x:default] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-12-08 17:13:06.224 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1817893128082817024
+2024-12-08 17:13:06.224 INFO  (searcherExecutor-9-thread-1-processing-x:default) [   x:default] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: example
+2024-12-08 17:13:06.224 INFO  (searcherExecutor-9-thread-1-processing-x:default) [   x:default] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-12-08 17:13:06.224 INFO  (searcherExecutor-9-thread-1-processing-x:default) [   x:default] o.a.s.c.SolrCore [default] Registered new searcher Searcher@6e788fb5[default] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_1(5.3.1):C3)))}
+2024-12-08 17:13:06.226 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.u.UpdateLog Took 5 ms to seed version buckets with highest version 1817893128079671296
+2024-12-08 17:13:06.227 INFO  (coreLoadExecutor-6-thread-2) [   x:test] o.a.s.c.CoreContainer registering core: test
+2024-12-08 17:13:06.227 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.VersionInfo Found MAX value 1800193740656082944 from Terms for _version_ in index
+2024-12-08 17:13:06.229 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.u.UpdateLog Took 9 ms to seed version buckets with highest version 1817893128082817024
+2024-12-08 17:13:06.229 INFO  (coreLoadExecutor-6-thread-1) [   x:development] o.a.s.c.CoreContainer registering core: development
+2024-12-08 17:13:06.231 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.u.UpdateLog Took 10 ms to seed version buckets with highest version 1800193740656082944
+2024-12-08 17:13:06.231 INFO  (coreLoadExecutor-6-thread-3) [   x:default] o.a.s.c.CoreContainer registering core: default
+2024-12-08 17:13:29.387 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=44 
+2024-12-08 17:13:29.503 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=3 
+2024-12-08 17:13:29.583 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:13:29.671 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:13:30.841 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:13:50.253 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria@&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=19 
+2024-12-08 17:14:08.951 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:15:19.315 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:15:19.538 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:15:19.670 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:15:19.878 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=4 
+2024-12-08 17:15:20.987 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=33 
+2024-12-08 17:15:34.342 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria@&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:15:37.073 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:15:41.663 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:15:57.088 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:15:57.898 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:15:58.018 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:15:59.722 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:00.118 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:00.182 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=3 
+2024-12-08 17:16:00.325 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:00.402 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:21.469 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=6 
+2024-12-08 17:16:22.729 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:23.653 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:23.918 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:24.037 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:24.190 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:16:25.705 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:26.435 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=6 
+2024-12-08 17:16:26.563 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:26.683 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:26.843 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:27.128 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria+&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:29.557 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:16:39.486 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:41.919 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:42.278 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:16:42.700 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:21:14.391 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=c&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:21:14.550 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cp&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:21:14.671 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cpd&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=3 
+2024-12-08 17:21:14.918 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cpdo&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:21:15.075 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cpdog&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=3 
+2024-12-08 17:21:15.087 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cpdogp&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=3 
+2024-12-08 17:21:15.807 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cpdog&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:21:16.041 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cpdo&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=8 
+2024-12-08 17:21:16.161 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cpd&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:21:16.304 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=cp&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:21:16.442 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=c&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:21:17.505 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:21:17.745 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:21:17.861 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:21:17.984 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:21:18.101 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuria&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=2 
+2024-12-08 17:34:36.429 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nuri&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:34:36.608 INFO  (qtp1555845260-15) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=4 
+2024-12-08 17:34:36.782 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=5 
+2024-12-08 17:34:37.095 INFO  (qtp1555845260-21) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=1 
+2024-12-08 17:35:32.097 INFO  (qtp1555845260-21) [   x:development] o.a.s.u.p.LogUpdateProcessor [development] webapp=/solr path=/update params={wt=json} {deleteByQuery=type:User (-1817894539325603840)} 0 40
+2024-12-08 17:35:32.215 INFO  (qtp1555845260-15) [   x:development] o.a.s.u.p.LogUpdateProcessor [development] webapp=/solr path=/update params={wt=json} {add=[User 2 (1817894539429412864), User 3 (1817894539453530112), User 4 (1817894539454578688)]} 0 28
+2024-12-08 17:35:32.220 INFO  (qtp1555845260-14) [   x:development] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2024-12-08 17:35:32.264 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.SolrCore SolrDeletionPolicy.onCommit: commits: num=2
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@1d240689; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/gabe/desarrollo/cuymonapp/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@1d240689; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_2,generation=2}
+2024-12-08 17:35:32.264 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.SolrCore newest commit generation = 2
+2024-12-08 17:35:32.268 INFO  (qtp1555845260-14) [   x:development] o.a.s.s.SolrIndexSearcher Opening Searcher@716a4f73[development] main
+2024-12-08 17:35:32.269 INFO  (qtp1555845260-14) [   x:development] o.a.s.u.UpdateHandler end_commit_flush
+2024-12-08 17:35:32.270 INFO  (searcherExecutor-8-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
+2024-12-08 17:35:32.279 INFO  (searcherExecutor-8-thread-1-processing-x:development) [   x:development] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: example
+2024-12-08 17:35:32.279 INFO  (searcherExecutor-8-thread-1-processing-x:development) [   x:development] o.a.s.c.SolrCore [development] Registered new searcher Searcher@716a4f73[development] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(5.3.1):C3)))}
+2024-12-08 17:35:32.280 INFO  (qtp1555845260-14) [   x:development] o.a.s.u.p.LogUpdateProcessor [development] webapp=/solr path=/update params={wt=json} {commit=} 0 61
+2024-12-08 17:35:43.787 INFO  (qtp1555845260-20) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=n&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=0 status=0 QTime=4 
+2024-12-08 17:35:43.815 INFO  (qtp1555845260-22) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nu&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=1 status=0 QTime=5 
+2024-12-08 17:35:43.965 INFO  (qtp1555845260-14) [   x:development] o.a.s.c.S.Request [development] webapp=/solr path=/select params={q=nur&defType=edismax&qf=code_text+email_text&fl=*+score&start=0&fq=type:User&rows=30&wt=json} hits=1 status=0 QTime=4 
+2024-12-08 17:46:25.068 INFO  (qtp1555845260-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1733679985064} status=0 QTime=1 
+2024-12-08 17:46:25.130 INFO  (qtp1555845260-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={wt=json&_=1733679985084} status=0 QTime=41 
+2024-12-08 17:47:14.680 INFO  (qtp1555845260-44) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={} status=0 QTime=4 
+2024-12-08 20:03:38.504 INFO  (qtp1555845260-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1733688218494} status=0 QTime=0 
+2024-12-08 20:03:38.529 INFO  (qtp1555845260-22) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={wt=json&_=1733688218521} status=0 QTime=5 
+2024-12-08 20:03:44.938 INFO  (qtp1555845260-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={wt=json&_=1733688224920} status=0 QTime=5 
+2024-12-08 20:03:45.039 INFO  (qtp1555845260-44) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={wt=json&_=1733688224970} status=0 QTime=1 

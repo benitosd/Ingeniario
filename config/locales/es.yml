@@ -1,0 +1,800 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero:  "No %{model} found"
+        one:   "Mostrando 1"
+        other: "Mostrando todos %{count} "
+      single_page_html:
+        zero:  "Ninguna entrada encontrada"
+        one:   "Mostrando <b>1</b> "
+        other: "Mostrando <b>Todos&nbsp;%{count}</b> "
+
+      multi_page: "Mostrando  %{from} - %{to} de %{count} en total"
+      multi_page_html: "Mostrando  <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b> en total"
+    previous_label: "&#8592; Anteriores"
+    next_label: "Posteriores &#8594;"
+    page_gap: "&hellip;"
+  date:
+    order:
+    - :day
+    - :month
+    - :year
+    month_names:
+    -
+    - enero
+    - febrero
+    - marzo
+    - abril
+    - mayo
+    - junio
+    - julio
+    - agosto
+    - septiembre
+    - octubre
+    - noviembre
+    - diciembre
+    formats:
+      default: ! '%d/%m/%Y'
+      long: ! '%d de %B de %Y'
+      short: ! '%d de %b'
+
+    number:
+      currency:
+        format:
+          delimiter: .
+          format: ! '%n %u'
+          precision: 2
+          separator: ! ','
+          significant: false
+          strip_insignificant_zeros: true
+          unit: €
+  activerecord:
+    models:
+      municipality: "Municipio"
+      plane_type: "Tipo de avión"
+    attributes:
+      plane_type:
+        plane_kind: "Clase de avión"
+        iata_code: "Código IATA"
+        plane_type: "Tipo de Avión"
+    errors:
+      models:
+        plane_type:
+          attributes:
+            plane_kind:
+              required: "requerido"
+  template:
+    user:
+      cols:
+        code: "Código"
+    search_order_bar:
+      data_filter: "Criterios de búsqueda"
+      search: "Buscar"
+    messages:
+      created: "%{resource} creado correctamente."
+      manipulated: "%{resource} manipulado correctamente."
+      confirm_delete: "¿Está seguro que desea eliminar?"
+      error: "Se han producido errores y no se ha podido completar la acción"
+      destroyed: "%{resource} borrado correctamente"
+      updated: "%{resource} actualizado correctamente."
+    buttons:
+      new: "Crear"
+      show: "Mostrar"
+      edit: "Editar"
+      delete: "Borrar"
+      back: "Volver"
+      save: "Guardar"
+    municipalities:
+      back: "Regresar"
+      list:
+        title: "Municipios"
+      cols:
+        name: "Nombre"
+        cp: "Código Postal"
+        province_id: "Provincia"
+      new: "Nuevo Municipio"
+      show:
+        title: "Municipio"
+      edit: "Editar Mucicipio"
+    provinces:
+      back: "Regresar"
+      list:
+        title: "Provincias"
+      cols:
+        name: "Nombre"
+      new: "Nueva Provincia"
+      show:
+        title: "Provincia"
+        show2: "Mostrar Provincia"
+      edit: "Editar Provincia"
+    delivery_notes:
+      back: "Regresar"
+      list:
+        title: "Albaranes"
+      cols:
+        name: "Albarán"
+        company: "Compañía"
+        fly: "Vuelo"
+        registration: "Matrícula"
+        code: "Código"
+        value: "Valor"
+        service_type: "Tipo de Servicio"
+      new: "Nuevo albarán"
+      show:
+        title: "Albarán"
+        edit: "Editar Albarán"
+        show2: "Mostrar Albarán"
+      cols:
+        edit: "Editar Albarán"
+        name: "Albarán"
+        company: "Compañía"
+        fly: "Vuelo"
+        signature: "Firma"
+        registration: "Matrícula"
+        generate: "Generar Albarán"
+        departure: "Salida"
+        service_type: "Tipo de Servicio"
+      edit: "Editar Albarán"
+    plane_kinds:
+      back: "Regresar"
+      list:
+        title: "Clases de Avión"
+      cols:
+        kind: "Clase"
+        weighting: "Ponderación"
+        subrogation_weighting: "Ponderación de Subrogación"
+        registration: "Matrícula"
+        mtows_range: "Rango Mtows"
+      new: "Nueva Clase de Avión"
+      show:
+        title: "Clase de Avión"
+        edit: "Editar Clase de Avión"
+        show2: "Mostrar Clase de Avión"
+      edit: "Editar Clase de Avión"
+    plane_types:
+      back: "Regresar"
+      list:
+        title: "Tipos de Avión"
+      cols:
+        plane_type: "Tipo de Avión"
+        iata_code: "Código IATA"
+        plane_kind_id: "Clase"
+      new: "Nuevo Tipo de Avión"
+      show:
+        title: "Tipo de Avión"
+        edit: "Editar Tipo de Avión"
+        show2: "Mostrar Tipo de Avión"
+      edit: "Editar Tipo de Avión"
+    services:
+      back: "Regresar"
+      list:
+        title: "Servicios"
+      cols:
+        code: "Código"
+        service_name: "Nombre del Servicio"
+        timeable: "Temporizable"
+      new: "Nuevo Servicio"
+      show:
+        title: "Servicio"
+        edit: "Editar Servicio"
+        show2: "Mostrar Servicio"
+      edit: "Editar Servicio"
+    service_types:
+      back: "Regresar"
+      list:
+        title: "Tipos de Servicios"
+      cols:
+        code: "Código"
+        name: "Nombre "
+      new: "Nuevo Tipo de Servicio"
+      show:
+        title: "Tipo Servicio"
+        edit: "Editar Tipo de Servicio"
+        show2: "Mostrar Tipo de Servicio"
+      edit: "Editar Tipo de Servicio"
+    clients:
+      back: "Regresar"
+      list:
+        title: "Clientes"
+      cols:
+        cod_clte: "Código Cliente"
+        id_clte: "ID Cliente"
+        comercial_name: "Nombre del Cliente"
+      new: "Nuevo Cliente"
+      show:
+        title: "Cliente"
+        edit: "Editar Cliente"
+        show2: "Mostrar Cliente"
+      edit: "Editar Cliente"
+    materia_primas:
+      back: "Regresar"
+      list:
+        title: "Materias Primas"
+      cols:
+        nombre: "Nombre"
+      new: "Nueva Materia Prima"
+      show:
+        title: "Materia Prima"
+        edit: "Editar Materia Prima"
+        show2: "Mostrar Materia Prima"
+      edit: "Editar Materia Prima"
+    proveedors:
+      back: "Regresar"
+      list:
+        title: "Proveedores"
+      cols:
+        nombre: "Nombre"
+      new: "Nuevo Proveedor"
+      show:
+        title: "Proveedor"
+        edit: "Editar Proveedor"
+        show2: "Mostrar Proveedor"
+      edit: "Editar Proveedor"
+    agentes:
+      back: "Regresar"
+      list:
+        title: "Agentes"
+      cols:
+        nombre: "Nombre"
+        primer_apellido: "Primer Apellido"
+        segundo_apellido: "Segundo Apellido"
+        empresa: "Empresa"
+        identificacion: "Identificación"
+        victor: "Victor"
+      new: "Nuevo Agente"
+      show:
+        title: "Agente"
+        edit: "Editar Agente"
+        show2: "Mostrar Agente"
+      edit: "Editar Agente"
+    articulos:
+      back: "Regresar"
+      list:
+        title: "Articulos"
+      cols:
+        numero: "Número"
+        nombre: "Nombre"
+        descripcion: "Descripción"
+        tipo_de_unidad_id: "Tipo de unidad"
+        pvp: "%"
+        
+      new: "Nuevo Artículo"
+      show:
+        title: "Artículo"
+        edit: "Editar Artículo"
+        show2: "Mostrar Artículo"
+      edit: "Editar Artículo"
+    tipo_de_unidads:
+      back: "Regresar"
+      list:
+        title: "Tipo de Unidad"
+      cols:
+        nombre_corto: "Unidad"
+        nombre_largo: "Nombre largo"
+        
+        
+      new: "Nuevo Tipo de Unidad"
+      show:
+        title: "Tipo de Unidad"
+        edit: "Editar Tipo de Unidad"
+        show2: "Mostrar Tipo de Unidad"
+      edit: "Editar Tipo de Unidad"
+    
+    families:
+      back: "Regresar"
+      list:
+        title: "Familias"
+      cols:
+        numero: "Número"
+        nombre: "Nombre"
+        descripcion: "Descripción"
+        
+        
+      new: "Nueva Familia"
+      show:
+        title: "Familia"
+        edit: "Editar Familia"
+        show2: "Mostrar Familia"
+      edit: "Editar Familia"
+    sub_families:
+      back: "Regresar"
+      list:
+        title: "Subfamilias"
+      cols:
+        numero: "Número"
+        nombre: "Nombre"
+        descripcion: "Descripción"
+        family_id: "Familia"
+        
+        
+      new: "Nueva Subfamilia"
+      show:
+        title: "Subfamilia"
+        edit: "Editar Subfamilia"
+        show2: "Mostrar Subfamilia"
+      edit: "Editar Subfamilia"
+    sections:
+      back: "Regresar"
+      list:
+        title: "Secciones"
+      cols:
+        numero: "Número"
+        nombre: "Nombre"
+        descripcion: "Descripción"
+        sub_family_id: "Subfamilia"
+        rango_superior: "Rango Superior"
+        rango_inferior: "Rango Inferior"
+        
+      new: "Nueva Sección"
+      show:
+        title: "Sección"
+        edit: "Editar Sección"
+        show2: "Mostrar Sección"
+      edit: "Editar Sección"
+    proveedores:
+      back: "Regresar"
+      list:
+        title: "Proveedores"
+      cols:
+        codigo: "Código"
+        nombre: "Nombre"
+        cif: "CIF"
+        cuenta: "Cuenta"
+        direccion: "Dirección"
+        poblacion: "Población"
+        provincia: "Provincia"
+        cp: "CP"
+        telefono: "Teléfono"
+        fax: "Correo"
+        observ1: "Comercial"
+        observ2: "Calidad"
+        observ3: "Observaciones"
+      new: "Nuevo Proveedor"
+      show:
+        title: "Proveedor"
+        edit: "Editar Proveedor"
+        show2: "Mostrar Proveedor"
+      edit: "Editar Proveedor"
+    articulo_proveedores:
+      back: "Regresar"
+      list:
+        title: "Articulos por Proveedores"
+      cols:
+        articulo_id: "Artículo"
+        proveedore_id: "Proveedor"
+        codigo: "Código Proveedor"
+        ean: "EAN"
+        precio: "Precio"
+        caja: "Cajas"
+        paquete: "Paquetes"
+        cantidad: "Cantidad"
+        nombre_proveedor: "Formato"
+        igic: "IGIC"
+        pvp: "PVP"
+        
+        
+        
+        
+      new: "Nuevo Artículo de Proveedor"
+      show:
+        title: "Artñiculo de Proveedor"
+        edit: "Editar Artículo de Proveedor"
+        show2: "Mostrar Artículo de Proveedor"
+      edit: "Editar Artículo Proveedor"
+    pedidos:
+      back: "Regresar"
+      list:
+        title: "Pedidos"
+      cols:
+        proveedore_id: "Proveedor"
+        fecha: "Fecha"
+        numero: "Número de pedido"
+        descripcion: "Descripción"
+        
+      new: "Nuevo Pedido Proveedor"
+      show:
+        title: "Pedido Proveedor"
+        edit: "Editar Pedido"
+        show2: "Mostrar Pedido"
+      edit: "Editar Pedido"
+    detalle_pedidos:
+      back: "Regresar"
+      list:
+        title: "Detalle Pedidos"
+      cols:
+        articulo_proveedore_id: "Articulo"
+        proveedore_id: "Proveedor"
+        cantidad: "Cantidad"
+       
+        
+      new: "Nuevo Pedido Proveedor"
+      show:
+        title: "Pedido Proveedor"
+        edit: "Editar Pedido"
+        show2: "Mostrar Pedido"
+      edit: "Editar Pedido"
+    albaranes:
+      back: "Regresar"
+      list:
+        title: "Albaranes"
+      cols:
+        proveedore_id: "Proveedor"
+        fecha: "Fecha"
+        numero: "Nº "
+        descripcion: "Descripción"
+        pedido_id: "Pedido"
+        temperatura: "Temperatura"
+        trazabilidad: "Trazabilidad"
+        vehiculo: "Vehículo"
+        producto: "Producto"
+        
+      new: "Nuevo Albarán"
+      show:
+        title: "Albarán"
+        edit: "Editar Albarán"
+        show2: "Mostrar Albarán"
+      edit: "Editar Albarán"
+    detalle_albaranes:
+      back: "Regresar"
+      list:
+        title: "Detalle Albarán"
+      cols:
+        articulo_proveedore_id: "Artículo"
+        proveedore_id: "Proveedor"
+        cantidad: "Cantidad"
+        albarane_id: "Albarán"
+        detalle_pedido_id: "Detalle Pedido"
+        fecha_caducidad: "Fecha de Caducidad"
+        lote: "lote"
+        nombre_proveedor: "Nombre Artículo"
+        caja: "Caja"
+        paquete: "Paquete"
+        precio: "Precio"
+        unidad: "Unidad"
+       
+        
+      new: "Nuevo Detalle Albarán"
+      show:
+        title: "Detalle Albarán"
+        edit: "Editar Detalle Albarán"
+        show2: "Mostrar Detalle Albarán"
+      edit: "Editar Albarán"
+    almacenes:
+      back: "Regresar"
+      list:
+        title: "Almacenes"
+      cols:
+        codigo_centro: "Código Centro"
+        codigo_almacen: "Código Almacén "
+        cp: "Código Postal"
+        poblacion: "Población"
+        provincia: "Provincia"
+        telefono1: "Teléfono 1"
+        telefono2: "Teléfono 2"
+        nombre_centro: "Centro"
+        direccion: "Dirección"
+        
+      new: "Nuevo Almacén"
+      show:
+        title: "Almacén"
+        edit: "Editar Almacén"
+        show2: "Mostrar Almacén"
+      edit: "Editar Almacén"
+    stocks:
+      back: "Regresar"
+      list:
+        title: "Stock"
+      cols:
+        articulo_proveedore_id: "Artículo"
+        almacene_id: "Almacén "
+        stock_inicial: "Stock Inicial"
+        stock_actual: "Stock Actual"
+        
+        fecha_caducidad: "Fecha Caducidad"
+        lote: "Lote"
+        
+      new: "Nuevo Stock"
+      show:
+        title: "Stock"
+        edit: "Editar Stock"
+        show2: "Mostrar Stock"
+      edit: "Editar Stock"
+    tipo_igics:
+      back: "Regresar"
+      list:
+        title: "Tipo de Igic"
+      cols:
+        value: "Valor"
+      
+      new: "Nuevo Tipo de Igic"
+      show:
+        title: "Tipo de Igic"
+        edit: "Editar Tipo de Igic"
+        show2: "Mostrar Tipo de Igic"
+      edit: "Editar Tipo de Igic"
+    traspaso_almacenes:
+      back: "Regresar"
+      list:
+        title: "Traspaso entre Almacenes"
+      cols:
+        fecha: "Fecha"
+        almacen_origen_id: "Almacén Origen"
+        almacen_destino_id: "Almacén Destino"
+        observacione: "Observaciones"
+        numero: "Número de Traspaso"
+      
+      new: "Nuevo Traspaso entre Almacenes"
+      show:
+        title: "Traspaso entre Almacenes"
+        edit: "Editar Traspaso entre Almacenes"
+        show2: "Mostrar Traspaso entre Almacenes"
+      edit: "Editar Traspaso entre Almacenes"
+    clientes:
+      back: "Regresar"
+      list:
+        title: "Clientes"
+      cols:
+        almacene_id: "Código Centro"
+        cuenta: "Cuenta"
+        cif: "CIF"
+        nombre: "Nombre"
+        telefono: "Teléfono"
+        fax: "Fax"
+        email: "Email"
+        direccion: "Dirección"
+        
+      new: "Nuevo Cliente"
+      show:
+        title: "Cliente"
+        edit: "Editar Cliente"
+        show2: "Mostrar Cliente"
+      edit: "Editar Cliente"
+    salida_albaranes:
+      back: "Regresar"
+      list:
+        title: "Albaranes de Salida"
+      cols:
+        fecha: "Fecha"
+        cliente_id: "Cliente"
+        observacione: "Observaciones"
+        numero: "Número de Albarán"
+      
+      new: "Nuevo Albarán de Salida"
+      show:
+        title: "Albaranes de Salida"
+        edit: "Editar Albarán de Salida"
+        show2: "Mostrar Albarán de Salida"
+      edit: "Editar Albarán de Salida"
+    facturas:
+      back: "Regresar"
+      list:
+        title: "Edición FAC"
+      cols:
+        fecha: "Fecha"
+        cliente_id: "Cliente"
+        observaciones: "Observaciones"
+        numero: "Número de Factura"
+      
+      new: "Nueva Edición FAC"
+      show:
+        title: "Edición FAC"
+        edit: "Editar Edición FAC"
+        show2: "Mostrar Edición FAC"
+      edit: "Editar Factura"
+    valores_nutricionales:
+      back: "Regresar"
+      list:
+        title: "Valores Nutricionales"
+      cols:
+        nombre: "Nombre"
+        unidad: "Unidad"
+      
+      new: "Nuevo Valor Nutricional"
+      show:
+        title: "Valores Nutricionales"
+        edit: "Editar Valor Nutricional"
+        show2: "Mostrar Valor Nutricional"
+      edit: "Editar Valor Nutricional"
+    alergenos:
+      back: "Regresar"
+      list:
+        title: "Alérgenos"
+      cols:
+        nombre: "nombre"
+              
+      new: "Nuevo Alérgeno"
+      show:
+        title: "Alérgenos"
+        edit: "Editar Alérgeno"
+        show2: "Mostrar Alérgeno"
+      edit: "Editar Alérgeno"
+    tarifas:
+      back: "Regresar"
+      list:
+        title: "Tarifas"
+      cols:
+        codigo: "Código"
+        descripcion: "Descripción"
+        cuenta: "Cuenta"
+        tipo_igic_id: "Tipo IGIC"
+              
+      new: "Nueva Tarifa"
+      show:
+        title: "Tarifas"
+        edit: "Editar Tarifa"
+        show2: "Mostrar Tarifa"
+      edit: "Editar Tarifa"
+    tarifa_clientes:
+      back: "Regresar"
+      list:
+        title: "Tarifa Clientes"
+      cols:
+        tarifa_id: "Tarifa"
+        cliente_id: "Cliente"
+        precio: "Precio"
+        cantidad: "Cantidad"
+        grupo: "Grupo"
+              
+      new: "Nueva Tarifa"
+      show:
+        title: "Tarifas"
+        edit: "Editar Tarifa"
+        show2: "Mostrar Tarifa"
+      edit: "Editar Tarifa"
+    cabecera_facturas:
+      back: "Regresar"
+      list:
+        title: "Facturas"
+      cols:
+        fecha: "Fecha"
+        cliente_id: "Cliente"
+        observaciones: "Observaciones"
+        numero: "Número de Factura"
+        empresa_id: "Empresa"
+      new: "Nueva Factura"
+      show:
+        title: "Facturas"
+        edit: "Editar Factura"
+        show2: "Mostrar Factura"
+      edit: "Editar Factura"
+    empresas:
+      back: "Regresar"
+      list:
+        title: "Empresas"
+      cols:
+     
+        cif: "CIF"
+        nombre: "Nombre"
+        tlf: "Teléfono"
+        fax: "Fax"
+        email: "Email"
+        direccion: "Dirección"
+        poblacion: "Población"
+        provincia: "Provincia"
+        cp: "CP"
+      new: "Nuevo Empresa"
+      show:
+        title: "Empresa"
+        edit: "Editar Empresa"
+        show2: "Mostrar Empresa"
+      edit: "Editar Empresa"
+    elaborados:
+      back: "Regresar"
+      list:
+        title: "Elaborados"
+      cols:
+       
+        codigo: "Código"
+        
+        precio: "Precio"
+        articulo: "Artículo"
+        ingredientes: "Ingredientes"
+      new: "Nuevo Elaborado"
+      show:
+        title: "Elaborado"
+        edit: "Editar Elaborado"
+        show2: "Mostrar Elaborado"
+      edit: "Editar Elaborado"
+    tipo_receta:
+      back: "Regresar"
+      list:
+        title: "Tipo de Recetas"
+      cols:
+       
+        nombre: "Nombre"
+        
+        
+      new: "Nuevo Tipo de Recetas"
+      show:
+        title: "Tipo de Receta"
+        edit: "Editar Tipo de Receta"
+        show2: "Mostrar Tipo de Receta"
+      edit: "Editar Tipo de Receta"
+    receta:
+      back: "Regresar"
+      list:
+        title: "Recetas"
+      cols:
+       
+        nombre: "Nombre"
+        tipo_recetum_id: "Tipo de Receta"
+        cantidad: "Cantidad"
+        racion: "Raciones"
+        
+        
+      new: "Nueva Receta"
+      show:
+        title: "Receta"
+        edit: "Editar Receta"
+        show2: "Mostrar Receta"
+      edit: "Editar Receta"
+    detalle_receta:
+      back: "Regresar"
+      list:
+        title: "Ingredientes"
+      cols:
+       
+        articulo: "Nombre"
+        recetum_id: "Receta"
+        cantidad: "Cantidad"
+              
+      new: "Nuevo Ingrediente"
+      show:
+        title: "Ingrediente"
+        edit: "Editar Ingrediente"
+        show2: "Mostrar Ingrediente"
+      edit: "Editar Ingrediente"
+    detalle2_receta:
+      back: "Regresar"
+      list:
+        title: "Ingredientes"
+      cols:
+       
+        articulo: "Nombre"
+        recetum_id: "Receta"
+        cantidad: "Cantidad"
+              
+      new: "Nuevo Ingrediente"
+      show:
+        title: "Ingrediente"
+        edit: "Editar Ingrediente"
+        show2: "Mostrar Ingrediente"
+      edit: "Editar Ingrediente"
+    detalle3_receta:
+      back: "Regresar"
+      list:
+        title: "Ingredientes"
+      cols:
+       
+        articulo: "Nombre"
+        recetum_id: "Receta"
+        cantidad: "Cantidad"
+              
+      new: "Nuevo Ingrediente"
+      show:
+        title: "Ingrediente"
+        edit: "Editar Ingrediente"
+        show2: "Mostrar Ingrediente"
+      edit: "Editar Ingrediente"

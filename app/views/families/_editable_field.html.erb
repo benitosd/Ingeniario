@@ -1,0 +1,10 @@
+<!-- app/views/families/_editable_field.html.erb -->
+<% if family.send(field).present? %>
+  <div data-controller="editable">
+    <% if family.send(field) %>
+      <%= text_field_tag field, family.send(field), data: { action: "change->editable#update", id: family.id, field: field } %>
+    <% else %>
+      <%= family.send(field) %>
+    <% end %>
+  </div>
+<% end %>

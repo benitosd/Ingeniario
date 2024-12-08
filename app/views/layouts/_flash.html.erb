@@ -1,0 +1,12 @@
+<div id="flash">
+<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" style="position:fixed;left: 80% ; z-index:1050;">
+    <% flash.each do |key,value| %>
+        <div class="<%= flash_class(key.to_sym)%> alert-dismissible fade show" role="alert">
+        <% unless  value == true %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <%= value %>
+        <% end %>
+        </div>
+        <% end %>
+</form>
+</div>

@@ -1,0 +1,22 @@
+<%
+    controller = controller || nil
+    unless controller.nil?
+    index_url_path = url_for(:controller => controller, :action => :index)
+%>
+
+<div class="row" style="padding: 20px 50px 20px 50px" >
+    <%= form_tag index_url_path, {:id => "solr", :method => :get} do %>
+    <div class="col-md-12" data-controller="typeahead" >
+         <%= text_field_tag :code, params[:code], :data=> { :typeahead_target=> 'input'} ,:id => "search-input", :placeholder => "Código",:class=>"form-control typeahead" %>
+         <%= hidden_field_tag :code %>
+    </div>
+    <div class="col-md-12" >
+         <%= date_field_tag :date, params[:date],:class=>"form-control" %>
+         <%= hidden_field_tag :date %>
+    </div>
+    <% end %>
+</div>
+
+<% else %>
+    <h4><%= "¡¡¡Error!!! Debes pasar el controlador mediante la variable :controller" %></h4>
+<% end %>
