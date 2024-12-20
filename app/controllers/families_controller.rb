@@ -3,7 +3,12 @@ class FamiliesController < ApplicationController
 
   # GET /families or /families.json
   def index
-    @families = Family.all
+    @search = Family.all.search do
+      fulltext params[:search] unless params[:search].blank?
+      paginate :page => params[:page] || 1, :per_page => 10
+      order_by params[:order], params[:sort] unless params[:order].blank?
+    end
+    @families= @search.results
   end
 
   # GET /families/1 or /families/1.json
