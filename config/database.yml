@@ -27,4 +27,5 @@ test:
 production:
   <<: *default
   host: localhost
-  database: ingentario
+  database: ingentario_production
+  
