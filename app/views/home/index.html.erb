@@ -2,120 +2,102 @@
 
 
 
-			<%= render "cards", controller: "users" %>
-			<div class="row">
-				<div class="col-xl-3">
-					<div class="card mb-4">
-						<div class="card-header">
-							<i class="fas fa-chart-area me-1"></i>
-							Area Chart Example
-						</div>
-						<div class="card-body"><div class="chart">
-						<div id="datetimepicker-dashboard"></div>
-					</div></div>
-					</div>
-				</div>
-				<div class="col-xl-9">
-					<div class="card mb-4">
-						<div class="card-header">
-							<i class="fas fa-chart-bar me-1"></i>
-							Bar Chart Example
-						</div>
-						<div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-					</div>
-				</div>
-			</div>
-			<div class="card mb-4">
-				<div class="card-header">
-					<i class="fas fa-table me-1"></i>
-					DataTable Example
-				</div>
-				<div class="card-body">
-				<div>
-				<%= render "layouts/search_order_bar", controller: "users" %>
-				
-						<table class="table table-hover my-0">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th class="d-none d-xl-table-cell">Start Date</th>
-									<th class="d-none d-xl-table-cell">End Date</th>
-									<th>Status</th>
-									<th class="d-none d-md-table-cell">Assignee</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Project Apollo</td>
-									<td class="d-none d-xl-table-cell">01/01/2023</td>
-									<td class="d-none d-xl-table-cell">31/06/2023</td>
-									<td><span class="badge bg-success">Done</span></td>
-									<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-								</tr>
-								<tr>
-									<td>Project Fireball</td>
-									<td class="d-none d-xl-table-cell">01/01/2023</td>
-									<td class="d-none d-xl-table-cell">31/06/2023</td>
-									<td><span class="badge bg-danger">Cancelled</span></td>
-									<td class="d-none d-md-table-cell">William Harris</td>
-								</tr>
-								<tr>
-									<td>Project Hades</td>
-									<td class="d-none d-xl-table-cell">01/01/2023</td>
-									<td class="d-none d-xl-table-cell">31/06/2023</td>
-									<td><span class="badge bg-success">Done</span></td>
-									<td class="d-none d-md-table-cell">Sharon Lessman</td>
-								</tr>
-								<tr>
-									<td>Project Nitro</td>
-									<td class="d-none d-xl-table-cell">01/01/2023</td>
-									<td class="d-none d-xl-table-cell">31/06/2023</td>
-									<td><span class="badge bg-warning">In progress</span></td>
-									<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-								</tr>
-								<tr>
-									<td>Project Phoenix</td>
-									<td class="d-none d-xl-table-cell">01/01/2023</td>
-									<td class="d-none d-xl-table-cell">31/06/2023</td>
-									<td><span class="badge bg-success">Done</span></td>
-									<td class="d-none d-md-table-cell">William Harris</td>
-								</tr>
-								<tr>
-									<td>Project X</td>
-									<td class="d-none d-xl-table-cell">01/01/2023</td>
-									<td class="d-none d-xl-table-cell">31/06/2023</td>
-									<td><span class="badge bg-success">Done</span></td>
-									<td class="d-none d-md-table-cell">Sharon Lessman</td>
-								</tr>
-								<tr>
-									<td>Project Romeo</td>
-									<td class="d-none d-xl-table-cell">01/01/2023</td>
-									<td class="d-none d-xl-table-cell">31/06/2023</td>
-									<td><span class="badge bg-success">Done</span></td>
-									<td class="d-none d-md-table-cell">Christina Mason</td>
-								</tr>
-								<tr>
-									<td>Project Wombat</td>
-									<td class="d-none d-xl-table-cell">01/01/2023</td>
-									<td class="d-none d-xl-table-cell">31/06/2023</td>
-									<td><span class="badge bg-warning">In progress</span></td>
-									<td class="d-none d-md-table-cell">William Harris</td>
-								</tr>
-							</tbody>
-						</table>
-			
-	
-	<footer class="py-4 bg-light mt-auto">
-		<div class="container-fluid px-4">
-			<div class="d-flex align-items-center justify-content-between small">
-				<div class="text-muted">Copyright &copy; Your Website 2023</div>
-				<div>
-					<a href="#">Privacy Policy</a>
-					&middot;
-					<a href="#">Terms &amp; Conditions</a>
-				</div>
-			</div>
-		</div>
-	</footer>
+
+
+
+
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        DataTable Example
+    </div>
+    <div class="card-body">
+    <div>
+    <%= render "layouts/search_order_bar", controller: "users" %>
+    
+            <table class="table table-hover my-0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th class="d-none d-xl-table-cell">Start Date</th>
+                        <th class="d-none d-xl-table-cell">End Date</th>
+                        <th>Status</th>
+                        <th class="d-none d-md-table-cell">Assignee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Project Apollo</td>
+                        <td class="d-none d-xl-table-cell">01/01/2023</td>
+                        <td class="d-none d-xl-table-cell">31/06/2023</td>
+                        <td><span class="badge bg-success">Done</span></td>
+                        <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                    </tr>
+                    <tr>
+                        <td>Project Fireball</td>
+                        <td class="d-none d-xl-table-cell">01/01/2023</td>
+                        <td class="d-none d-xl-table-cell">31/06/2023</td>
+                        <td><span class="badge bg-danger">Cancelled</span></td>
+                        <td class="d-none d-md-table-cell">William Harris</td>
+                    </tr>
+                    <tr>
+                        <td>Project Hades</td>
+                        <td class="d-none d-xl-table-cell">01/01/2023</td>
+                        <td class="d-none d-xl-table-cell">31/06/2023</td>
+                        <td><span class="badge bg-success">Done</span></td>
+                        <td class="d-none d-md-table-cell">Sharon Lessman</td>
+                    </tr>
+                    <tr>
+                        <td>Project Nitro</td>
+                        <td class="d-none d-xl-table-cell">01/01/2023</td>
+                        <td class="d-none d-xl-table-cell">31/06/2023</td>
+                        <td><span class="badge bg-warning">In progress</span></td>
+                        <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                    </tr>
+                    <tr>
+                        <td>Project Phoenix</td>
+                        <td class="d-none d-xl-table-cell">01/01/2023</td>
+                        <td class="d-none d-xl-table-cell">31/06/2023</td>
+                        <td><span class="badge bg-success">Done</span></td>
+                        <td class="d-none d-md-table-cell">William Harris</td>
+                    </tr>
+                    <tr>
+                        <td>Project X</td>
+                        <td class="d-none d-xl-table-cell">01/01/2023</td>
+                        <td class="d-none d-xl-table-cell">31/06/2023</td>
+                        <td><span class="badge bg-success">Done</span></td>
+                        <td class="d-none d-md-table-cell">Sharon Lessman</td>
+                    </tr>
+                    <tr>
+                        <td>Project Romeo</td>
+                        <td class="d-none d-xl-table-cell">01/01/2023</td>
+                        <td class="d-none d-xl-table-cell">31/06/2023</td>
+                        <td><span class="badge bg-success">Done</span></td>
+                        <td class="d-none d-md-table-cell">Christina Mason</td>
+                    </tr>
+                    <tr>
+                        <td>Project Wombat</td>
+                        <td class="d-none d-xl-table-cell">01/01/2023</td>
+                        <td class="d-none d-xl-table-cell">31/06/2023</td>
+                        <td><span class="badge bg-warning">In progress</span></td>
+                        <td class="d-none d-md-table-cell">William Harris</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+<footer class="py-4 bg-light mt-auto">
+<div class="container-fluid px-4">
+<div class="d-flex align-items-center justify-content-between small">
+    <div class="text-muted">Copyright &copy; Your Website 2023</div>
+    <div>
+        <a href="#">Privacy Policy</a>
+        &middot;
+        <a href="#">Terms &amp; Conditions</a>
+    </div>
+</div>
+</div>
+</footer>
 
 

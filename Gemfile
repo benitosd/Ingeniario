@@ -44,6 +44,8 @@ gem "bootsnap", require: false
 #gem 'sass-embedded'
 gem "base64", '~> 0.2.0'
 gem 'bootstrap', '~> 5.3.3'
+gem 'will_paginate-bootstrap'
+
 gem 'jquery-rails'
 gem "sassc-rails"
 gem 'capistrano', '~> 3.11'
@@ -65,6 +67,7 @@ gem 'view_component'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+   gem 'faker', '~> 2.20'
 end
 
 group :development do

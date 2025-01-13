@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :items
+  resources :groups
   resources :families do
     patch :update_inline, on: :member
   end

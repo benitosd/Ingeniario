@@ -1,0 +1,52 @@
+<% module_namespacing do -%>
+class <%= class_name %> < ApplicationRecord
+  <% if attributes.any?(&:password_digest?) -%>
+  has_secure_password
+  <% end -%>
+
+  <% attributes.select(&:reference?).each do |attribute| -%>
+  belongs_to :<%= attribute.name %>
+  <% end -%>
+
+  # Validaciones
+  <% attributes.each do |attribute| -%>
+  <% if attribute.password_digest? -%>
+  validates :password, presence: true, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
+  <% elsif attribute.name == "email" -%>
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  <% elsif attribute.type == :string || attribute.type == :text -%>
+  validates :<%= attribute.name %>, presence: true, length: { maximum: 255 }
+  <% elsif attribute.type == :integer || attribute.type == :decimal || attribute.type == :float -%>
+  validates :<%= attribute.name %>, presence: true, numericality: true
+  <% elsif attribute.type == :date || attribute.type == :datetime -%>
+  validates :<%= attribute.name %>, presence: true
+  <% end -%>
+  <% end -%>
+
+  # Scope para búsqueda con Sunspot
+  searchable do
+    <% attributes.each do |attribute| -%>
+    <% if attribute.reference? -%>
+    text :<%= attribute.name %>_id do
+      <%= attribute.name %>.try(:to_s)
+    end
+    <% elsif attribute.type.in?([:string, :text]) -%>
+    text :<%= attribute.name %>
+    <% else -%>
+    integer :<%= attribute.name %>
+    <% end -%>
+    <% end -%>
+  end
+
+  # Métodos adicionales
+  def to_s
+    <%- if attributes.map(&:name).include?("name") -%>
+    name
+    <%- elsif attributes.map(&:name).include?("title") -%>
+    title
+    <%- else -%>
+    super
+    <%- end -%>
+  end
+end
+<% end -%>

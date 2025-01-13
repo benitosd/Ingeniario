@@ -85,13 +85,14 @@ es:
           attributes:
             plane_kind:
               required: "requerido"
-  template:
+  ingeniario:
     user:
       cols:
         code: "Código"
     search_order_bar:
       data_filter: "Criterios de búsqueda"
       search: "Buscar"
+      order_by: "Ordenar por"
     messages:
       created: "%{resource} creado correctamente."
       manipulated: "%{resource} manipulado correctamente."
@@ -106,6 +107,7 @@ es:
       delete: "Borrar"
       back: "Volver"
       save: "Guardar"
+      new_item: "Nuevo Artículo"
     municipalities:
       back: "Regresar"
       list:
@@ -129,34 +131,35 @@ es:
         title: "Provincia"
         show2: "Mostrar Provincia"
       edit: "Editar Provincia"
-    delivery_notes:
+    groups:
       back: "Regresar"
       list:
-        title: "Albaranes"
+        title: "Grupos"
       cols:
-        name: "Albarán"
-        company: "Compañía"
-        fly: "Vuelo"
-        registration: "Matrícula"
-        code: "Código"
-        value: "Valor"
-        service_type: "Tipo de Servicio"
-      new: "Nuevo albarán"
+        name: "Nombre"
+        description: "Descripción"
+        family_id: "Familia"
+      new: "Nuevo grupo"
       show:
-        title: "Albarán"
-        edit: "Editar Albarán"
-        show2: "Mostrar Albarán"
+        title: "Grupo"
+        edit: "Editar Grupo"
+        show2: "Mostrar Grupo"
+      edit: "Editar Grupo"
+    items:
+      back: "Regresar"
+      list:
+        title: "Artículos"
       cols:
-        edit: "Editar Albarán"
-        name: "Albarán"
-        company: "Compañía"
-        fly: "Vuelo"
-        signature: "Firma"
-        registration: "Matrícula"
-        generate: "Generar Albarán"
-        departure: "Salida"
-        service_type: "Tipo de Servicio"
-      edit: "Editar Albarán"
+        name: "Nombre"
+        description: "Descripción"
+        group_id: "Grupo"
+        actions: "Acciones"
+      new: "Nuevo artículo"
+      show:
+        title: "Detalles del artículo: %{name}"
+        edit: "Editar Artículo"
+        show2: "Mostrar Artículo"
+      edit: "Editar Artículo"
     plane_kinds:
       back: "Regresar"
       list:

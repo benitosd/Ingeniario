@@ -1,22 +1,44 @@
-<%
-    controller = controller || nil
-    unless controller.nil?
-    index_url_path = url_for(:controller => controller, :action => :index)
+<%  
+  controller = controller || nil
+
+  unless controller.nil?
+    index_url_path = url_for(controller: controller, action: :index)  
+    sorter_list = "#{controller.upcase}_SORTER_LIST".constantize
 %>
 
-<div class="row" style="padding: 20px 50px 20px 50px" >
-    <%= form_tag index_url_path, {:id => "solr", :method => :get} do %>
-    <div class="col-md-12" data-controller="typeahead" >
-         <%= text_field_tag :code, params[:code], :data=> { :typeahead_target=> 'input'} ,:id => "search-input", :placeholder => "Código",:class=>"form-control typeahead" %>
-         <%= hidden_field_tag :code %>
+<div class="row" data-controller="form-solr" style="padding: 20px 50px 20px 50px">
+  <%= form_tag index_url_path, { id: "solr", method: :get, data: { form_solr_target: "form" } , class: "row g-3 align-items-center" } do %>
+    <!-- Filtro de búsqueda -->
+    <div class="col-md-5">
+      <%= text_field_tag :search, params[:search], 
+          { placeholder: I18n.t("ingeniario.search_order_bar.data_filter"), class: "form-control" } %>
     </div>
-    <div class="col-md-12" >
-         <%= date_field_tag :date, params[:date],:class=>"form-control" %>
-         <%= hidden_field_tag :date %>
+
+    <!-- Botón de búsqueda -->
+    <div class="col-md-1">
+      <%= button_tag I18n.t("ingeniario.search_order_bar.search"), 
+          name: nil, class: "btn btn-primary w-100" %>    
+    </div> 
+
+    <!-- Ordenar por -->
+    <div class="col-md-4">
+      <%= select_tag :order, 
+          options_for_select(sorter_list, params[:order]), 
+          class: "form-select", 
+          prompt: I18n.t("ingeniario.search_order_bar.order_by"), 
+          data: { action: "form-solr#submit" } %>
     </div>
-    <% end %>
+
+    <!-- Ascendente / Descendente -->
+    <div class="col-md-2">
+      <%= select_tag :sort, 
+          options_for_select(["asc", "desc"], params[:sort]), 
+          class: "form-select", 
+          data: { action: "form-solr#submit" } %>
+    </div>  
+  <% end %>
 </div>
 
 <% else %>
-    <h4><%= "¡¡¡Error!!! Debes pasar el controlador mediante la variable :controller" %></h4>
+  <h4 class="text-danger"><%= "¡¡¡Error!!! Debes pasar el controlador mediante la variable :controller" %></h4>
 <% end %>

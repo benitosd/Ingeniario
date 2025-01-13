@@ -7,30 +7,41 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    
     <%= javascript_importmap_tags %>
+   
   </head>
   <% if user_signed_in? %>
   <body class="sb-nav-fixed">
   <% else %>
-  <body class="sb-nav-fixed bg-primary sb-sidenav-toggled">
+  <body class="sb-nav-fixed bg-primary sb-sidenav-toggled ">
   <% end %>
   
 
 
-  <%= render "layouts/top_navigation" %>
-  <div id="layoutSidenav">
+
+ <%= render "layouts/top_navigation" %>
+<div id="layoutSidenav">
 
   <%= render "layouts/side_navigation" %>
   <div id="layoutSidenav_content">
-  <main>
-		<div class="container-fluid px-4">
- <%= render "layouts/flash" %>
- <%= turbo_frame_tag "modal" %>
-    <%= yield %>
-    </div>
+    <main>
+    <% if user_signed_in? %>
+       
+    <%= render "home/cards", controller: "users" %>
+  
+<% end %>
+
+      <div class="container-fluid px-4">
+        <%= render "layouts/flash" %>
+        <%= turbo_frame_tag "modal" %>
+        
+        <%= yield %>
+      </div>
     </main>
-    </div>
-    </div>
+  </div>
+</div>
+
   </body>
   
 </html>

@@ -1,0 +1,50 @@
+<div class="card mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3 class="card-title mb-0">
+      <%= I18n.t("ingeniario.items.list.title") %>
+    </h3>
+      </div>
+
+  <div class="card-body">
+    <!-- Barra de búsqueda -->
+    <div class="mb-3">
+      <%= render 'layouts/search_order_bar', controller: 'items' %>
+    </div>
+
+    <!-- Tabla de datos -->
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+                          <th><%= I18n.t("ingeniario.items.cols.name") %></th>
+                          <th><%= I18n.t("ingeniario.items.cols.description") %></th>
+                       
+                        <th colspan="3" width="10%" class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+                              <td><%= item.name %></td>
+                              <td><%= item.description %></td>
+                            
+                            <td class="text-center">
+                <%= link_to I18n.t("ingeniario.buttons.show"), item, class: "btn btn-success btn-sm" %>
+              </td>
+              <td class="text-center">
+                <%= link_to I18n.t("ingeniario.buttons.edit"), edit_item_path(item), class: "btn btn-warning btn-sm" %>
+              </td>
+              <td class="text-center">
+                <%= link_to I18n.t("ingeniario.buttons.delete"), item, method: :delete, data: { confirm: I18n.t("ingeniario.messages.confirm_delete") }, class: "btn btn-danger btn-sm" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="custom-pagination">
+    <%= will_paginate @families, renderer: BootstrapPagination::Rails %>
+  </div>
+  </div>
+</div>

@@ -3,27 +3,38 @@
 
 // This function runs on every page "load"
 document.addEventListener("turbo:load", () => {
-    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-    const popoverList = [...popoverTriggerList].map((popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl));
-  })
+    document.documentElement.style.setProperty("--fixed-cards-padding", "15.5rem");
+    
+    const updateCardsPosition = () => {
+      const root = document.documentElement;
+      const sidebarToggled = document.body.classList.contains("sb-sidenav-toggled");
+    
+      if (sidebarToggled) {
+        root.style.setProperty("--fixed-cards-padding", "15.5rem");
+      } else {
+        root.style.setProperty("--fixed-cards-padding", "1.5rem");
+      }
+    };
   
+    // Inicializa al cargar la página
+    
+    const sidebarToggle = document.body.querySelector("#sidebarToggle");
   
-  window.addEventListener('DOMContentLoaded', event => {
-
-    // Toggle the side navigation
-    const sidebarToggle = document.body.querySelector('#sidebarToggle');
-    if (sidebarToggle) {
-        // Uncomment Below to persist sidebar toggle between refreshes
-        // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-        //     document.body.classList.toggle('sb-sidenav-toggled');
-        // }
-        sidebarToggle.addEventListener('click', event => {
-            event.preventDefault();
-            document.body.classList.toggle('sb-sidenav-toggled');
-            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-        });
+    // Mantener el estado del sidebar entre sesiones
+    if (localStorage.getItem("sb|sidebar-toggle") === "true") {
+      document.body.classList.add("sb-sidenav-toggled");
+      document.documentElement.style.setProperty("--fixed-cards-padding", "1.5rem");
     }
-
-})
-
+  
+    // Configurar evento para alternar la barra lateral
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener("click", (event) => {
+        event.preventDefault();
+        updateCardsPosition();
+        document.body.classList.toggle("sb-sidenav-toggled");
+        localStorage.setItem("sb|sidebar-toggle", document.body.classList.contains("sb-sidenav-toggled"));
+      });
+    }
+  });
+  
 		

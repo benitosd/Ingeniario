@@ -1,0 +1,88 @@
+<div class="card">
+<div class="card-header d-flex justify-content-between align-items-center">
+  <h3 class="card-title">
+      <%= @item.new_record? ? I18n.t("ingeniario.items.new") : I18n.t("ingeniario.items.edit") %>
+    </h3>
+    <div>
+        <%= link_to I18n.t("ingeniario.buttons.back"), items_path, class: "btn btn-secondary" %>
+      </div>
+  </div>
+
+  <div class="card-body">
+    <%= form_for(@item) do |f| %>
+      <!-- Error notifications -->
+      <% if @item.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h4>
+            <%= pluralize(@item.errors.count, "error") %>
+            <%= I18n.t("ingeniario.messages.form_errors") %>
+          </h4>
+          <ul>
+            <% @item.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- Form fields -->
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <%= f.label :name, I18n.t("ingeniario.items.cols.name"), class: "form-label" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="col-md-6 mb-3">
+          <%= f.label :description, I18n.t("ingeniario.items.cols.description"), class: "form-label" %>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+        <div class="row">
+        <!-- Columna 1: Nombre del Grupo -->
+        <div class="col-md-6 mb-3">
+          <%= label_tag :group_name, "Grupo", class: "form-label" %>
+          <%= text_field_tag :group_name, @item.group.name, class: "form-control", readonly: true %>
+        </div>
+      
+        <!-- Columna 2: Nombre de la Familia -->
+        <div class="col-md-6 mb-3">
+          <%= label_tag :family_name, "Familia", class: "form-label" %>
+          <%= text_field_tag :family_name, @item.group.family.name, class: "form-control", readonly: true %>
+        </div>
+      </div>
+      <%= hidden_field_tag "group_id", @item.group.id %>
+
+        <div class="col-md-6 mb-3">
+          <%= f.label :photo, I18n.t("ingeniario.items.cols.photo"), class: "form-label" %>
+          <%= f.file_field :photo, class: "form-control" %>
+        </div>
+        <div class="col-md-6 mb-3 text-end">
+          <% if @item.photo.attached? %>
+            <p class="mt-2">Current photo:</p>
+            <%= image_tag @item.photo, class: "img-thumbnail", size: "200x200" %>
+             <% else %>
+            <%= image_tag "default-item.jpg", class: "img-fluid rounded", alt: "Default photo" %>
+          <% end %>
+        </div>
+      </div>
+
+      <h4>Propiedades</h4>
+<div class="row">
+  <% @item.group.properties.each_slice(2) do |pair| %>
+    <% pair.each do |key, label| %>
+      <div class="col-md-6 mb-3">
+        <%= f.label "properties[#{key}]", label.titleize, class: "form-label" %>
+        <%= text_field_tag "item[properties][#{key}]", @item.properties[key], class: "form-control" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+      
+
+      <!-- Submit button -->
+      <div class="d-grid mt-4">
+        <%= f.submit I18n.t("ingeniario.buttons.save"), data: { action: "properties#validate" }, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

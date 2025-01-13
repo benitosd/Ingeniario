@@ -141,6 +141,8 @@ GEM
     error_highlight (0.7.0)
     erubi (1.13.1)
     execjs (2.10.0)
+    faker (2.23.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -360,6 +362,9 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (4.0.1)
+    will_paginate-bootstrap (1.0.2)
+      will_paginate (>= 3.0.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.18)
@@ -393,6 +398,7 @@ DEPENDENCIES
   devise
   error_highlight (>= 0.4.0)
   execjs
+  faker (~> 2.20)
   figaro
   importmap-rails
   jbuilder
@@ -413,6 +419,7 @@ DEPENDENCIES
   tzinfo-data
   view_component
   web-console
+  will_paginate-bootstrap
 
 BUNDLED WITH
    2.6.1

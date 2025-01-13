@@ -1,0 +1,59 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <%%= @<%= singular_table_name %>.new_record? ? I18n.t("<%= application_name %>.<%= plural_table_name %>.new") : I18n.t("<%= application_name %>.<%= plural_table_name %>.edit") %>
+    </h3>
+  </div>
+
+  <div class="card-body">
+    <%%= form_for(@<%= singular_table_name %>) do |f| %>
+      <!-- Error notifications -->
+      <%% if @<%= singular_table_name %>.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h4>
+            <%%= pluralize(@<%= singular_table_name %>.errors.count, "error") %>
+            <%%= I18n.t("<%= application_name %>.messages.form_errors") %>
+          </h4>
+          <ul>
+            <%% @<%= singular_table_name %>.errors.full_messages.each do |msg| %>
+              <li><%%= msg %></li>
+            <%% end %>
+          </ul>
+        </div>
+      <%% end %>
+
+      <!-- Form fields -->
+      <div class="row">
+        <% attributes.each do |attribute| -%>
+          <% if attribute.password_digest? -%>
+            <div class="col-md-6 mb-3">
+              <%%= f.label :password, I18n.t("<%= application_name %>.<%= plural_table_name %>.cols.password"), class: "form-label" %>
+              <%%= f.password_field :password, class: "form-control" %>
+            </div>
+            <div class="col-md-6 mb-3">
+              <%%= f.label :password_confirmation, I18n.t("<%= application_name %>.<%= plural_table_name %>.cols.password_confirmation"), class: "form-label" %>
+              <%%= f.password_field :password_confirmation, class: "form-control" %>
+            </div>
+          <% else -%>
+            <% if attribute.reference? -%>
+              <div class="col-md-6 mb-3">
+                <%%= f.label :<%= attribute.column_name %>, I18n.t("<%= application_name %>.<%= plural_table_name %>.cols.<%= attribute.column_name %>"), class: "form-label" %>
+                <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-control" %>
+              </div>
+            <% else -%>
+              <div class="col-md-6 mb-3">
+                <%%= f.label :<%= attribute.name %>, I18n.t("<%= application_name %>.<%= plural_table_name %>.cols.<%= attribute.column_name %>"), class: "form-label" %>
+                <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, class: "form-control" %>
+              </div>
+            <% end -%>
+          <% end -%>
+        <% end -%>
+      </div>
+
+      <!-- Submit button -->
+      <div class="d-grid">
+        <%%= f.submit I18n.t("<%= application_name %>.buttons.save"), class: "btn btn-primary" %>
+      </div>
+    <%% end %>
+  </div>
+</div>
