@@ -35,8 +35,12 @@
                 <%= link_to I18n.t("ingeniario.buttons.edit"), edit_item_path(item), class: "btn btn-warning btn-sm" %>
               </td>
               <td class="text-center">
-                <%= link_to I18n.t("ingeniario.buttons.delete"), item, method: :delete, data: { confirm: I18n.t("ingeniario.messages.confirm_delete") }, class: "btn btn-danger btn-sm" %>
-              </td>
+              <%= link_to I18n.t("ingeniario.buttons.delete"), item_path(item), 
+              data: { 
+                  turbo_method: :delete, 
+                  turbo_confirm: I18n.t("ingeniario.messages.confirm_delete") 
+              }, 
+              class: "btn btn-danger btn-sm" %>                      </td>
             </tr>
           <% end %>
         </tbody>
@@ -44,7 +48,7 @@
     </div>
 
     <div class="custom-pagination">
-    <%= will_paginate @families, renderer: BootstrapPagination::Rails %>
+    <%= will_paginate @items, renderer: BootstrapPagination::Rails %>
   </div>
   </div>
 </div>

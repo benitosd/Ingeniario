@@ -61,6 +61,10 @@ gem 'letter_opener'
 gem 'sunspot_rails', '~> 2.6'
 gem "figaro"
 gem 'view_component'
+gem 'rqrcode'
+gem 'chunky_png'
+gem "chartkick"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

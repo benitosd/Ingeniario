@@ -2,9 +2,9 @@
 			<div  class="row ">
 			<div class="col-xl-3 col-md-6">
 			<div class="card bg-special text-white mb-4">
-  				<div class="card-body">Gestión de Artículos</div>
+  				<div class="card-body">Pantalla de Control</div>
   					<div class="card-footer d-flex align-items-center justify-content-between">
-   					 <%= link_to "Ver Artículos", items_path, class: "small text-white stretched-link" %>
+   					 <%= link_to "Ver Artículos", dashboard_path, class: "small text-white stretched-link" %>
     				<div class="small text-white"><i class="fas fa-angle-right"></i></div>
   				</div>
 		</div>
@@ -12,27 +12,27 @@
 		</div>
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-warning text-white mb-4">
-				<div class="card-body">Grupos</div>
+				<div class="card-body">Artículos</div>
 				<div class="card-footer d-flex align-items-center justify-content-between">
-				<%= link_to "Ver Grupos", groups_path, class: "small text-white stretched-link" %>
+				<%= link_to "Ver Grupos", items_path, class: "small text-white stretched-link" %>
 			<div class="small text-white"><i class="fas fa-angle-right"></i></div>
 		  </div>
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-success text-white mb-4">
-				<div class="card-body">Success Card</div>
+				<div class="card-body">Almacenes</div>
 				<div class="card-footer d-flex align-items-center justify-content-between">
-					<a class="small text-white stretched-link" href="#">View Details</a>
+					<%= link_to "Ver Grupos", warehouses_path, class: "small text-white stretched-link" %>
 					<div class="small text-white"><i class="fas fa-angle-right"></i></div>
 				</div>
 			</div>
 		</div>
 		<div class="col-xl-3 col-md-6">
 			<div class="card bg-danger text-white mb-4">
-				<div class="card-body">Danger Card</div>
+				<div class="card-body">Estocaje</div>
 				<div class="card-footer d-flex align-items-center justify-content-between">
-					<a class="small text-white stretched-link" href="#">View Details</a>
+					<%= link_to "Ver Grupos", stocks_path, class: "small text-white stretched-link" %>
 					<div class="small text-white"><i class="fas fa-angle-right"></i></div>
 				</div>
 				</div>

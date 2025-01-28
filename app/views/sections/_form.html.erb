@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <%= @section.new_record? ? I18n.t("ingeniario.sections.new") : I18n.t("ingeniario.sections.edit") %>
+    </h3>
+  </div>
+
+  <div class="card-body">
+    <%= form_for(@section) do |f| %>
+      <!-- Error notifications -->
+      <% if @section.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h4>
+            <%= pluralize(@section.errors.count, "error") %>
+            <%= I18n.t("ingeniario.messages.form_errors") %>
+          </h4>
+          <ul>
+            <% @section.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- Form fields -->
+      <div class="row">
+                                            <div class="col-md-6 mb-3">
+                <%= f.label :name, I18n.t("ingeniario.sections.cols.name"), class: "form-label" %>
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :description, I18n.t("ingeniario.sections.cols.description"), class: "form-label" %>
+                <%= f.text_area :description, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :warehouse_id, I18n.t("ingeniario.sections.cols.warehouse_id"), class: "form-label" %>
+                <%= f.text_field :warehouse_id, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :capacity, I18n.t("ingeniario.sections.cols.capacity"), class: "form-label" %>
+                <%= f.number_field :capacity, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :location_code, I18n.t("ingeniario.sections.cols.location_code"), class: "form-label" %>
+                <%= f.text_field :location_code, class: "form-control" %>
+              </div>
+                                    </div>
+
+      <!-- Submit button -->
+      <div class="d-grid">
+        <%= f.submit I18n.t("ingeniario.buttons.save"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

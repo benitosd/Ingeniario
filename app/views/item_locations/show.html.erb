@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">
+        <%= I18n.t("ingeniario.item_locations.show.title") %>
+      </h3>
+      <div class="float-end">
+        <%= link_to I18n.t("ingeniario.buttons.edit"), edit_item_location_path(@item_location), class: "btn btn-warning me-2" %>
+        <%= link_to I18n.t("ingeniario.buttons.back"), item_locations_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <tbody>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.item_locations.cols.item_id") %>
+              </th>
+              <td>
+                <%= @item_location.item %>
+              </td>
+            </tr>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.item_locations.cols.section_id") %>
+              </th>
+              <td>
+                <%= @item_location.section %>
+              </td>
+            </tr>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.item_locations.cols.user_id") %>
+              </th>
+              <td>
+                <%= @item_location.user %>
+              </td>
+            </tr>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.item_locations.cols.status") %>
+              </th>
+              <td>
+                <%= @item_location.status %>
+              </td>
+            </tr>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.item_locations.cols.assigned_at") %>
+              </th>
+              <td>
+                <%= @item_location.assigned_at %>
+              </td>
+            </tr>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.item_locations.cols.return_date") %>
+              </th>
+              <td>
+                <%= @item_location.return_date %>
+              </td>
+            </tr>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.item_locations.cols.notes") %>
+              </th>
+              <td>
+                <%= @item_location.notes %>
+              </td>
+            </tr>
+                  </tbody>
+      </table>
+    </div>
+  </div>
+</div>

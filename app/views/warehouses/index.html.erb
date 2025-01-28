@@ -1,0 +1,59 @@
+<div class="card mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3 class="card-title mb-0">
+      <%= I18n.t("ingeniario.warehouses.list.title") %>
+    </h3>
+    <%= link_to I18n.t("ingeniario.buttons.new", resource: "Warehouse"), new_warehouse_path, class: "btn btn-primary btn-sm" %>
+  </div>
+
+  <div class="card-body">
+    <!-- Barra de búsqueda -->
+    <div class="mb-3">
+      <%= render 'layouts/search_order_bar', controller: 'warehouses' %>
+    </div>
+
+    <!-- Tabla de datos -->
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th><%= I18n.t("ingeniario.warehouses.cols.name") %></th>
+            <th><%= I18n.t("ingeniario.warehouses.cols.description") %></th>
+            <th><%= I18n.t("ingeniario.warehouses.cols.location") %></th>
+            <th><%= I18n.t("ingeniario.warehouses.cols.contact_info") %></th>
+            <th colspan="3" width="10%" class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @warehouses.each do |warehouse| %>
+            <tr>
+              <td><%= warehouse.name %></td>
+              <td><%= warehouse.description %></td>
+              <td><%= warehouse.location %></td>
+              <td><%= warehouse.contact_info %></td>
+              <td class="text-center">
+                <%= link_to I18n.t("ingeniario.buttons.show"), warehouse, class: "btn btn-success btn-sm" %>
+              </td>
+              <td class="text-center">
+                <%= link_to I18n.t("ingeniario.buttons.edit"), edit_warehouse_path(warehouse), class: "btn btn-warning btn-sm" %>
+              </td>
+              <td class="text-center">
+                <%= link_to I18n.t("ingeniario.buttons.delete"), warehouse_path(warehouse), 
+                    data: { 
+                      turbo_method: :delete, 
+                      turbo_confirm: I18n.t("ingeniario.messages.confirm_delete") 
+                    }, 
+                    class: "btn btn-danger btn-sm" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginación -->
+    <div class="custom-pagination">
+      <%= will_paginate @warehouses, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+</div>

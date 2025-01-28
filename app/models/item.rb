@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  
+has_many :stocks, dependent: :destroy  
 belongs_to :group
 has_one_attached :photo
 before_validation :initialize_propierty

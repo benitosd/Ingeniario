@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: one
+  reference: MyString
+  description: MyText
+  active: false
+  entry_date: 2025-01-27 12:28:21
+
+two:
+  item: two
+  reference: MyString
+  description: MyText
+  active: false
+  entry_date: 2025-01-27 12:28:21

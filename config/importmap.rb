@@ -25,3 +25,8 @@ pin "stimulus" # @3.2.2
 pin "corejs-typeahead" # @1.3.4
 pin "process" # @2.0.1
 pin "rails-ujs" # @5.2.8
+
+pin "@kurkle/color", to: "@kurkle--color.js" # @0.3.4
+
+pin "chartkick", to: "chartkick.js" # Esto buscará en vendor/javascript
+pin "chart.js", to: "chart.umd.min.js" # Esto buscará en vendor/javascript

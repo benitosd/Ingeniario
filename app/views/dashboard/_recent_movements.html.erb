@@ -1,0 +1,34 @@
+
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="card-title mb-0">Últimos Movimientos</h5>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Item</th>
+            <th>Estado</th>
+            <th>Ubicación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recent_movements.each do |movement| %>
+            <tr>
+              <td><%= l movement.created_at, format: :short %></td>
+              <td><%= movement.stock.item.name %></td>
+              <td>
+                <span class="badge bg-<%= movement.in_storage? ? 'success' : 'warning' %>">
+                  <%= movement.status.titleize %>
+                </span>
+              </td>
+              <td><%= movement.stock.current_location %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

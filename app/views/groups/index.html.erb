@@ -28,7 +28,7 @@
             <tr>
                               <td><%= group.name %></td>
                               <td><%= group.description %></td>
-                              <td><%= group.family %></td>
+                              <td><%= group.family.name %></td>
                             <td class="text-center">
                 <%= link_to I18n.t("ingeniario.buttons.show"), group, class: "btn btn-success btn-sm" %>
               </td>
@@ -36,7 +36,12 @@
                 <%= link_to I18n.t("ingeniario.buttons.edit"), edit_group_path(group), class: "btn btn-warning btn-sm" %>
               </td>
               <td class="text-center">
-                <%= link_to I18n.t("ingeniario.buttons.delete"), group, method: :delete, data: { confirm: I18n.t("ingeniario.messages.confirm_delete") }, class: "btn btn-danger btn-sm" %>
+              <%= link_to I18n.t("ingeniario.buttons.delete"), group_path(group), 
+              data: { 
+                  turbo_method: :delete, 
+                  turbo_confirm: I18n.t("ingeniario.messages.confirm_delete") 
+              }, 
+              class: "btn btn-danger btn-sm" %>              </td>
               </td>
             </tr>
           <% end %>
@@ -47,7 +52,7 @@
     <!-- Paginación -->
     
     <div class="custom-pagination">
-    <%= will_paginate @families, renderer: BootstrapPagination::Rails %>
+    <%= will_paginate @groups, renderer: BootstrapPagination::Rails %>
   </div>
   </div>
 </div>

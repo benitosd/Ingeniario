@@ -1,0 +1,54 @@
+
+<div class="container-fluid mt-4">
+  <%= turbo_frame_tag "dashboard_content" do %>
+    <!-- Cards Resumen -->
+    <div class="row">
+      <%= render "dashboard/stats_card", 
+          title: "Total Items",
+          value: @total_items,
+          description: "Items registrados",
+          bg_color: "secondary" %>
+          
+      <%= render "dashboard/stats_card", 
+          title: "Stocks Activos",
+          value: @active_stocks,
+          description: "de #{@total_stocks} stocks totales",
+          bg_color: "success" %>
+          
+      <%= render "dashboard/stats_card", 
+          title: "En Almacén",
+          value: @stocks_in_storage,
+          description: "Stocks almacenados",
+          bg_color: "info" %>
+          
+      <%= render "dashboard/stats_card", 
+          title: "Asignados",
+          value: @stocks_assigned,
+          description: "Stocks en uso",
+          bg_color: "warning" %>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="row mt-4">
+      <div class="col-md-6 mb-4">
+        <%= render "dashboard/stock_status_chart", 
+            storage: @stocks_in_storage,
+            assigned: @stocks_assigned,
+            repair: @stocks_in_repair,
+            retired: @stocks_retired %>
+      </div>
+      <div class="col-md-6 mb-4">
+        <%= render "dashboard/warehouse_occupancy" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <%= render "dashboard/items_by_family_chart" %>
+      </div>
+      <div class="col-md-6 mb-4">
+        <%= render "dashboard/recent_movements" %>
+      </div>
+    </div>
+  <% end %>
+</div>

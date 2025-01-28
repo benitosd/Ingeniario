@@ -1,0 +1,11 @@
+
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title mb-0">Items por Familia</h5>
+  </div>
+  <div class="card-body">
+    <div class="chart-container" style="height: 300px;">
+      <%= bar_chart @items_by_family.map { |f| [f.name, f.items_count] } %>
+    </div>
+  </div>
+</div>

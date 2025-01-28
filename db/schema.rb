@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_13_124621) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_27_141327) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,8 +56,22 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_13_124621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "properties"
-    t.json "propierties"
     t.index ["family_id"], name: "index_groups_on_family_id"
+  end
+
+  create_table "item_locations", force: :cascade do |t|
+    t.bigint "section_id"
+    t.bigint "user_id"
+    t.integer "status"
+    t.datetime "assigned_at"
+    t.datetime "return_date"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "stock_id", null: false
+    t.index ["section_id"], name: "index_item_locations_on_section_id"
+    t.index ["stock_id"], name: "index_item_locations_on_stock_id"
+    t.index ["user_id"], name: "index_item_locations_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -68,6 +82,28 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_13_124621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_items_on_group_id"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "warehouse_id", null: false
+    t.integer "capacity"
+    t.string "location_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["warehouse_id"], name: "index_sections_on_warehouse_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.string "reference"
+    t.text "description"
+    t.boolean "active"
+    t.datetime "entry_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_stocks_on_item_id"
   end
 
   create_table "units", force: :cascade do |t|
@@ -93,8 +129,22 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_13_124621) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "warehouses", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "location"
+    t.string "contact_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "groups", "families"
+  add_foreign_key "item_locations", "sections"
+  add_foreign_key "item_locations", "stocks"
+  add_foreign_key "item_locations", "users"
   add_foreign_key "items", "groups"
+  add_foreign_key "sections", "warehouses"
+  add_foreign_key "stocks", "items"
 end

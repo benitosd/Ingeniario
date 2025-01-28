@@ -11543,3 +11543,12 @@ font-weight: bold;
   font-size: 0.85em;
   font-style: italic;
 }
+.qr-container {
+  width: 100%;
+  max-width: 250px;
+}
+
+.qr-container svg {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,16 @@
+
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title mb-0">Estado de Stocks</h5>
+  </div>
+  <div class="card-body">
+    <div class="chart-container" style="height: 300px;">
+      <%= pie_chart({
+        "En Almacén" => storage,
+        "Asignados" => assigned,
+        "En Reparación" => repair,
+        "Retirados" => retired
+      }) %>
+    </div>
+  </div>
+</div>

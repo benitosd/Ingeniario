@@ -1,0 +1,63 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <%= @item_location.new_record? ? I18n.t("ingeniario.item_locations.new") : I18n.t("ingeniario.item_locations.edit") %>
+    </h3>
+  </div>
+
+  <div class="card-body">
+    <%= form_for(@item_location) do |f| %>
+      <!-- Error notifications -->
+      <% if @item_location.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h4>
+            <%= pluralize(@item_location.errors.count, "error") %>
+            <%= I18n.t("ingeniario.messages.form_errors") %>
+          </h4>
+          <ul>
+            <% @item_location.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- Form fields -->
+      <div class="row">
+                                            <div class="col-md-6 mb-3">
+                <%= f.label :item_id, I18n.t("ingeniario.item_locations.cols.item_id"), class: "form-label" %>
+                <%= f.text_field :item_id, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :section_id, I18n.t("ingeniario.item_locations.cols.section_id"), class: "form-label" %>
+                <%= f.text_field :section_id, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :user_id, I18n.t("ingeniario.item_locations.cols.user_id"), class: "form-label" %>
+                <%= f.text_field :user_id, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :status, I18n.t("ingeniario.item_locations.cols.status"), class: "form-label" %>
+                <%= f.number_field :status, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :assigned_at, I18n.t("ingeniario.item_locations.cols.assigned_at"), class: "form-label" %>
+                <%= f.datetime_field :assigned_at, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :return_date, I18n.t("ingeniario.item_locations.cols.return_date"), class: "form-label" %>
+                <%= f.datetime_field :return_date, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :notes, I18n.t("ingeniario.item_locations.cols.notes"), class: "form-label" %>
+                <%= f.text_area :notes, class: "form-control" %>
+              </div>
+                                    </div>
+
+      <!-- Submit button -->
+      <div class="d-grid">
+        <%= f.submit I18n.t("ingeniario.buttons.save"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

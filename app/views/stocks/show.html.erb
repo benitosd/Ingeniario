@@ -1,0 +1,77 @@
+<!-- app/views/stocks/show.html.erb -->
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title">
+        <%= I18n.t("ingeniario.stocks.show.title") %>
+      </h3>
+      <div>
+        <%= link_to I18n.t("ingeniario.buttons.edit"), edit_stock_path(@stock), class: "btn btn-warning me-2" %>
+        <%= link_to I18n.t("ingeniario.buttons.back"), stocks_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+        <!-- Columna de información -->
+        <div class="col-md-8">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th width="20%"><%= I18n.t("ingeniario.stocks.cols.reference") %></th>
+                <td><%= @stock.reference %></td>
+              </tr>
+              <tr>
+                <th><%= I18n.t("ingeniario.stocks.cols.item") %></th>
+                <td><%= link_to @stock.item.name, item_path(@stock.item), class: "text-decoration-none" %></td>
+              </tr>
+              <tr>
+                <th><%= I18n.t("ingeniario.stocks.cols.description") %></th>
+                <td><%= @stock.description %></td>
+              </tr>
+              <tr>
+                <th><%= I18n.t("ingeniario.stocks.cols.entry_date") %></th>
+                <td><%= l @stock.entry_date, format: :long %></td>
+              </tr>
+              <tr>
+                <th><%= I18n.t("ingeniario.stocks.cols.active") %></th>
+                <td>
+                  <span class="badge <%= @stock.active? ? 'bg-success' : 'bg-danger' %>">
+                    <%= @stock.active? ? 'Activo' : 'Inactivo' %>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <th><%= I18n.t("ingeniario.stocks.cols.location") %></th>
+                <td><%= @stock.current_location %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Columna del QR -->
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Código QR</h5>
+            </div>
+            <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+              <div class="qr-container bg-white p-3 rounded shadow-sm" style="max-width: 100%;">
+                <%= raw @stock.generate_qr_code_svg %>
+              </div>
+              <div class="mt-3 d-flex gap-2">
+                <%= link_to download_qr_stock_path(@stock, format: :png), class: "btn btn-primary btn-sm" do %>
+                  <i class="fas fa-download"></i> PNG
+                <% end %>
+                <%= link_to download_qr_stock_path(@stock, format: :svg), class: "btn btn-secondary btn-sm" do %>
+                  <i class="fas fa-download"></i> SVG
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

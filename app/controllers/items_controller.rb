@@ -63,7 +63,36 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def assign_to_user
+    @item = Item.find(params[:id])
+    @item_location = @item.build_item_location(
+      user: User.find(params[:user_id]),
+      status: :assigned,
+      assigned_at: Time.current,
+      return_date: params[:return_date]
+    )
+    
+    if @item_location.save
+      redirect_to @item, notice: 'Item asignado correctamente.'
+    else
+      render :show
+    end
+  end
+  
+  def move_to_section
+    @item = Item.find(params[:id])
+    @item_location = @item.build_item_location(
+      section: Section.find(params[:section_id]),
+      status: :in_storage,
+      assigned_at: Time.current
+    )
+    
+    if @item_location.save
+      redirect_to @item, notice: 'Item movido correctamente.'
+    else
+      render :show
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
