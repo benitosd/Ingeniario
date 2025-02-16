@@ -1,0 +1,85 @@
+<div class="container mt-4">
+ <div class="card">
+   <div class="card-header d-flex justify-content-between align-items-center">
+     <h3 class="card-title">Informe de Salida</h3>
+     <div>
+       <% if @output_report.pending? %>
+         <%= link_to 'Editar', edit_output_report_path(@output_report), class: "btn btn-warning me-2" %>
+       <% end %>
+       <%= link_to 'Volver', output_reports_path, class: "btn btn-secondary" %>
+     </div>
+   </div>
+
+   <div class="card-body">
+     <!-- Información básica -->
+     <div class="row mb-4">
+       <div class="col-md-6">
+         <table class="table">
+           <tr>
+             <th width="30%">Usuario:</th>
+             <td><%= @output_report.user.code %></td>
+           </tr>
+           <tr>
+             <th>Fecha:</th>
+             <td><%= l @output_report.date, format: :long %></td>
+           </tr>
+           <tr>
+             <th>Estado:</th>
+             <td>
+               <span class="badge <%= case @output_report.status
+                 when 'pending' then 'bg-warning'
+                 when 'approved' then 'bg-success'
+                 when 'completed' then 'bg-info'
+                 when 'cancelled' then 'bg-danger'
+                 end %>">
+                 <%= @output_report.status.titleize %>
+               </span>
+             </td>
+           </tr>
+           <tr>
+             <th>Motivo:</th>
+             <td><%= @output_report.reason %></td>
+           </tr>
+         </table>
+       </div>
+     </div>
+
+     <!-- Lista de Stocks -->
+     <h4 class="mb-3">Stocks Incluidos</h4>
+     <div class="table-responsive">
+       <table class="table table-striped">
+         <thead>
+           <tr>
+             <th>Referencia</th>
+             <th>Item</th>
+             <th>Fecha de Devolución</th>
+             <th>Notas</th>
+           </tr>
+         </thead>
+         <tbody>
+           <% @output_report.output_report_stocks.includes(:stock).each do |report_stock| %>
+             <tr>
+               <td><%= report_stock.stock.reference %></td>
+               <td><%= report_stock.stock.item.name %></td>
+               <td><%= l report_stock.return_date, format: :long if report_stock.return_date %></td>
+               <td><%= report_stock.notes %></td>
+             </tr>
+           <% end %>
+         </tbody>
+       </table>
+     </div>
+
+     <!-- Botones de acción según estado -->
+     <% if @output_report.pending? %>
+       <div class="mt-4 text-end">
+         <%= button_to approve_output_report_path(@output_report), 
+             method: :post,
+             class: "btn btn-success",
+             data: { turbo_confirm: "¿Estás seguro de aprobar este informe?" } do %>
+           <i class="fas fa-check me-2"></i>Aprobar Informe
+         <% end %>
+       </div>
+     <% end %>
+   </div>
+ </div>
+</div>

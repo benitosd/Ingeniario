@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_27_141327) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_28_230649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,6 +84,27 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_27_141327) do
     t.index ["group_id"], name: "index_items_on_group_id"
   end
 
+  create_table "output_report_stocks", force: :cascade do |t|
+    t.bigint "output_report_id", null: false
+    t.bigint "stock_id", null: false
+    t.datetime "return_date"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["output_report_id"], name: "index_output_report_stocks_on_output_report_id"
+    t.index ["stock_id"], name: "index_output_report_stocks_on_stock_id"
+  end
+
+  create_table "output_reports", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "date", null: false
+    t.text "reason"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_output_reports_on_user_id"
+  end
+
   create_table "sections", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -145,6 +166,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_27_141327) do
   add_foreign_key "item_locations", "stocks"
   add_foreign_key "item_locations", "users"
   add_foreign_key "items", "groups"
+  add_foreign_key "output_report_stocks", "output_reports"
+  add_foreign_key "output_report_stocks", "stocks"
+  add_foreign_key "output_reports", "users"
   add_foreign_key "sections", "warehouses"
   add_foreign_key "stocks", "items"
 end

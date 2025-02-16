@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  resources :output_reports do
+    member do
+      post :approve  # Para aprobar el informe
+    end
+  end
   resources :stocks do
     member do
       get 'download_qr'
       post :assign_to_user
       post :return_from_user
       post :move_to_section
+    end
+    collection do
+      get 'find_by_reference'
     end
   end
   resources :item_locations

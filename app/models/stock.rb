@@ -32,21 +32,25 @@ class Stock < ApplicationRecord
   before_validation :generate_reference, on: :create
   
   def generate_qr_code
-    RQRCode::QRCode.new(qr_code_data)
+    parsed_data = JSON.parse(qr_code_data)
+    reference = parsed_data["reference"]
+    data = qr_code_data
+            RQRCode::QRCode.new(reference, size: 6, level: :h)  # Puedes ajustar `size` y `level`
   end
   
   def generate_qr_code_svg
     generate_qr_code.as_svg(
+      offset: 0,
       color: "000",
       shape_rendering: "crispEdges",
-      module_size: 11,
+      module_size: 8,    # Prueba con diferentes tamaños (6, 8, 11, etc.)
       standalone: true,
       use_path: true
     )
   end
   
   def generate_qr_code_png
-    generate_qr_code.as_png(
+    png = generate_qr_code.as_png(
       bit_depth: 1,
       border_modules: 4,
       color_mode: ChunkyPNG::COLOR_GRAYSCALE,
@@ -58,6 +62,8 @@ class Stock < ApplicationRecord
       resize_gte_to: false,
       size: 400
     )
+    # Forzamos la codificación del resultado PNG a ASCII-8BIT (binary)
+    png.to_s.force_encoding("ASCII-8BIT")
   end
 
   def current_location
@@ -78,9 +84,7 @@ class Stock < ApplicationRecord
       "Sin ubicación"
     end
   end
-  
-  private
-  
+
   def qr_code_data
     {
       reference: reference,
@@ -90,6 +94,10 @@ class Stock < ApplicationRecord
       status: active ? 'Activo' : 'Inactivo'
     }.to_json
   end
+  
+  private
+  
+ 
   
   def generate_reference
     # Genera una referencia única si no se proporciona una

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  output_report: one
+  stock: one
+  return_date: 2025-01-28 23:06:49
+  notes: MyText
+
+two:
+  output_report: two
+  stock: two
+  return_date: 2025-01-28 23:06:49
+  notes: MyText

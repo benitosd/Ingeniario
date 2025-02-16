@@ -61,8 +61,34 @@ class StocksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def find_by_reference
+    Rails.logger.debug "Buscando stock con referencia: #{params[:reference]}"
+    @stock = Stock.find_by(reference: params[:reference])
+    
+    Rails.logger.debug "Stock encontrado: #{@stock.inspect}"
+    Rails.logger.debug "Item location: #{@stock&.item_location.inspect}"
+    
+    if @stock && (@stock.item_location.nil? || @stock.item_location.in_storage?)
+      response_data = {
+        id: @stock.id,
+        reference: @stock.reference,
+        item_name: @stock.item.name,
+        available: true
+      }
+      Rails.logger.debug "Enviando respuesta: #{response_data.inspect}"
+      render json: response_data
+    else
+      Rails.logger.debug "Stock no disponible"
+      render json: { available: false }
+    end
+  rescue => e
+    Rails.logger.error "Error en find_by_reference: #{e.message}"
+    Rails.logger.error e.backtrace.join("\n")
+    render json: { available: false, error: e.message }, status: :internal_server_error
+  end
   def download_qr
     respond_to do |format|
+      @stock = Stock.find(params[:id])
       format.svg do
         render inline: @stock.generate_qr_code_svg
       end
