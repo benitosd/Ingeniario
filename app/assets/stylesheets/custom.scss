@@ -10911,7 +10911,7 @@ opacity: 0.5;
 transition: opacity 0.3s ease-in-out;
 }
 
-@media (min-width: 992px) {
+
 #layoutSidenav #layoutSidenav_nav {
   transform: translateX(0);
 }
@@ -10928,7 +10928,7 @@ transition: opacity 0.3s ease-in-out;
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
   display: none;
 }
-}
+
 .sb-nav-fixed .sb-topnav {
 z-index: 1039;
 }
@@ -11551,4 +11551,7 @@ font-weight: bold;
 .qr-container svg {
   width: 100%;
   height: auto;
+}
+.hidden {
+  display: none !important;
 }

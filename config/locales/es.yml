@@ -1,4 +1,8 @@
 es:
+  template:
+    user:
+      cols:
+        code: "Código"
   will_paginate:
     page_entries_info:
       single_page:

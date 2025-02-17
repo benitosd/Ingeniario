@@ -1,44 +1,57 @@
-
-  
 <div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">Login</h3>
+              </div>
+              <div class="card-body">
+                <form action="<%= session_path(resource_name) %>" method="POST">
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                  
+                  <div class="form-floating mb-3">
+                    <input type="text" 
+                           name="user[code]" 
+                           class="form-control" 
+                           id="inputEmail" 
+                           placeholder="current-password" 
+                           required>
+                    <label for="inputEmail"><%= I18n.t("template.user.cols.code") %></label>
+                  </div>
 
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <div class="card-body">
-                                        <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
-                                          <div class="form-floating mb-3">
-                                          <%= f.text_field :code,autofocus: false,class: "form-control", id:"inputEmail",placeholder: "current-password" %><br />
-                                          <%= f.label :code,I18n.t("template.user.cols.code"), for: "inputEmail"%> 
-                                          </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" 
+                           name="user[password]" 
+                           class="form-control" 
+                           id="inputPassword" 
+                           placeholder="current-password" 
+                           required>
+                    <label for="inputPassword">Password</label>
+                  </div>
 
-                                          <div class="form-floating mb-3">
-                                          <%= f.password_field :password, placeholder: "current-password",class: "form-control", id: "inputEmail" %><br />
-                                          <%= f.label :password, for: "inputEmail" %>
-                                              
-                                          </div>
-
-                                          <% if devise_mapping.rememberable? %>
-                                          <div class="form-check mb-3">
-                                              <%= f.check_box :remember_me %>
-                                              <%= f.label :remember_me %>
-                                          </div>
-                                          <% end %>
-
-                                          <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                          <%= f.submit "Log in",class:"btn btn-primary" %>
-                                          </div>
-                                          <% end %>
-                                      </div>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                  <% if devise_mapping.rememberable? %>
+                    <div class="form-check mb-3">
+                      <input type="checkbox" 
+                             name="user[remember_me]" 
+                             id="rememberMe" 
+                             class="form-check-input" 
+                             value="1">
+                      <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div>
-                </div>
+                  <% end %>
+
+                  <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
+</div>

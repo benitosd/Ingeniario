@@ -7,6 +7,20 @@
 # Any libraries that use thread pools should be configured to match
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
+require 'yaml'
+require 'yaml'
+
+port ENV.fetch("PORT") { 3013 }
+environment ENV.fetch("RAILS_ENV") { "development" }
+threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+threads threads_count, threads_count
+
+# Configuración SSL
+ssl_bind '0.0.0.0', 3014, {
+  key: File.join(File.expand_path("../ssl", __FILE__), "localhost.key"),
+  cert: File.join(File.expand_path("../ssl", __FILE__), "localhost.crt"),
+  verify_mode: 'none'
+}
 max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
 min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
 threads min_threads_count, max_threads_count
