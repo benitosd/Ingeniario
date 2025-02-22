@@ -1,11 +1,16 @@
-
 <div class="card">
   <div class="card-header">
-    <h5 class="card-title mb-0">Items por Familia</h5>
+    <h5 class="card-title mb-0">Items por Grupo</h5>
   </div>
   <div class="card-body">
     <div class="chart-container" style="height: 300px;">
-      <%= bar_chart @items_by_family.map { |f| [f.name, f.items_count] } %>
+      <%= bar_chart @items_by_group.map { |g| [g.name, g.items_count] },
+          colors: ["#6f42c1"],
+          library: {
+            plugins: {
+              legend: { display: false }
+            }
+          } %>
     </div>
   </div>
 </div>

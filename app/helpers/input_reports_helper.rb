@@ -1,0 +1,2 @@
+module InputReportsHelper
+end

@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <%= @input_report_stock.new_record? ? I18n.t("ingeniario.input_report_stocks.new") : I18n.t("ingeniario.input_report_stocks.edit") %>
+    </h3>
+  </div>
+
+  <div class="card-body">
+    <%= form_for(@input_report_stock) do |f| %>
+      <!-- Error notifications -->
+      <% if @input_report_stock.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h4>
+            <%= pluralize(@input_report_stock.errors.count, "error") %>
+            <%= I18n.t("ingeniario.messages.form_errors") %>
+          </h4>
+          <ul>
+            <% @input_report_stock.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- Form fields -->
+      <div class="row">
+                                            <div class="col-md-6 mb-3">
+                <%= f.label :input_report_id, I18n.t("ingeniario.input_report_stocks.cols.input_report_id"), class: "form-label" %>
+                <%= f.text_field :input_report_id, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :stock_id, I18n.t("ingeniario.input_report_stocks.cols.stock_id"), class: "form-label" %>
+                <%= f.text_field :stock_id, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :section_id, I18n.t("ingeniario.input_report_stocks.cols.section_id"), class: "form-label" %>
+                <%= f.text_field :section_id, class: "form-control" %>
+              </div>
+                                                                  <div class="col-md-6 mb-3">
+                <%= f.label :notes, I18n.t("ingeniario.input_report_stocks.cols.notes"), class: "form-label" %>
+                <%= f.text_area :notes, class: "form-control" %>
+              </div>
+                                    </div>
+
+      <!-- Submit button -->
+      <div class="d-grid">
+        <%= f.submit I18n.t("ingeniario.buttons.save"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

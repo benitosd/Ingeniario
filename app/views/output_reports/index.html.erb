@@ -3,68 +3,111 @@
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <h3 class="card-title">Informes de Salida</h3>
-      <%= link_to new_output_report_path, class: "btn btn-primary" do %>
-        <i class="fas fa-plus"></i> Nuevo Informe
-      <% end %>
+      <%= link_to 'Nuevo Informe de Salida', new_output_report_path, class: 'btn btn-primary' %>
     </div>
-
+    <div class="col-md-12">
+      <%= render 'layouts/search_order_bar', controller: 'output_reports' %>
+    </div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-striped table-hover">
           <thead>
             <tr>
+              <th>Nº</th>
               <th>Fecha</th>
               <th>Usuario</th>
-              <th>Motivo</th>
               <th>Estado</th>
-              <th>Items</th>
+              <th>Razón</th>
+              <th>Informes de Entrada</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             <% @output_reports.each do |report| %>
               <tr>
+                <td><strong>#<%= report.id %></strong></td>
                 <td><%= l report.date, format: :long %></td>
-                <td><%= report.user.code %></td>
-                <td><%= truncate(report.reason, length: 50) %></td>
+                <td><%= report.user.email %></td>
                 <td>
-                  <span class="badge <%= case report.status
-                    when 'pending' then 'bg-warning'
-                    when 'approved' then 'bg-success'
-                    when 'completed' then 'bg-info'
-                    when 'cancelled' then 'bg-danger'
-                    end %>">
-                    <%= report.status.titleize %>
+                  <span class="badge bg-dark text-<%= status_badge_class(report.status) %>">
+                    <i class="<%= report_status_icon(report.status) %> me-1"></i>
+                    <%= report.status_text %>
                   </span>
                 </td>
-                <td><%= report.output_report_stocks.count %></td>
+                <td><%= report.reason %></td>
                 <td>
-                  <%= link_to output_report_path(report), class: "btn btn-info btn-sm" do %>
-                    <i class="fas fa-eye"></i>
+                  <% if report.input_reports.any? %>
+                    <ul class="list-unstyled mb-0">
+                      <% report.input_reports.each do |input_report| %>
+                        <li class="mb-1">
+                          <%= link_to input_report_path(input_report), class: "text-decoration-none" do %>
+                            <span class="badge bg-dark text-<%= status_badge_class(input_report.status) %>">
+                              <i class="<%= report_status_icon(input_report.status) %> me-1"></i>
+                              <%= input_report.status_text %>
+                            </span>
+                            <strong class="ms-1">#<%= input_report.id %></strong> - 
+                            <%= l input_report.date, format: :long %> - 
+                            <%= input_report.user.email %>
+                          <% end %>
+                        </li>
+                      <% end %>
+                    </ul>
+                    <% if report.approved? && report.has_pending_returns? %>
+                      <div class="mt-2">
+                        <%= link_to new_output_report_input_report_path(report), 
+                            class: 'btn btn-sm btn-outline-primary' do %>
+                          <i class="fas fa-plus me-1"></i>
+                          Nuevo Informe de Entrada
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <% if report.approved? %>
+                      <p class="mb-2">Sin informes de entrada</p>
+                      <%= link_to new_output_report_input_report_path(report), 
+                          class: 'btn btn-sm btn-outline-primary' do %>
+                        <i class="fas fa-plus me-1"></i>
+                        Crear Informe de Entrada
+                      <% end %>
+                    <% else %>
+                      <div class="alert alert-warning mb-0 py-2">
+                        <small>
+                          <i class="fas fa-exclamation-triangle me-1"></i>
+                          Debe aprobar el informe de salida para poder crear informes de entrada
+                        </small>
+                      </div>
+                    <% end %>
                   <% end %>
-                  
-                  <% if report.pending? %>
-                    <%= link_to edit_output_report_path(report), class: "btn btn-warning btn-sm" do %>
-                      <i class="fas fa-edit"></i>
+                </td>
+                <td>
+                  <div class="btn-group">
+                    <%= link_to output_report_path(report), class: "btn btn-info btn-sm" do %>
+                      <i class="fas fa-eye"></i>
                     <% end %>
                     
-                    <%= link_to output_report_path(report), 
-                        method: :delete,
-                        data: { 
-                          turbo_method: :delete,
-                          turbo_confirm: "¿Estás seguro?"
-                        },
-                        class: "btn btn-danger btn-sm" do %>
-                      <i class="fas fa-trash"></i>
-                    <% end %>
+                    <% if report.pending? %>
+                      <%= link_to edit_output_report_path(report), class: "btn btn-warning btn-sm" do %>
+                        <i class="fas fa-edit"></i>
+                      <% end %>
+                      
+                      <%= link_to output_report_path(report), 
+                          method: :delete,
+                          data: { 
+                            turbo_method: :delete,
+                            turbo_confirm: "¿Estás seguro?"
+                          },
+                          class: "btn btn-danger btn-sm" do %>
+                        <i class="fas fa-trash"></i>
+                      <% end %>
 
-                    <%= button_to approve_output_report_path(report),
-                        method: :post,
-                        class: "btn btn-success btn-sm",
-                        data: { turbo_confirm: "¿Confirmas la aprobación de este informe?" } do %>
-                      <i class="fas fa-check"></i>
+                      <%= button_to approve_output_report_path(report),
+                          method: :post,
+                          class: "btn btn-success btn-sm",
+                          data: { turbo_confirm: "¿Confirmas la aprobación de este informe?" } do %>
+                        <i class="fas fa-check"></i>
+                      <% end if report.respond_to?(:approve!) %>
                     <% end %>
-                  <% end %>
+                  </div>
                 </td>
               </tr>
             <% end %>

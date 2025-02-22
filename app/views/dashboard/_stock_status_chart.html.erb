@@ -1,4 +1,3 @@
-
 <div class="card">
   <div class="card-header">
     <h5 class="card-title mb-0">Estado de Stocks</h5>
@@ -9,7 +8,16 @@
         "En Almacén" => storage,
         "Asignados" => assigned,
         "En Reparación" => repair,
-        "Retirados" => retired
+        "Rotos" => broken,
+        "Desaparecidos" => missing
+      }, 
+      colors: ["#0dcaf0", "#0d6efd", "#ffc107", "#dc3545", "#212529"],
+      library: {
+        plugins: {
+          legend: {
+            position: 'right'
+          }
+        }
       }) %>
     </div>
   </div>

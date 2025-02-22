@@ -1,26 +1,26 @@
+# app/controllers/search_controller.rb
 class SearchController < ApplicationController
-    def query
-        # Get the search terms from the q parameter and do a search
-        # as we seen in the previous part of the article.
-        search = User.search do
-          fulltext params[:q] # Full text search
+  def query
+    search = Stock.search do
+      fulltext params[:q]
+      with(:active, true)  # Solo stocks activos
+    end
+
+    respond_to do |format|
+      format.json do
+        results = search.results.map do |stock|
+          {
+            id: stock.id,
+            reference: stock.reference,
+            description: stock.description,
+            item: {
+              id: stock.item.id,
+              name: stock.item.name
+            }
+          }
         end
-    
-        respond_to do |format|
-          format.json do
-            # Create an array from the search results.
-            results = search.results.map do |tree|
-              # Each element will be a hash containing only the title of the article.
-              # The title key is used by typeahead.js.
-              { code: tree.code ,
-                email: tree.email,
-                
-                
-                
-                }
-            end
-            render json: results
-          end
-        end
+        render json: results
       end
+    end
+  end
 end

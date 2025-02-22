@@ -5,25 +5,26 @@ class DashboardController < ApplicationController
       @total_stocks = Stock.count
       @active_stocks = Stock.active.count
       
-      @stocks_in_storage = ItemLocation.in_storage.count
-      @stocks_assigned = ItemLocation.assigned.count
-      @stocks_in_repair = ItemLocation.in_repair.count
-      @stocks_retired = ItemLocation.retired.count
+      @stocks_in_storage = Stock.joins(:item_location).where(item_locations: { status: :in_storage }).count
+      @stocks_assigned = Stock.joins(:item_location).where(item_locations: { status: :assigned }).count
+      @stocks_in_repair = Stock.joins(:item_location).where(item_locations: { status: :en_reparacion }).count
+      @stocks_broken = Stock.joins(:item_location).where(item_locations: { status: :roto }).count
+      @stocks_missing = Stock.joins(:item_location).where(item_locations: { status: :desaparecido }).count
       
-      @top_warehouses = Warehouse.joins(sections: :item_locations)
-                                .where(item_locations: { status: :in_storage })
+      @items_by_group = Group.joins("LEFT JOIN items ON items.group_id = groups.id")
+                            .select('groups.*, COUNT(items.id) as items_count')
+                            .group('groups.id')
+                            .order('items_count DESC')
+  
+      @top_warehouses = Warehouse.joins("LEFT JOIN sections ON sections.warehouse_id = warehouses.id")
+                                .joins("LEFT JOIN item_locations ON item_locations.section_id = sections.id")
+                                .select('warehouses.*, COUNT(DISTINCT item_locations.id) as items_count')
                                 .group('warehouses.id')
-                                .select('warehouses.*, COUNT(item_locations.id) as items_count')
                                 .order('items_count DESC')
                                 .limit(5)
   
-      @items_by_family = Family.joins(groups: :items)
-                              .group('families.id, families.name')
-                              .select('families.*, COUNT(items.id) as items_count')
-                              .order('items_count DESC')
-  
-      @recent_movements = ItemLocation.includes(stock: :item)
+      @recent_movements = StockMovement.includes(:stock, :user, stock: :item)
                                     .order(created_at: :desc)
-                                    .limit(5)
+                                    .limit(10)
     end
   end

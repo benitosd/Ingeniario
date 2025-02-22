@@ -1,128 +1,153 @@
 <div class="container mt-4">
- <div class="card">
-   <div class="card-header">
-     <h3 class="card-title">Nuevo Informe de Salida</h3>
-   </div>
-   <div class="card-body" data-controller="nested-form qr-scanner">
-     <%= form_with(model: @output_report, local: true) do |f| %>
-       <% if @output_report.errors.any? %>
-         <div class="alert alert-danger">
-           <h4><%= pluralize(@output_report.errors.count, "error") %> impidieron guardar este informe:</h4>
-           <ul>
-             <% @output_report.errors.full_messages.each do |msg| %>
-               <li><%= msg %></li>
-             <% end %>
-           </ul>
-         </div>
-       <% end %>
-       
-       <div class="row">
-         <!-- Primera columna - Datos básicos -->
-         <div class="col-md-6">
-           <div class="mb-3">
-             <%= f.label :user_id, "Usuario", class: "form-label" %>
-             <%= f.collection_select :user_id, User.all, :id, :code, {}, class: "form-select" %>
-           </div>
-           <div class="mb-3">
-             <%= f.label :date, "Fecha", class: "form-label" %>
-             <%= f.date_field :date, class: "form-control", value: Date.current %>
-           </div>
-           <div class="mb-3">
-             <%= f.label :reason, "Motivo", class: "form-label" %>
-             <%= f.text_area :reason, class: "form-control", rows: 3 %>
-           </div>
-         </div>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Nuevo Informe de Salida</h3>
+    </div>
+    <div class="card-body" data-controller="nested-form qr-scanner">
+      <%= form_with(model: @output_report, local: true) do |f| %>
+        <% if @output_report.errors.any? %>
+          <div class="alert alert-danger">
+            <h4><%= pluralize(@output_report.errors.count, "error") %> impidieron guardar este informe:</h4>
+            <ul>
+              <% @output_report.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        
+        <div class="row">
+          <!-- Primera columna - Datos básicos -->
+          <div class="col-md-6">
+            <div class="mb-3">
+              <%= f.label :user_id, "Usuario", class: "form-label" %>
+              <%= f.collection_select :user_id, User.all, :id, :code, {}, class: "form-select" %>
+            </div>
+            <div class="mb-3">
+              <%= f.label :date, "Fecha", class: "form-label" %>
+              <%= f.date_field :date, class: "form-control", value: Date.current %>
+            </div>
+            <div class="mb-3">
+              <%= f.label :reason, "Motivo", class: "form-label" %>
+              <%= f.text_area :reason, class: "form-control", rows: 3 %>
+            </div>
+          </div>
+ 
+          <!-- Segunda columna - Escáner QR -->
+          <div class="col-md-6">
+            <div class="card mb-3">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Añadir Stock</h5>
+                <div>
+                  <button type="button" 
+                          class="btn btn-sm btn-secondary me-2" 
+                          data-action="qr-scanner#toggleCamera">
+                    <i class="fas fa-camera-rotate"></i> Cambiar Cámara
+                  </button>
+                  <button type="button" 
+                          class="btn btn-sm btn-primary" 
+                          data-action="qr-scanner#toggleScanner">
+                    <i class="fas fa-camera"></i> Iniciar/Detener
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <div class="input-group" 
+                       data-controller="typeahead"
+                       data-action="typeahead:stockSelected->qr-scanner#addSelectedStock">
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="Introducir referencia manualmente..."
+                           data-typeahead-target="input"
+                           data-qr-scanner-target="manualInput">
+                    <button class="btn btn-outline-primary" 
+                            type="button"
+                            data-action="click->qr-scanner#addManualStock">
+                      <i class="fas fa-plus"></i> Añadir
+                    </button>
+                  </div>
+                </div>
 
-         <!-- Segunda columna - Escáner QR -->
-         <div class="col-md-6">
-           <div class="card mb-3">
-             <div class="card-header d-flex justify-content-between align-items-center">
-               <h5 class="card-title mb-0">Escanear QR</h5>
-               <div>
-                 <button type="button" 
-                         class="btn btn-sm btn-secondary me-2" 
-                         data-action="qr-scanner#toggleCamera">
-                   <i class="fas fa-camera-rotate"></i> Cambiar Cámara
-                 </button>
-                 <button type="button" 
-                         class="btn btn-sm btn-primary" 
-                         data-action="qr-scanner#toggleScanner">
-                   <i class="fas fa-camera"></i> Iniciar/Detener
-                 </button>
-               </div>
-             </div>
-             <div class="card-body">
-               <div id="reader" style="min-height: 300px;" class="mb-2"></div>
-               <div data-qr-scanner-target="result" class="mt-2"></div>
-             </div>
-           </div>
-         </div>
-       </div>
+                <!-- Scanner QR -->
+                <div id="reader" style="min-height: 300px;" class="mb-2"></div>
+                <div data-qr-scanner-target="result" class="mt-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-       <!-- Tabla de Stocks -->
-       <div class="table-responsive mt-4">
-         <table class="table">
-           <thead>
-             <tr>
-               <th>Referencia</th>
-               <th>Item</th>
-               <th>Fecha de Devolución</th>
-               <th>Notas</th>
-               <th></th>
-             </tr>
-           </thead>
-           <tbody data-nested-form-target="container" data-qr-scanner-target="stocksContainer">
-             <%= f.fields_for :output_report_stocks do |stock_form| %>
-               <%= render 'output_report_stock_fields', f: stock_form %>
-             <% end %>
-           </tbody>
-         </table>
-
-         <div class="mb-3">
-           <button type="button" class="btn btn-secondary" data-action="nested-form#add">
-             Añadir Stock
-           </button>
-         </div>
-       </div>
-
-       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-         <%= link_to 'Cancelar', output_reports_path, class: 'btn btn-secondary me-md-2' %>
-         <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-       </div>
-     <% end %>
-
-     <!-- Template para nuevos stocks -->
-     <template data-nested-form-target="template">
-  <tr class="nested-fields">
-    <td>
-      <span class="stock-reference"></span>
-    </td>
-    <td>
-      <span class="stock-name"></span>
-    </td>
-    <td>
-      <input type="date" 
-             name="output_report[output_report_stocks_attributes][NEW_RECORD][return_date]" 
-             class="form-control"
-             value="<%= Date.current %>">
-    </td>
-    <td>
-      <textarea name="output_report[output_report_stocks_attributes][NEW_RECORD][notes]" 
-                class="form-control" 
-                rows="2"></textarea>
-    </td>
-    <td>
-      <input type="hidden" 
-             name="output_report[output_report_stocks_attributes][NEW_RECORD][stock_id]" 
-             class="stock-id-field">
-      <button type="button" 
-              class="btn btn-danger btn-sm"
-              data-action="nested-form#remove">
-        <i class="fas fa-trash"></i>
-      </button>
-    </td>
-  </tr>
-</template>
-   </div>
- </div>
+        <!-- Botón oculto para nested-form -->
+        <template data-nested-form-target="add_item">
+          <%= f.fields_for :output_report_stocks, OutputReportStock.new, child_index: 'NEW_RECORD' do |stock_form| %>
+            <%= render 'output_report_stock_fields', f: stock_form %>
+          <% end %>
+        </template>
+        <%= button_tag type: 'button', 
+            data: { action: 'nested-form#add' }, 
+            class: 'd-none',
+            id: 'add-stock-button' do %>
+          Añadir Stock
+        <% end %>
+ 
+        <!-- Tabla de Stocks -->
+        <div class="table-responsive mt-4">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Referencia</th>
+                <th>Item</th>
+                <th>Fecha de Devolución</th>
+                <th>Notas</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody data-nested-form-target="container" data-qr-scanner-target="stocksContainer">
+              <%= f.fields_for :output_report_stocks do |stock_form| %>
+                <%= render 'output_report_stock_fields', f: stock_form %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+ 
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <%= link_to 'Cancelar', output_reports_path, class: 'btn btn-secondary me-md-2' %>
+          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+ 
+      <!-- Template para nuevos stocks -->
+      <template data-nested-form-target="template">
+        <tr class="nested-fields">
+          <td>
+              <span class="stock-reference"></span>
+          </td>
+          <td>
+            <span class="stock-name"></span>
+          </td>
+          <td>
+            <input type="date" 
+                   name="output_report[output_report_stocks_attributes][NEW_RECORD][return_date]" 
+                   class="form-control"
+                   value="<%= Date.current %>">
+          </td>
+          <td>
+            <textarea name="output_report[output_report_stocks_attributes][NEW_RECORD][notes]" 
+                      class="form-control" 
+                      rows="2"></textarea>
+          </td>
+          <td>
+            <input type="hidden" 
+                   name="output_report[output_report_stocks_attributes][NEW_RECORD][stock_id]" 
+                   class="stock-id-field">
+            <button type="button" 
+                    class="btn btn-danger btn-sm"
+                    data-action="nested-form#remove">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </template>
+    </div>
+  </div>
 </div>

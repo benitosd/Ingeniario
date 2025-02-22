@@ -168,12 +168,14 @@ es:
         active: "Estado"
         entry_date: "Fecha de entrada"
         location: "Ubicación"
+        status: "Estado"
       messages:
         stock_assigned: "Stock asignado correctamente"
         stock_returned: "Stock devuelto correctamente"
         assignment_error: "Error al asignar el stock"
         return_error: "Error al devolver el stock"
         no_location: "Sin ubicación"
+      no_location: "No asignado"
 
     item_locations:
       statuses:
@@ -193,7 +195,9 @@ es:
     items:
       list:
         title: "Artículos"
+      stocks_title: "Stocks"
       cols:
+        group: "Grupo"
         name: "Nombre"
         description: "Descripción"
         group_id: "Grupo"
@@ -228,6 +232,7 @@ es:
         title: "Detalles de la Familia"
 
     buttons:
+      new_stock: "Nuevo Stock"
       new: "Crear"
       show: "Mostrar"
       edit: "Editar"
@@ -250,6 +255,7 @@ es:
       destroyed: "%{resource} borrado correctamente"
       updated: "%{resource} actualizado correctamente."
       no_items: "No hay elementos"
+      form_errors: "Error en el formulario"
       no_stocks: "No hay stocks disponibles"
 
     search_order_bar:

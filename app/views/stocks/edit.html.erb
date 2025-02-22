@@ -1,5 +1,49 @@
 <div class="container mt-4">
   <div class="card">
+    <div class="card-header">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <h3 class="card-title mb-0">Editar Stock</h3>
+          <div class="mt-2 bg-secondary bg-opacity-10 p-2 rounded border border-secondary border-opacity-25">
+            <span class="badge <%= status_badge_class(@stock.item_location&.status) %> fs-6 shadow-sm text-dark">
+              <i class="<%= stock_status_icon(@stock.item_location&.status) %> me-1"></i>
+              <strong>Estado actual:</strong> <%= @stock.item_location&.status_text || 'Sin ubicación' %>
+            </span>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" 
+                  type="button" 
+                  data-bs-toggle="dropdown" 
+                  aria-expanded="false">
+            Cambiar Estado
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <%= button_to 'Almacenar', 
+                  store_stock_path(@stock),
+                  method: :patch,
+                  class: 'dropdown-item',
+                  data: { turbo_confirm: '¿Estás seguro?' } %>
+            </li>
+            <li>
+              <%= button_to 'Enviar a Reparación',
+                  repair_stock_path(@stock),
+                  method: :patch,
+                  class: 'dropdown-item',
+                  data: { turbo_confirm: '¿Estás seguro?' } %>
+            </li>
+            <li>
+              <%= button_to 'Marcar como Roto',
+                  mark_as_broken_stock_path(@stock),
+                  method: :patch,
+                  class: 'dropdown-item',
+                  data: { turbo_confirm: '¿Estás seguro?' } %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div id="form-container" class="card-body">
       <%= render "form", stock: @stock %>
     </div>

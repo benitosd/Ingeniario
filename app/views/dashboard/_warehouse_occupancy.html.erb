@@ -1,4 +1,3 @@
-
 <div class="card">
   <div class="card-header">
     <h5 class="card-title mb-0">Top Almacenes por Ocupación</h5>
@@ -19,11 +18,15 @@
               <td><%= warehouse.name %></td>
               <td><%= warehouse.items_count %></td>
               <td>
-                <% occupation = (warehouse.items_count.to_f / warehouse.sections.sum(:capacity) * 100).round %>
+                <% total_capacity = warehouse.sections.sum(:capacity) %>
+                <% occupation = total_capacity.zero? ? 0 : (warehouse.items_count.to_f / total_capacity * 100).round %>
                 <div class="progress">
-                  <div class="progress-bar <%= occupation > 80 ? 'bg-danger' : 'bg-success' %>" 
+                  <div class="progress-bar <%= occupation > 80 ? 'bg-danger' : (occupation > 60 ? 'bg-warning' : 'bg-success') %>" 
                        role="progressbar" 
-                       style="width: <%= occupation %>%">
+                       aria-valuenow="<%= occupation %>"
+                       aria-valuemin="0"
+                       aria-valuemax="100"
+                       style="width: '<%= occupation %>%'">
                     <%= occupation %>%
                   </div>
                 </div>

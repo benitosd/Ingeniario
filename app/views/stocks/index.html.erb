@@ -1,67 +1,112 @@
-<div class="card mb-4">
-  <div class="card-header d-flex justify-content-between align-items-center">
-    <h3 class="card-title mb-0">
-      <%= I18n.t("ingeniario.stocks.list.title") %>
-    </h3>
-    <%= link_to I18n.t("ingeniario.buttons.new", resource: "Stock"), new_stock_path, class: "btn btn-primary btn-sm" %>
-  </div>
-
-  <div class="card-body">
-    <!-- Barra de búsqueda -->
-    <div class="mb-3">
-      <%= render 'layouts/search_order_bar', controller: 'stocks' %>
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title mb-0">
+        <% if @status_text %>
+          <%= "Stocks #{@status_text}" %>
+        <% else %>
+          <%= I18n.t("ingeniario.stocks.list.title") %>
+        <% end %>
+      </h3>
+      
     </div>
 
-    <!-- Tabla de datos -->
-    <div class="table-responsive">
-      <table class="table table-striped table-hover">
-        <thead class="thead-dark">
-          <tr>
-            <th><%= I18n.t("ingeniario.stocks.cols.reference") %></th>
-            <th><%= I18n.t("ingeniario.stocks.cols.item") %></th>
-            <th><%= I18n.t("ingeniario.stocks.cols.description") %></th>
-            <th><%= I18n.t("ingeniario.stocks.cols.entry_date") %></th>
-            <th><%= I18n.t("ingeniario.stocks.cols.active") %></th>
-            <th><%= I18n.t("ingeniario.stocks.cols.location") %></th>
-            <th colspan="3" width="15%" class="text-center">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @stocks.each do |stock| %>
+    <div class="card-body">
+      <% if flash[:alert] %>
+        <div class="alert alert-warning alert-dismissible fade show">
+          <%= flash[:alert] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+
+      <!-- Filtros y búsqueda -->
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <%= render 'layouts/search_order_bar', controller: 'stocks' %>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex justify-content-end">
+            <!-- Aquí puedes añadir botones adicionales de filtro si los necesitas -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de datos -->
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="table-light">
             <tr>
-              <td><%= stock.reference %></td>
-              <td><%= stock.item.name %></td>
-              <td><%= truncate(stock.description, length: 50) %></td>
-              <td><%= l stock.entry_date, format: :long %></td>
-              <td>
-                <span class="badge <%= stock.active? ? 'bg-success' : 'bg-danger' %>">
-                  <%= stock.active? ? 'Activo' : 'Inactivo' %>
-                </span>
-              </td>
-              <td><%= stock.current_location %></td>
-              <td class="text-center">
-                <%= link_to I18n.t("ingeniario.buttons.show"), stock, class: "btn btn-success btn-sm" %>
-              </td>
-              <td class="text-center">
-                <%= link_to I18n.t("ingeniario.buttons.edit"), edit_stock_path(stock), class: "btn btn-warning btn-sm" %>
-              </td>
-              <td class="text-center">
-                <%= link_to I18n.t("ingeniario.buttons.delete"), stock_path(stock), 
-                    data: { 
-                      turbo_method: :delete, 
-                      turbo_confirm: I18n.t("ingeniario.messages.confirm_delete") 
-                    }, 
-                    class: "btn btn-danger btn-sm" %>
-              </td>
+              <th><%= I18n.t("ingeniario.stocks.cols.reference") %></th>
+              <th><%= I18n.t("ingeniario.stocks.cols.item") %></th>
+              <th><%= I18n.t("ingeniario.stocks.cols.description") %></th>
+              <th><%= I18n.t("ingeniario.stocks.cols.entry_date") %></th>
+              <th><%= I18n.t("ingeniario.stocks.cols.status") %></th>
+              <th><%= I18n.t("ingeniario.stocks.cols.location") %></th>
+              <th class="text-end">Acciones</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            <% if @stocks.empty? %>
+              <tr>
+                <td colspan="7" class="text-center py-4 text-muted">
+                  <i class="fas fa-box fa-2x mb-3 d-block"></i>
+                  No se encontraron stocks.
+                </td>
+              </tr>
+            <% else %>
+              <% @stocks.each do |stock| %>
+                <tr>
+                  <td><%= stock.reference %></td>
+                  <td><%= link_to stock.item.name, item_path(stock.item), class: "text-decoration-none" %></td>
+                  <td><%= truncate(stock.description, length: 50) %></td>
+                  <td><%= l stock.entry_date, format: :long %></td>
+                  <td>
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="badge bg-<%= stock.status_class %>">
+                        <%= stock.status_text %>
+                      </span>
+                      <% if stock.active? %>
+                        <span class="badge bg-success">Activo</span>
+                      <% else %>
+                        <span class="badge bg-danger">Inactivo</span>
+                      <% end %>
+                    </div>
+                  </td>
+                  <td><%= stock.current_location %></td>
+                  <td>
+                    <div class="d-flex justify-content-end gap-2">
+                      <%= link_to stock_path(stock), class: "btn btn-outline-primary btn-sm", title: "Ver detalles" do %>
+                        <i class="fas fa-eye"></i>
+                      <% end %>
+                      <%= link_to edit_stock_path(stock), class: "btn btn-outline-warning btn-sm", title: "Editar" do %>
+                        <i class="fas fa-edit"></i>
+                      <% end %>
+                      <%= link_to stock_path(stock), 
+                          class: "btn btn-outline-danger btn-sm",
+                          data: { 
+                            turbo_method: :delete, 
+                            turbo_confirm: I18n.t("ingeniario.messages.confirm_delete") 
+                          },
+                          title: "Eliminar" do %>
+                        <i class="fas fa-trash"></i>
+                      <% end %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-    <!-- Paginación -->
-    <div class="custom-pagination">
-      <%= will_paginate @stocks, renderer: BootstrapPagination::Rails %>
+      <!-- Paginación -->
+      <div class="d-flex justify-content-center mt-4">
+        <%= will_paginate @stocks, 
+            renderer: BootstrapPagination::Rails,
+            class: 'pagination pagination-sm flex-wrap justify-content-center',
+            previous_label: '&laquo;',
+            next_label: '&raquo;' %>
+      </div>
     </div>
   </div>
 </div>

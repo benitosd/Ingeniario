@@ -1,76 +1,252 @@
 <!-- app/views/stocks/show.html.erb -->
-<div class="container mt-4">
-  <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h3 class="card-title">
-        <%= I18n.t("ingeniario.stocks.show.title") %>
-      </h3>
-      <div>
-        <%= link_to I18n.t("ingeniario.buttons.edit"), edit_stock_path(@stock), class: "btn btn-warning me-2" %>
-        <%= link_to I18n.t("ingeniario.buttons.back"), stocks_path, class: "btn btn-secondary" %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <div>
+            <h3 class="card-title mb-0">Información del Stock</h3>
+            <div class="mt-2 bg-secondary bg-opacity-10 p-2 rounded border border-secondary border-opacity-25">
+              <span class="badge <%= status_badge_class(@stock.item_location&.status) %> fs-6 shadow-sm text-dark">
+                <i class="<%= stock_status_icon(@stock.item_location&.status) %> me-1"></i>
+                <strong>Estado actual:</strong> <%= @stock.item_location&.status_text || 'Sin ubicación' %>
+              </span>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" 
+                    type="button" 
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+              Cambiar Estado
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <%= button_to 'Almacenar', 
+                    store_stock_path(@stock),
+                    method: :patch,
+                    class: 'dropdown-item',
+                    data: { turbo_confirm: '¿Estás seguro?' } %>
+              </li>
+              <li>
+                <%= button_to 'Enviar a Reparación',
+                    repair_stock_path(@stock),
+                    method: :patch,
+                    class: 'dropdown-item',
+                    data: { turbo_confirm: '¿Estás seguro?' } %>
+              </li>
+              <li>
+                <%= button_to 'Marcar como Roto',
+                    mark_as_broken_stock_path(@stock),
+                    method: :patch,
+                    class: 'dropdown-item',
+                    data: { turbo_confirm: '¿Estás seguro?' } %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <dl class="row">
+            <dt class="col-sm-4">Referencia:</dt>
+            <dd class="col-sm-8"><%= @stock.reference %></dd>
+
+            <dt class="col-sm-4">Item:</dt>
+            <dd class="col-sm-8"><%= link_to @stock.item.name, item_path(@stock.item) %></dd>
+
+            <dt class="col-sm-4">Descripción:</dt>
+            <dd class="col-sm-8"><%= @stock.description %></dd>
+
+            <dt class="col-sm-4">Fecha de entrada:</dt>
+            <dd class="col-sm-8"><%= l @stock.entry_date, format: :long %></dd>
+
+            <dt class="col-sm-4">Estado:</dt>
+            <dd class="col-sm-8">
+              <% if @stock.active? %>
+                <span class="badge badge-success">Activo</span>
+              <% else %>
+                <span class="badge badge-danger">Inactivo</span>
+              <% end %>
+            </dd>
+
+            <dt class="col-sm-4">Ubicación actual:</dt>
+            <dd class="col-sm-8">
+              <% if @stock.item_location&.section %>
+                <%= link_to @stock.current_location, warehouse_path(@stock.item_location.section.warehouse) %>
+              <% else %>
+                <%= @stock.current_location %>
+              <% end %>
+            </dd>
+
+            <% if @stock.item_location&.assigned? %>
+              <dt class="col-sm-4">Asignado a:</dt>
+              <dd class="col-sm-8"><%= @stock.item_location.user.email %></dd>
+
+              <dt class="col-sm-4">Fecha de retorno:</dt>
+              <dd class="col-sm-8">
+                <%= l @stock.item_location.return_date, format: :long if @stock.item_location.return_date %>
+              </dd>
+            <% end %>
+          </dl>
+
+          <div class="mt-3">
+            <%= stock_action_buttons(@stock) %>
+            
+            <%= link_to stocks_path, class: 'btn btn-sm btn-secondary' do %>
+              <i class="fas fa-arrow-left"></i> Volver
+            <% end %>
+          </div>
+        </div>
       </div>
+
+      <% if @stock.item.properties.any? %>
+        <div class="card mt-3">
+          <div class="card-header">
+            <h3 class="card-title">Propiedades</h3>
+          </div>
+          <div class="card-body">
+            <dl class="row mb-0">
+              <% @stock.item.properties.each do |key, value| %>
+                <dt class="col-sm-4"><%= value %>:</dt>
+                <dd class="col-sm-8"><%= @stock.item.properties[key] %></dd>
+              <% end %>
+            </dl>
+          </div>
+        </div>
+      <% end %>
     </div>
 
-    <div class="card-body">
-      <div class="row">
-        <!-- Columna de información -->
-        <div class="col-md-8">
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <th width="20%"><%= I18n.t("ingeniario.stocks.cols.reference") %></th>
-                <td><%= @stock.reference %></td>
-              </tr>
-              <tr>
-                <th><%= I18n.t("ingeniario.stocks.cols.item") %></th>
-                <td><%= link_to @stock.item.name, item_path(@stock.item), class: "text-decoration-none" %></td>
-              </tr>
-              <tr>
-                <th><%= I18n.t("ingeniario.stocks.cols.description") %></th>
-                <td><%= @stock.description %></td>
-              </tr>
-              <tr>
-                <th><%= I18n.t("ingeniario.stocks.cols.entry_date") %></th>
-                <td><%= l @stock.entry_date, format: :long %></td>
-              </tr>
-              <tr>
-                <th><%= I18n.t("ingeniario.stocks.cols.active") %></th>
-                <td>
-                  <span class="badge <%= @stock.active? ? 'bg-success' : 'bg-danger' %>">
-                    <%= @stock.active? ? 'Activo' : 'Inactivo' %>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <th><%= I18n.t("ingeniario.stocks.cols.location") %></th>
-                <td><%= @stock.current_location %></td>
-              </tr>
-            </tbody>
-          </table>
+    <!-- Columna del QR -->
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Código QR</h5>
         </div>
-
-        <!-- Columna del QR -->
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-header">
-              <h5 class="card-title mb-0">Código QR</h5>
-            </div>
-            <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
-            <div class="qr-container bg-white p-3 rounded shadow-sm" style="max-width: 100%;">
+        <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+          <div class="qr-container bg-white p-3 rounded shadow-sm" style="max-width: 100%;">
             <% png_data = @stock.generate_qr_code_png %>
             <% base64_image = Base64.strict_encode64(png_data) %>
             <img src="data:image/png;base64,<%= base64_image %>" alt="Código QR" class="img-fluid">
           </div>
-              <div class="mt-3 d-flex gap-2">
-                <%= link_to download_qr_stock_path(@stock, format: :png), class: "btn btn-primary btn-sm" do %>
-                  <i class="fas fa-download"></i> PNG
-                <% end %>
-                
-              </div>
-            </div>
+          <div class="mt-3 d-flex gap-2">
+            <%= link_to download_qr_stock_path(@stock, format: :png), class: "btn btn-primary btn-sm" do %>
+              <i class="fas fa-download"></i> PNG
+            <% end %>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="col-md-4">
+      <%= render 'movement_history', movements: @stock.stock_movements.includes(:user).order(created_at: :desc) %>
+    </div>
+  </div>
+</div>
+
+<!-- Sección de Ubicación -->
+<div class="container mt-4">
+  <div class="card mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="card-title mb-0">
+        <i class="fas fa-map-marker-alt"></i>
+        Ubicación Actual
+      </h5>
+      <!-- Botón para activar el modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#moveStockModal">
+        <i class="fas fa-exchange-alt"></i>
+        <%= @stock.item_location.nil? ? "Asignar Ubicación" : "Cambiar Ubicación" %>
+      </button>
+    </div>
+    <div class="card-body">
+      <% if @stock.item_location.present? %>
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>Estado:</strong> 
+              <span class="badge <%= status_badge_class(@stock.item_location&.status) %> fs-6 shadow-sm text-dark">
+                <i class="<%= stock_status_icon(@stock.item_location&.status) %> me-1"></i>
+                <%= @stock.item_location.status_text %>
+              </span>
+            </p>
+            <p><strong>Almacén:</strong> <%= @stock.item_location.section&.warehouse&.name || 'No asignado' %></p>
+            <p><strong>Sección:</strong> <%= @stock.item_location.section&.name || 'No asignada' %></p>
+            <p><strong>Fecha de asignación:</strong> <%= l @stock.item_location.assigned_at, format: :long if @stock.item_location.assigned_at %></p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Notas:</strong></p>
+            <div class="border rounded p-2" style="max-height: 150px; overflow-y: auto;">
+              <%= simple_format @stock.item_location.notes %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="alert alert-info">
+          <i class="fas fa-info-circle"></i> Este stock no tiene ubicación asignada
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para mover stock -->
+<div class="modal fade" id="moveStockModal" tabindex="-1" aria-labelledby="moveStockModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_with(url: assign_section_stock_path(@stock), method: :patch, local: true) do |f| %>
+        <div class="modal-header">
+          <h5 class="modal-title" id="moveStockModalLabel">
+            <%= @stock.item_location.nil? ? "Asignar Ubicación" : "Cambiar Ubicación" %>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" data-controller="warehouse-sections">
+          <div class="mb-3">
+            <%= f.label :warehouse_id, "Almacén", class: "form-label" %>
+            <%= f.collection_select :warehouse_id,
+                Warehouse.all,
+                :id,
+                :name,
+                { 
+                  prompt: "Seleccionar almacén...",
+                  selected: @stock.item_location&.section&.warehouse_id
+                },
+                { 
+                  class: "form-select",
+                  data: { 
+                    warehouse_sections_target: "warehouseSelect",
+                    action: "change->warehouse-sections#updateSections"
+                  }
+                } %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :section_id, "Sección", class: "form-label" %>
+            <%= f.collection_select :section_id,
+                @stock.item_location&.section&.warehouse&.sections || [],
+                :id,
+                :name,
+                { 
+                  prompt: "Primero selecciona un almacén...",
+                  selected: @stock.item_location&.section_id
+                },
+                { 
+                  class: "form-select",
+                  data: { warehouse_sections_target: "sectionSelect" }
+                } %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :notes, "Notas del movimiento", class: "form-label" %>
+            <%= f.text_area :notes, 
+                class: "form-control", 
+                rows: 3,
+                placeholder: "Describe el motivo del cambio de ubicación..." %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <%= f.submit @stock.item_location.nil? ? "Asignar" : "Guardar Cambios", 
+              class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

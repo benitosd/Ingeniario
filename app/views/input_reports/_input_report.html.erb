@@ -1,0 +1,56 @@
+<div id="<%= dom_id input_report %>">
+  <p>
+    <strong>Output report:</strong>
+    <%= input_report.output_report_id %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= input_report.user_id %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= input_report.date %>
+  </p>
+
+  <p>
+    <strong>Notes:</strong>
+    <%= input_report.notes %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= input_report.status %>
+  </p>
+
+</div>
+
+<tr>
+  <td><%= input_report.id %></td>
+  <td><%= input_report.user.code %></td>
+  <td><%= l input_report.date, format: :short %></td>
+  <td><%= truncate(input_report.notes, length: 50) %></td>
+  <td>
+    <span class="badge bg-dark text-<%= status_badge_class(input_report.status) %>">
+      <i class="<%= report_status_icon(input_report.status) %> me-1"></i>
+      <%= input_report.status_text %>
+    </span>
+  </td>
+  <td>
+    <div class="btn-group">
+      <%= link_to input_report_path(input_report), class: "btn btn-sm btn-info" do %>
+        <i class="fas fa-eye"></i>
+      <% end %>
+      <%= link_to edit_input_report_path(input_report), class: "btn btn-sm btn-primary" do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
+      <%= link_to input_report_path(input_report), 
+          method: :delete, 
+          data: { confirm: '¿Estás seguro?' }, 
+          class: "btn btn-sm btn-danger" do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

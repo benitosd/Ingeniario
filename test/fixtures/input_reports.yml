@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  output_report: one
+  user: one
+  date: 2025-02-21
+  notes: MyText
+  status: 1
+
+two:
+  output_report: two
+  user: two
+  date: 2025-02-21
+  notes: MyText
+  status: 1

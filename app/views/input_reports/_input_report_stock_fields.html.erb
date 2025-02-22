@@ -1,0 +1,27 @@
+<tr class="nested-fields">
+  <td>
+    <span class="stock-reference"><%= f.object.stock&.reference %></span>
+  </td>
+  <td>
+    <span class="stock-name"><%= f.object.stock&.item&.name %></span>
+  </td>
+  <td>
+    <%= f.collection_select :section_id, 
+                          Section.all, 
+                          :id, 
+                          :name, 
+                          { prompt: "Seleccione una sección" }, 
+                          class: "form-select" %>
+  </td>
+  <td>
+    <%= f.text_area :notes, class: "form-control", rows: 2 %>
+  </td>
+  <td>
+    <%= f.hidden_field :stock_id, class: "stock-id-field" %>
+    <button type="button" 
+            class="btn btn-danger btn-sm"
+            data-action="nested-form#remove">
+      <i class="fas fa-trash"></i>
+    </button>
+  </td>
+</tr> 

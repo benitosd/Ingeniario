@@ -1,16 +1,36 @@
 <tr class="nested-fields">
   <td>
-    <%= f.select :stock_id, 
-        options_from_collection_for_select(@available_stocks, :id, :reference),
-        {}, 
-        class: "form-select" %>
+    <% if f.object.stock %>
+      <div class="form-control-plaintext">
+        <%= link_to f.object.stock.reference, stock_path(f.object.stock), class: "text-primary text-decoration-none" %>
+        <%= f.hidden_field :stock_id %>
+      </div>
+    <% else %>
+      <span class="stock-reference"></span>
+    <% end %>
   </td>
-  <td><%= f.object.stock&.item&.name %></td>
+  <td>
+    <% if f.object.stock %>
+      <div class="form-control-plaintext d-flex align-items-center">
+        <%= f.object.stock.item&.name %>
+        <% if f.object.stock.item_location&.status %>
+          <span class="badge bg-dark text-<%= status_badge_class(f.object.stock.item_location.status) %> ms-2">
+            <%= f.object.stock.item_location.status_text %>
+          </span>
+        <% end %>
+      </div>
+    <% else %>
+      <span class="stock-name"></span>
+    <% end %>
+  </td>
   <td><%= f.date_field :return_date, class: "form-control" %></td>
   <td><%= f.text_area :notes, class: "form-control" %></td>
   <td>
-    <%= link_to_remove_association f, class: 'btn btn-danger btn-sm' do %>
+    <%= f.hidden_field :_destroy %>
+    <button type="button" 
+            class="btn btn-danger btn-sm remove_fields"
+            data-action="click->nested-form#removeField">
       <i class="fas fa-trash"></i>
-    <% end %>
+    </button>
   </td>
 </tr>

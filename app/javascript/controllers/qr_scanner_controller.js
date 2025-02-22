@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["result", "stocksContainer"]
+  static targets = ["result", "stocksContainer", "manualInput"]
   static values = {
     isScanning: Boolean,
     isTransitioning: Boolean
@@ -31,6 +31,26 @@ export default class extends Controller {
       }
     } else {
       this.initializeScanner();
+    }
+  }
+
+  addManualStock() {
+    const typeaheadController = this.application.getControllerForElementAndIdentifier(
+      this.manualInputTarget.closest('[data-controller="typeahead"]'),
+      'typeahead'
+    );
+    
+    const reference = typeaheadController ? 
+      typeaheadController.getSelectedReference() : 
+      this.manualInputTarget.value.trim();
+
+    if (reference) {
+      this.addStockToReport(reference);
+      this.manualInputTarget.value = ''; // Limpiar el input después de añadir
+      // Limpiar el typeahead
+      $(this.manualInputTarget).typeahead('val', '');
+    } else {
+      this.showAlert("Por favor, seleccione un stock de la lista", "warning");
     }
   }
 

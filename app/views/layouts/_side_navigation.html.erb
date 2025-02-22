@@ -3,17 +3,51 @@
 	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 		<div class="sb-sidenav-menu">
 			<div class="nav">
-				<div class="sb-sidenav-menu-heading">Core</div>
-				<a class="nav-link" href="index.html">
+				<div class="sb-sidenav-menu-heading">Principal</div>
+				<%= link_to root_path, class: "nav-link" do %>
 					<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 					Dashboard
-				</a>
-				</div>
+				<% end %>
+
+				<div class="sb-sidenav-menu-heading">Gestión</div>
+				<%= link_to stocks_path, class: "nav-link" do %>
+					<div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+					Stocks
+				<% end %>
+
+				<%= link_to items_path, class: "nav-link" do %>
+					<div class="sb-nav-link-icon"><i class="fas fa-cube"></i></div>
+					Items
+				<% end %>
+
+				<%= link_to warehouses_path, class: "nav-link" do %>
+					<div class="sb-nav-link-icon"><i class="fas fa-warehouse"></i></div>
+					Almacenes
+				<% end %>
+
+				<% if current_user.has_directive?(Directives::EDIT_USER) %>
+					<%= link_to users_path, class: "nav-link" do %>
+						<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+						Usuarios
+					<% end %>
+				<% end %>
+
+				<div class="sb-sidenav-menu-heading">Reportes</div>
+				<%= link_to output_reports_path, class: "nav-link" do %>
+					<div class="sb-nav-link-icon"><i class="fas fa-file-export"></i></div>
+					Salidas
+				<% end %>
+
+				<%= link_to input_reports_path, class: "nav-link" do %>
+					<div class="sb-nav-link-icon"><i class="fas fa-file-import"></i></div>
+					Entradas
+				<% end %>
+			</div>
 		</div>
 		<% if user_signed_in? %>
 		<div class="sb-sidenav-footer">
-			<div class="small">Logeado como:</div>
-			<%= current_user.code.capitalize %>
+			<div class="small">Logged in as:</div>
+			<%= current_user.email %>
 		</div>
 		<% end %>
 	</nav>

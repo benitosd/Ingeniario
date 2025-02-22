@@ -1,0 +1,57 @@
+<%= form_with(model: user, id: "user_form") do |form| %>
+  <% if user.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(user.errors.count, "error") %> impidieron guardar este usuario:</h2>
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :code, "Código", class: "form-label" %>
+    <%= form.text_field :code, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, "Correo electrónico", class: "form-label" %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password, "Contraseña", class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
+    <% if user.persisted? %>
+      <div class="form-text">Dejar en blanco si no desea cambiar la contraseña</div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password_confirmation, "Confirmar contraseña", class: "form-label" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Directivas</label>
+    <div class="form-check">
+      <% Directives.constants.each do |directive| %>
+        <div class="mb-2">
+          <%= check_box_tag "user[directive_bits][]", 
+              Directives.const_get(directive),
+              user.has_directive?(Directives.const_get(directive)),
+              class: "form-check-input" %>
+          <label class="form-check-label">
+            <%= directive.to_s.titleize %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
+    <%= link_to "Cancelar", users_path, class: "btn btn-secondary" %>
+  </div>
+<% end %> 

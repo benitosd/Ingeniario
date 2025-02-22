@@ -1,6 +1,5 @@
-
 <div class="container-fluid mt-4">
-  <%= turbo_frame_tag "dashboard_content" do %>
+  <div id="dashboard_content">
     <!-- Cards Resumen -->
     <div class="row">
       <%= render "dashboard/stats_card", 
@@ -16,16 +15,49 @@
           bg_color: "success" %>
           
       <%= render "dashboard/stats_card", 
-          title: "En Almacén",
+          title: "Almacenados",
           value: @stocks_in_storage,
-          description: "Stocks almacenados",
-          bg_color: "info" %>
+          description: "Stocks en almacén",
+          icon: "fas fa-box",
+          bg_color: "primary",
+          link: stocks_path(status: 'storage'),
+          data: { turbo: false } %>
           
       <%= render "dashboard/stats_card", 
           title: "Asignados",
           value: @stocks_assigned,
           description: "Stocks en uso",
-          bg_color: "warning" %>
+          icon: "fas fa-user-check",
+          bg_color: "success",
+          link: stocks_path(status: 'assigned'),
+          data: { turbo: false } %>
+
+      <%= render "dashboard/stats_card", 
+          title: "En Reparación",
+          value: @stocks_in_repair,
+          description: "Stocks en mantenimiento",
+          icon: "fas fa-tools",
+          bg_color: "warning",
+          link: stocks_path(status: 'repair'),
+          data: { turbo: false } %>
+
+      <%= render "dashboard/stats_card", 
+          title: "Rotos",
+          value: @stocks_broken,
+          description: "Stocks dados de baja",
+          icon: "fas fa-ban",
+          bg_color: "danger",
+          link: stocks_path(status: 'broken'),
+          data: { turbo: false } %>
+          
+      <%= render "dashboard/stats_card", 
+          title: "Desaparecidos",
+          value: @stocks_missing,
+          description: "Stocks no retornados",
+          icon: "fas fa-question-circle",
+          bg_color: "dark",
+          link: stocks_path(status: 'missing'),
+          data: { turbo: false } %>
     </div>
 
     <!-- Gráficos -->
@@ -35,7 +67,8 @@
             storage: @stocks_in_storage,
             assigned: @stocks_assigned,
             repair: @stocks_in_repair,
-            retired: @stocks_retired %>
+            broken: @stocks_broken,
+            missing: @stocks_missing %>
       </div>
       <div class="col-md-6 mb-4">
         <%= render "dashboard/warehouse_occupancy" %>
@@ -50,5 +83,5 @@
         <%= render "dashboard/recent_movements" %>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>

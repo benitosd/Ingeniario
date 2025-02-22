@@ -1,0 +1,112 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <div>
+      <h3 class="card-title mb-0">
+        <%= I18n.t("ingeniario.stocks.bulk_new") %>
+      </h3>
+      <p class="text-muted mb-0 mt-1">
+        <i class="fas fa-box"></i>
+        Item: <%= @item.name %>
+      </p>
+    </div>
+    <div>
+      <%= link_to I18n.t("ingeniario.buttons.back"), item_path(@item), class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <%= form_with(url: bulk_create_item_stocks_path(@item), local: true) do |form| %>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <%= form.label :quantity, "Cantidad de Stocks", class: "form-label" %>
+          <%= form.number_field :quantity, 
+              class: "form-control",
+              min: 1,
+              max: 100,
+              required: true,
+              value: 1 %>
+          <div class="form-text text-muted">
+            <i class="fas fa-info-circle"></i> Número de stocks a crear (máximo 100)
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <%= form.label :entry_date, I18n.t("ingeniario.stocks.cols.entry_date"), class: "form-label" %>
+          <%= form.datetime_field :entry_date, 
+              class: "form-control",
+              required: true,
+              value: Time.current %>
+        </div>
+
+        <div class="col-12 mb-3">
+          <%= form.label :description, "Descripción General", class: "form-label" %>
+          <%= form.text_area :description, 
+              class: "form-control",
+              rows: 3,
+              required: true,
+              placeholder: "Esta descripción se aplicará a todos los stocks creados..." %>
+          <div class="form-text text-muted">
+            <i class="fas fa-info-circle"></i> Esta descripción se añadirá a cada stock creado
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Ubicación Inicial</h5>
+            </div>
+            <div class="card-body" data-controller="warehouse-sections">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <%= form.label :warehouse_id, "Almacén", class: "form-label" %>
+                  <%= form.collection_select :warehouse_id,
+                      Warehouse.all,
+                      :id,
+                      :name,
+                      { prompt: "Seleccionar almacén..." },
+                      { 
+                        class: "form-select",
+                        required: true,
+                        data: { 
+                          warehouse_sections_target: "warehouseSelect",
+                          action: "change->warehouse-sections#updateSections"
+                        }
+                      } %>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <%= form.label :section_id, "Sección", class: "form-label" %>
+                  <%= form.collection_select :section_id,
+                      [],
+                      :id,
+                      :name,
+                      { prompt: "Primero selecciona un almacén..." },
+                      { 
+                        class: "form-select",
+                        required: true,
+                        data: { warehouse_sections_target: "sectionSelect" }
+                      } %>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <%= form.label :notes, "Notas de ubicación", class: "form-label" %>
+                <%= form.text_area :notes, 
+                    class: "form-control",
+                    rows: 3,
+                    placeholder: "Notas sobre la ubicación inicial..." %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-grid gap-2">
+        <%= form.submit "Crear Stocks", class: "btn btn-primary" %>
+        <%= link_to I18n.t("ingeniario.buttons.cancel"), 
+            item_path(@item), 
+            class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div> 

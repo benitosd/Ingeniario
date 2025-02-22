@@ -1,18 +1,28 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between align-items-center">
-    <h3 class="card-title">
-      <%= @stock.new_record? ? I18n.t("ingeniario.stocks.new") : I18n.t("ingeniario.stocks.edit") %>
-    </h3>
     <div>
-      <%= link_to I18n.t("ingeniario.buttons.back"), stocks_path, class: "btn btn-secondary" %>
+      <h3 class="card-title mb-0">
+        <%= @stock.new_record? ? I18n.t("ingeniario.stocks.new") : I18n.t("ingeniario.stocks.edit") %>
+      </h3>
+      <% if @item %>
+        <p class="text-muted mb-0 mt-1">
+          <i class="fas fa-box"></i>
+          Item: <%= @item.name %>
+        </p>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to I18n.t("ingeniario.buttons.back"), 
+          @stock.persisted? ? stock_path(@stock) : item_path(@item), 
+          class: "btn btn-secondary" %>
     </div>
   </div>
 
   <div class="card-body">
-    <%= form_with(model: @stock, local: true) do |form| %>
+    <%= form_with(model: [@item, @stock], local: true) do |form| %>
       <% if @stock.errors.any? %>
         <div class="alert alert-danger">
-          <h4><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h4>
+          <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
           <ul>
             <% @stock.errors.each do |error| %>
               <li><%= error.full_message %></li>
@@ -21,26 +31,27 @@
         </div>
       <% end %>
 
+      <% if @item && !@stock.persisted? %>
+        <%= form.hidden_field :item_id, value: @item.id %>
+      <% end %>
+
       <div class="row">
         <div class="col-md-6 mb-3">
-          <%= form.label :item_id, I18n.t("ingeniario.stocks.cols.item"), class: "form-label" %>
-          <%= form.collection_select :item_id, Item.all, :id, :name, {}, class: "form-select" %>
+          <%= form.label :reference, I18n.t("ingeniario.stocks.cols.reference"), class: "form-label" %>
+          <%= form.text_field :reference, class: "form-control", placeholder: "Dejar en blanco para auto-generar" %>
+          <div class="form-text text-muted">
+            <i class="fas fa-info-circle"></i> Si no se especifica, se generará automáticamente
+          </div>
         </div>
 
         <div class="col-md-6 mb-3">
-          <%= form.label :reference, I18n.t("ingeniario.stocks.cols.reference"), class: "form-label" %>
-          <%= form.text_field :reference, class: "form-control" %>
-          <small class="form-text text-muted">Dejar en blanco para generar automáticamente</small>
-        </div>
-
-        <div class="col-12 mb-3">
           <%= form.label :description, I18n.t("ingeniario.stocks.cols.description"), class: "form-label" %>
           <%= form.text_area :description, class: "form-control", rows: 3 %>
         </div>
 
         <div class="col-md-6 mb-3">
           <%= form.label :entry_date, I18n.t("ingeniario.stocks.cols.entry_date"), class: "form-label" %>
-          <%= form.datetime_local_field :entry_date, class: "form-control" %>
+          <%= form.datetime_field :entry_date, class: "form-control" %>
         </div>
 
         <div class="col-12 mb-3">
@@ -53,6 +64,9 @@
 
       <div class="d-grid mt-4">
         <%= form.submit I18n.t("ingeniario.buttons.save"), class: "btn btn-primary" %>
+        <%= link_to I18n.t("ingeniario.buttons.cancel"), 
+            @stock.persisted? ? stock_path(@stock) : item_path(@item), 
+            class: "btn btn-secondary" %>
       </div>
     <% end %>
   </div>

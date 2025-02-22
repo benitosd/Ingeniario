@@ -1,176 +1,100 @@
-<div class="card mt-4">
-  <div class="card-header">
-    <h5 class="card-title">Asignar Stock a Usuario</h5>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Referencia</th>
-            <th>Estado</th>
-            <th>Ubicación</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @item.stocks.active.each do |stock| %>
-            <tr>
-              <td><%= stock.reference %></td>
-              <td>
-                <span class="badge <%= stock.item_location&.in_storage? ? 'bg-success' : 'bg-warning' %>">
-                  <%= stock.item_location&.status&.titleize || 'Disponible' %>
-                </span>
-              </td>
-              <td><%= stock.current_location %></td>
-              <td>
-              <% if stock.active? %>
-              <% if stock.item_location&.assigned? %>
-                <!-- Si está asignado a un usuario, mostrar botón de devolver -->
-                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#returnModal<%= stock.id %>">
-                  Devolver
-                </button>
-              <% else %>
-                <!-- Si está en almacén o sin ubicación, mostrar botones de asignar y mover -->
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#assignModal<%= stock.id %>">
-                  Asignar
-                </button>
-                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#moveModal<%= stock.id %>">
-                  Mover
-                </button>
-              <% end %>
-            <% end %>
-              </td>
-            </tr>
-
-            <!-- Modal de Asignación -->
-            <div class="modal fade" id="assignModal<%= stock.id %>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <%= form_with(
-                    url: assign_to_user_stock_path(stock), # Ruta correcta
-                    method: :post, 
-                    local: true,
-                    data: { turbo: false }
-                  ) do |f| %>
-                    <div class="modal-header">
-                      <h5 class="modal-title">Asignar Stock</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="mb-3">
-                        <%= f.label :user_id, "Usuario", class: "form-label" %>
-                        <%= f.collection_select :user_id, User.all, :id, :code, {}, class: "form-select" %>
-                      </div>
-                      <div class="mb-3">
-                        <%= f.label :return_date, "Fecha de Devolución", class: "form-label" %>
-                        <%= f.date_field :return_date, class: "form-control", required: true %>
-                      </div>
-                      <div class="mb-3">
-                        <%= f.label :notes, "Notas", class: "form-label" %>
-                        <%= f.text_area :notes, class: "form-control" %>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <%= f.submit "Asignar", class: "btn btn-primary" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-
-            <!-- Modal de Devolución -->
-            <div class="modal fade" id="returnModal<%= stock.id %>" tabindex="-1">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                <%= form_with(
-                  url: return_from_user_stock_path(stock), # Ruta correcta
-                  method: :post, 
-                  local: true,
-                  data: { turbo: false }
-                ) do |f| %>
-                    <div class="modal-header">
-                      <h5 class="modal-title">Devolver Stock</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="mb-3">
-                        <%= f.label :section_id, "Sección", class: "form-label" %>
-                        <%= f.collection_select :section_id, Section.all, :id, :name, {}, class: "form-select" %>
-                      </div>
-                      <div class="mb-3">
-                        <%= f.label :return_notes, "Notas de Devolución", class: "form-label" %>
-                        <%= f.text_area :return_notes, class: "form-control" %>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <%= f.submit "Devolver", class: "btn btn-primary" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-            <!-- Modal para mover -->
-<div class="modal fade" 
-     id="moveModal<%= stock.id %>" 
-     tabindex="-1" 
-     data-bs-backdrop="static" 
-     data-bs-keyboard="false">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    <%= form_with(
-      url: move_to_section_stock_path(stock), 
-      method: :post, 
-      local: true,
-      data: { turbo: false }
-    ) do |f| %>
-    <div class="modal-header">
-      <h5 class="modal-title">Mover Stock</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="container mt-4">
+  <!-- Información del Item -->
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title mb-0">
+        <i class="fas fa-box"></i>
+        <%= @item.name %>
+      </h3>
+      <div>
+        <%= link_to edit_item_path(@item), class: "btn btn-warning me-2" do %>
+          <i class="fas fa-edit"></i>
+          <%= I18n.t("ingeniario.buttons.edit") %>
+        <% end %>
+        <%= link_to items_path, class: "btn btn-secondary" do %>
+          <i class="fas fa-arrow-left"></i>
+          <%= I18n.t("ingeniario.buttons.back") %>
+        <% end %>
+      </div>
     </div>
-    <div class="modal-body">
-      <div class="mb-3" data-controller="warehouse-sections">
-        <%= f.label :warehouse_id, "Almacén", class: "form-label" %>
-        <%= f.collection_select :warehouse_id, 
-            Warehouse.all, 
-            :id, 
-            :name, 
-            { prompt: "Seleccione un almacén" }, 
-            class: "form-select",
-            data: {
-              action: "change->warehouse-sections#updateSections",
-                "warehouse-sections-target": "warehouseSelect"
-            } %>
-        
-        <div class="mt-3">
-          <%= f.label :section_id, "Sección", class: "form-label" %>
-          <%= f.select :section_id, 
-              [], 
-              { prompt: "Seleccione una sección" }, 
-              class: "form-select",
-              data: { "warehouse-sections-target": "sectionSelect" },
-              required: true %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th width="30%"><%= I18n.t("ingeniario.items.cols.description") %></th>
+                <td><%= @item.description %></td>
+              </tr>
+              <tr>
+                <th><%= I18n.t("ingeniario.items.cols.group") %></th>
+                <td><%= @item.group.name %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-6">
+          <% if @item.properties.present? %>
+            <table class="table table-striped">
+              <tbody>
+                <% @item.properties.each do |key, value| %>
+                  <tr>
+                    <th width="30%"><%= @item.group.properties[key] %></th>
+                    <td><%= value %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
         </div>
       </div>
-  
-      <div class="mb-3">
-        <%= f.label :notes, "Notas", class: "form-label" %>
-        <%= f.text_area :notes, class: "form-control", placeholder: "Razón del movimiento" %>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-      <%= f.submit "Mover", class: "btn btn-primary" %>
-    </div>
-  <% end %>
     </div>
   </div>
-</div>
-          <% end %>
-        </tbody>
-      </table>
+
+  <!-- Tabla de Stocks -->
+  <div class="card mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title mb-0">
+        <i class="fas fa-boxes"></i>
+        <%= I18n.t("ingeniario.items.stocks_title") %>
+      </h3>
+      <div>
+        <%= link_to new_item_stock_path(@item), class: "btn btn-primary me-2" do %>
+          <i class="fas fa-plus"></i>
+          <%= I18n.t("ingeniario.buttons.new_stock") %>
+        <% end %>
+        <%= link_to bulk_new_item_stocks_path(@item), class: "btn btn-success" do %>
+          <i class="fas fa-layer-group"></i>
+          Crear Stocks Masivos
+        <% end %>
+      </div>
+    </div>
+    <div class="card-body">
+      <% if @item.stocks.any? %>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th><%= I18n.t("ingeniario.stocks.cols.reference") %></th>
+                <th><%= I18n.t("ingeniario.stocks.cols.active") %></th>
+                <th><%= I18n.t("ingeniario.stocks.cols.location") %></th>
+                <th><%= I18n.t("ingeniario.stocks.cols.description") %></th>
+                <th><%= I18n.t("ingeniario.stocks.cols.entry_date") %></th>
+                <th class="text-center" width="15%">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render partial: 'stocks/item_stock', collection: @item.stocks, as: :stock %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <div class="alert alert-info">
+          <i class="fas fa-info-circle"></i>
+          <%= I18n.t("ingeniario.items.no_stocks") %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

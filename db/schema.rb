@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_28_230649) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_21_182812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,30 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_28_230649) do
     t.datetime "updated_at", null: false
     t.json "properties"
     t.index ["family_id"], name: "index_groups_on_family_id"
+  end
+
+  create_table "input_report_stocks", force: :cascade do |t|
+    t.bigint "input_report_id", null: false
+    t.bigint "stock_id", null: false
+    t.bigint "section_id", null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["input_report_id"], name: "index_input_report_stocks_on_input_report_id"
+    t.index ["section_id"], name: "index_input_report_stocks_on_section_id"
+    t.index ["stock_id"], name: "index_input_report_stocks_on_stock_id"
+  end
+
+  create_table "input_reports", force: :cascade do |t|
+    t.bigint "output_report_id", null: false
+    t.bigint "user_id", null: false
+    t.date "date"
+    t.text "notes"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["output_report_id"], name: "index_input_reports_on_output_report_id"
+    t.index ["user_id"], name: "index_input_reports_on_user_id"
   end
 
   create_table "item_locations", force: :cascade do |t|
@@ -116,6 +140,21 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_28_230649) do
     t.index ["warehouse_id"], name: "index_sections_on_warehouse_id"
   end
 
+  create_table "stock_movements", force: :cascade do |t|
+    t.bigint "stock_id", null: false
+    t.bigint "user_id", null: false
+    t.string "trackable_type", null: false
+    t.bigint "trackable_id", null: false
+    t.string "action", null: false
+    t.string "status", null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_id"], name: "index_stock_movements_on_stock_id"
+    t.index ["trackable_type", "trackable_id"], name: "index_stock_movements_on_trackable"
+    t.index ["user_id"], name: "index_stock_movements_on_user_id"
+  end
+
   create_table "stocks", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.string "reference"
@@ -162,6 +201,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_28_230649) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "groups", "families"
+  add_foreign_key "input_report_stocks", "input_reports"
+  add_foreign_key "input_report_stocks", "sections"
+  add_foreign_key "input_report_stocks", "stocks"
+  add_foreign_key "input_reports", "output_reports"
+  add_foreign_key "input_reports", "users"
   add_foreign_key "item_locations", "sections"
   add_foreign_key "item_locations", "stocks"
   add_foreign_key "item_locations", "users"
@@ -170,5 +214,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_28_230649) do
   add_foreign_key "output_report_stocks", "stocks"
   add_foreign_key "output_reports", "users"
   add_foreign_key "sections", "warehouses"
+  add_foreign_key "stock_movements", "stocks"
+  add_foreign_key "stock_movements", "users"
   add_foreign_key "stocks", "items"
 end

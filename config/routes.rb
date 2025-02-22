@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
+  resources :input_report_stocks
+  resources :input_reports, except: [:new, :create] do
+    member do
+      patch :approve
+      patch :store_stock
+      patch :repair_stock
+      patch :mark_as_broken_stock
+    end
+  end
   resources :output_reports do
     member do
       post :approve  # Para aprobar el informe
     end
+    resources :input_reports, shallow: true
   end
   resources :stocks do
     member do
@@ -10,6 +20,11 @@ Rails.application.routes.draw do
       post :assign_to_user
       post :return_from_user
       post :move_to_section
+      patch :repair
+      patch :mark_as_broken
+      patch :mark_as_missing
+      patch :store
+      patch :assign_section
     end
     collection do
       get 'find_by_reference'
@@ -39,10 +54,16 @@ Rails.application.routes.draw do
       post 'assign_to_user'
       post 'move_to_section'
     end
+    resources :stocks do
+      get :bulk_new, on: :collection
+      post :bulk_create, on: :collection
+    end
   end
 
- 
-  devise_for :users
+  # Si tienes otras rutas para stocks, mantenlas
+  resources :stocks, only: [:index]
+
+  devise_for :users, skip: [:registrations]
   resources :users
    
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -54,6 +75,6 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
   get 'inventory_report', to: 'dashboard#inventory_report'
   # Defines the root path route ("/")
-  root "home#index"
+  root "dashboard#index"
   get "search/query"
 end

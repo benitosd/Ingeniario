@@ -4,7 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :validatable
   searchable do
-    text :code
-    text :email
+    string :code
+    string :email
+  end
+  def has_directive?(directive)
+    return false if self.directive.nil?
+    (self.directive & directive) != 0
   end
 end

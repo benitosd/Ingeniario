@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    @group.family_id = params[:family_id] if params[:family_id].present?
   end
 
   # GET /groups/1/edit
@@ -27,28 +28,41 @@ class GroupsController < ApplicationController
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
-    process_properties(@group, params[:group][:properties])
+    @group.family_id = params[:group][:family_id] || params[:family_id]
+    
     respond_to do |format|
+      @group.properties ||= {}
+      
+      if params[:group][:properties].present?
+        params[:group][:properties].each do |key, value|
+          if value.present?
+            # Convertimos la clave a un formato más amigable (snake_case)
+            property_key = key.to_s.parameterize(separator: '_')
+            @group.properties[property_key] = value
+          end
+        end
+      end
+
       if @group.save
         format.html { redirect_to @group, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
+        format.turbo_stream { redirect_to @group, notice: "Group was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { 
+          flash.now[:alert] = @group.errors.full_messages.join(", ")
+          render :new, status: :unprocessable_entity 
+        }
         format.json { render json: @group.errors, status: :unprocessable_entity }
+        format.turbo_stream { 
+          flash.now[:alert] = @group.errors.full_messages.join(", ")
+          render :new, status: :unprocessable_entity 
+        }
       end
     end
   end
 
   # PATCH/PUT /groups/1 or /groups/1.json
-  def create
-    @group = Group.new(group_params)
-    @group.properties ||= {}
-    if @group.save
-      redirect_to @group, notice: "Group created successfully."
-    else
-      render :new
-    end
-  end
+  
 
   def edit; end
 
@@ -70,27 +84,20 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:name, :description, :family_id,properties: {})
+      params.require(:group).permit(:name, :description, :family_id, properties: {})
     end
     def process_properties(properties_params)
       return unless properties_params
     
-      updated_properties = @group.properties || {}
+      @group.properties ||= {}
     
-      properties_params.each do |key, property|
-         Rails.logger.debug "########################################################"
-       Rails.logger.debug "Properties enviados: #{params[:group][:properties].inspect}"
-        if key == "new_key" # Nueva propiedad
-          unique_key = SecureRandom.uuid # Generar clave única
-          updated_properties[unique_key] = { "key" => unique_key, "value" => property["value"] }
-        elsif property["value"].present? # Propiedad existente
-          updated_properties[key] = { "key" => key, "value" => property["value"] }
+      properties_params.each do |key, value|
+        if value.present?
+          @group.properties[key] = { "key" => key, "value" => value }
         else
-          updated_properties.delete(key) # Eliminar propiedad si el valor está vacío
+          @group.properties.delete(key)
         end
       end
-    
-      @group.properties = updated_properties
     end
     
     

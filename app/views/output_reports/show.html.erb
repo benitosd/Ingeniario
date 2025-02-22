@@ -1,85 +1,111 @@
-<div class="container mt-4">
- <div class="card">
-   <div class="card-header d-flex justify-content-between align-items-center">
-     <h3 class="card-title">Informe de Salida</h3>
-     <div>
-       <% if @output_report.pending? %>
-         <%= link_to 'Editar', edit_output_report_path(@output_report), class: "btn btn-warning me-2" %>
-       <% end %>
-       <%= link_to 'Volver', output_reports_path, class: "btn btn-secondary" %>
-     </div>
-   </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+            Informe de Salida #<%= @output_report.id %>
+            <span class="badge <%= status_badge_class(@output_report.status) %>">
+              <%= @output_report.status_text %>
+            </span>
+          </h3>
+          <div class="card-tools">
+            <%= link_to output_reports_path, class: "btn btn-sm btn-secondary" do %>
+              <i class="fas fa-arrow-left"></i> Volver
+            <% end %>
+            
+            <% if @output_report.approved? %>
+              <%= link_to new_output_report_input_report_path(@output_report), 
+                         class: "btn btn-sm btn-success" do %>
+                <i class="fas fa-plus"></i> Nueva Entrada
+              <% end %>
+            <% end %>
+          </div>
+        </div>
 
-   <div class="card-body">
-     <!-- Información básica -->
-     <div class="row mb-4">
-       <div class="col-md-6">
-         <table class="table">
-           <tr>
-             <th width="30%">Usuario:</th>
-             <td><%= @output_report.user.code %></td>
-           </tr>
-           <tr>
-             <th>Fecha:</th>
-             <td><%= l @output_report.date, format: :long %></td>
-           </tr>
-           <tr>
-             <th>Estado:</th>
-             <td>
-               <span class="badge <%= case @output_report.status
-                 when 'pending' then 'bg-warning'
-                 when 'approved' then 'bg-success'
-                 when 'completed' then 'bg-info'
-                 when 'cancelled' then 'bg-danger'
-                 end %>">
-                 <%= @output_report.status.titleize %>
-               </span>
-             </td>
-           </tr>
-           <tr>
-             <th>Motivo:</th>
-             <td><%= @output_report.reason %></td>
-           </tr>
-         </table>
-       </div>
-     </div>
+        <div class="card-body">
+          <!-- Información básica -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <table class="table">
+                <tr>
+                  <th width="30%">Usuario:</th>
+                  <td><%= @output_report.user.code %></td>
+                </tr>
+                <tr>
+                  <th>Fecha:</th>
+                  <td><%= l @output_report.date, format: :long %></td>
+                </tr>
+                <tr>
+                  <th>Estado:</th>
+                  <td>
+                    <span class="badge <%= status_badge_class(@output_report.status) %>">
+                      <%= @output_report.status_text %>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Razón:</th>
+                  <td><%= @output_report.reason %></td>
+                </tr>
+              </table>
+            </div>
+          </div>
 
-     <!-- Lista de Stocks -->
-     <h4 class="mb-3">Stocks Incluidos</h4>
-     <div class="table-responsive">
-       <table class="table table-striped">
-         <thead>
-           <tr>
-             <th>Referencia</th>
-             <th>Item</th>
-             <th>Fecha de Devolución</th>
-             <th>Notas</th>
-           </tr>
-         </thead>
-         <tbody>
-           <% @output_report.output_report_stocks.includes(:stock).each do |report_stock| %>
-             <tr>
-               <td><%= report_stock.stock.reference %></td>
-               <td><%= report_stock.stock.item.name %></td>
-               <td><%= l report_stock.return_date, format: :long if report_stock.return_date %></td>
-               <td><%= report_stock.notes %></td>
-             </tr>
-           <% end %>
-         </tbody>
-       </table>
-     </div>
+          <!-- Lista de Stocks -->
+          <h4 class="mb-3">Stocks Incluidos</h4>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Referencia</th>
+                  <th>Item</th>
+                  <th>Descripción</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @output_report.output_report_stocks.includes(stock: [:item, :item_location]).each do |report_stock| %>
+                  <tr>
+                    <td><%= report_stock.stock.reference %></td>
+                    <td><%= report_stock.stock.item.name %></td>
+                    <td><%= report_stock.stock.description %></td>
+                    <td>
+                      <% if report_stock.stock.item_location %>
+                        <span class="badge <%= status_badge_class(report_stock.stock.item_location.status) %>">
+                          <%= report_stock.stock.item_location.status_text %>
+                        </span>
+                      <% else %>
+                        <span class="badge bg-secondary">Sin ubicación</span>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= link_to stock_path(report_stock.stock), 
+                          class: "btn btn-info btn-sm",
+                          title: "Ver historial" do %>
+                        <i class="fas fa-history"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
 
-     <!-- Botones de acción según estado -->
-     <% if @output_report.pending? %>
-       <div class="mt-4 text-end">
-         <%= button_to approve_output_report_path(@output_report), 
-             method: :post,
-             class: "btn btn-success",
-             data: { turbo_confirm: "¿Estás seguro de aprobar este informe?" } do %>
-           <i class="fas fa-check me-2"></i>Aprobar Informe
-         <% end %>
-       </div>
-     <% end %>
-   </div>
- </div>
+          <!-- Botones de acción según estado -->
+          <% if @output_report.pending? %>
+            <div class="mt-4 text-end">
+              <%= button_to approve_output_report_path(@output_report), 
+                  method: :post,
+                  class: "btn btn-success",
+                  data: { turbo_confirm: "¿Estás seguro de aprobar este informe?" } do %>
+                <i class="fas fa-check me-2"></i>Aprobar Informe
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

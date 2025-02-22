@@ -1,0 +1,2 @@
+module InputReportStocksHelper
+end

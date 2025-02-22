@@ -3,39 +3,126 @@
 
   unless controller.nil?
     index_url_path = url_for(controller: controller, action: :index)  
-    sorter_list = "#{controller.upcase}_SORTER_LIST".constantize
+    show_stock_status = controller == "stocks"  # Para stocks
+    show_report_fields = ["output_reports", "input_reports"].include?(controller) # Para reportes
 %>
 
-<div class="row" data-controller="form-solr" style="padding: 20px 50px 20px 50px">
-  <%= form_tag index_url_path, { id: "solr", method: :get, data: { form_solr_target: "form" } , class: "row g-3 align-items-center" } do %>
-    <!-- Filtro de búsqueda -->
-    <div class="col-md-5">
-      <%= text_field_tag :search, params[:search], 
-          { placeholder: I18n.t("ingeniario.search_order_bar.data_filter"), class: "form-control" } %>
+<div class="container-fluid" data-controller="form-solr">
+  <%= form_tag index_url_path, { id: "solr", method: :get, data: { form_solr_target: "form" } } do %>
+    <div class="row g-3 align-items-center">
+      <!-- Filtro de búsqueda -->
+      <div class="col-md-<%= show_stock_status || show_report_fields ? "4" : "7" %>">
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], 
+              { placeholder: case controller
+                            when "stocks"
+                              "Buscar por referencia o item..."
+                            when "output_reports"
+                              "Buscar por número o usuario..."
+                            when "input_reports"
+                              "Buscar por número o usuario..."
+                            else
+                              "Buscar..."
+                            end, 
+                class: "form-control" } %>
+          <%= button_tag name: nil, class: "btn btn-primary" do %>
+            <i class="fas fa-search"></i>
+            <%= I18n.t("ingeniario.search_order_bar.search") %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if show_stock_status %>
+        <!-- Filtro de estado del stock -->
+        <div class="col-md-2">
+          <%= select_tag :fq, 
+              options_for_select(
+                ItemLocation.statuses.keys.map { |s| 
+                  [t("activerecord.attributes.item_location.statuses.#{s}"), "stock_status_ss:#{s}"] 
+                }, 
+                params[:fq]
+              ),
+              { prompt: "Estado del Stock...",
+                class: "form-select",
+                data: { action: "form-solr#submit" } } %>
+        </div>
+      <% end %>
+
+      <% if show_report_fields %>
+        <!-- Filtro de estado del reporte -->
+        <div class="col-md-2">
+          <%= select_tag :fq, 
+              options_for_select(
+                "#{controller.classify}".constantize.statuses.keys.map { |s| 
+                  [t("activerecord.attributes.#{controller.singularize}.statuses.#{s}"), "status_ss:#{s}"] 
+                }, 
+                params[:fq]
+              ),
+              { prompt: "Estado...",
+                class: "form-select",
+                data: { action: "form-solr#submit" } } %>
+        </div>
+      <% end %>
+
+      <!-- Ordenar por -->
+      <div class="col-md-<%= show_stock_status || show_report_fields ? "2" : "2" %>">
+        <%= select_tag :order, 
+            options_for_select(
+              case controller
+              when "stocks"
+                [
+                  ['Fecha', 'date_dt'],
+                  ['Estado del Stock', 'stock_status_ss']
+                ]
+              when "output_reports"
+                [
+                  ['Fecha', 'date_dt'],
+                  ['Usuario', 'user_ss'],
+                  ['DNI', 'dni_ss']
+                ]
+              when "input_reports"
+                [
+                  ['Fecha', 'date_dt'],
+                  ['Usuario', 'user_ss'],
+                  ['Estado', 'status_ss']
+                ]
+              else
+                [
+                  ['Nombre', 'name_ss'],
+                  ['Código', 'code_ss']
+                ]
+              end, 
+              params[:order]
+            ), 
+            class: "form-select", 
+            prompt: I18n.t("ingeniario.search_order_bar.order_by"), 
+            data: { action: "form-solr#submit" } %>
+      </div>
+
+      <!-- Ascendente / Descendente -->
+      <div class="col-md-2">
+        <%= select_tag :sort, 
+            options_for_select([
+              ['Ascendente', 'asc'],
+              ['Descendente', 'desc']
+            ], params[:sort]), 
+            class: "form-select", 
+            data: { action: "form-solr#submit" } %>
+      </div>
+
+      <% if show_stock_status || show_report_fields %>
+        <!-- Rango de fechas -->
+        <div class="col-md-2">
+          <%= date_field_tag :date_filter, 
+              params[:date_filter], 
+              class: "form-control",
+              placeholder: show_stock_status ? "Fecha entrada" : "Fecha",
+              data: { 
+                action: "form-solr#submit"
+              } %>
+        </div>
+      <% end %>
     </div>
-
-    <!-- Botón de búsqueda -->
-    <div class="col-md-1">
-      <%= button_tag I18n.t("ingeniario.search_order_bar.search"), 
-          name: nil, class: "btn btn-primary w-100" %>    
-    </div> 
-
-    <!-- Ordenar por -->
-    <div class="col-md-4">
-      <%= select_tag :order, 
-          options_for_select(sorter_list, params[:order]), 
-          class: "form-select", 
-          prompt: I18n.t("ingeniario.search_order_bar.order_by"), 
-          data: { action: "form-solr#submit" } %>
-    </div>
-
-    <!-- Ascendente / Descendente -->
-    <div class="col-md-2">
-      <%= select_tag :sort, 
-          options_for_select(["asc", "desc"], params[:sort]), 
-          class: "form-select", 
-          data: { action: "form-solr#submit" } %>
-    </div>  
   <% end %>
 </div>
 

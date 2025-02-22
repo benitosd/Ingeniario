@@ -1,0 +1,39 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <h4>Items a Devolver</h4>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Referencia</th>
+            <th>Descripción</th>
+            <th>Sección</th>
+            <th>Notas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% input_report.input_report_stocks.includes(stock: :item, section: :warehouse).each do |report_stock| %>
+            <tr>
+              <td><%= report_stock.stock.item.name %></td>
+              <td><%= report_stock.stock.reference %></td>
+              <td><%= report_stock.stock.description %></td>
+              <td><%= "#{report_stock.section.warehouse.name} - #{report_stock.section.name}" if report_stock.section %></td>
+              <td><%= report_stock.notes %></td>
+              <td>
+                <%= link_to stock_path(report_stock.stock), 
+                    class: "btn btn-info btn-sm",
+                    title: "Ver historial" do %>
+                  <i class="fas fa-history"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> 

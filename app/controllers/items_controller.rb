@@ -14,6 +14,17 @@ class ItemsController < ApplicationController
 
   # GET /items/1 or /items/1.json
   def show
+    @item = Item.find(params[:id])
+    @group = @item.group
+    @properties = @item.properties || {}
+    
+    respond_to do |format|
+      format.html
+      format.json { render :show, status: :ok, location: @item }
+    end
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Item not found"
+    redirect_to items_path
   end
 
   # GET /items/new
@@ -26,30 +37,60 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @item = Item.find(params[:id])
+    @group = @item.group
     @group.properties ||= {}
-
-    @item = @group.items.find(params[:id])
+    @item.properties ||= {}
   end
 
   # POST /items or /items.json
   def create
+    @group = Group.find(params[:group_id])
     @item = @group.items.build(item_params)
+    
+    # Inicializamos las propiedades
+    @item.properties ||= {}
+    
+    # Procesamos las propiedades recibidas
+    if params[:item][:properties].present?
+      params[:item][:properties].each do |key, value|
+        if value.present?
+          @item.properties[key] = value
+        end
+      end
+    end
 
     if @item.save
       redirect_to group_path(@group), notice: "Item created successfully."
     else
       flash.now[:alert] = "Failed to create item. Please check the errors below."
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /items/1 or /items/1.json
   def update
-    @item = @group.items.find(params[:id])
+    @item = Item.find(params[:id])
+    @group = @item.group
+    
+    # Inicializamos las propiedades
+    @item.properties ||= {}
+    
+    if params[:item][:properties].present?
+      # Actualizamos las propiedades existentes
+      params[:item][:properties].each do |key, value|
+        if value.present?
+          @item.properties[key] = value
+        else
+          @item.properties.delete(key)
+        end
+      end
+    end
+
     if @item.update(item_params)
-      redirect_to group_path(@group), notice: "Item updated successfully."
+      redirect_to item_path(@item), notice: "Item was successfully updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -97,16 +138,15 @@ class ItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "Item not found"
+      redirect_to items_path
     end
     def set_group
-      if params[:group_id]
-      @group = Group.find(params[:group_id])
-      else
-      @group=  Item.find(params[:id]).group
-      end
+      @group = Group.find(params[:group_id]) if params[:group_id]
     end
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :description, :group_id, :photo, properties: {},properties_to_remove: [])
+      params.require(:item).permit(:name, :description, :group_id, :photo, properties: {})
     end
 end

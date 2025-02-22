@@ -2,7 +2,26 @@ class OutputReportsController < ApplicationController
     before_action :set_output_report, only: [:show, :edit, :update, :destroy, :approve]
   
     def index
-      @output_reports = OutputReport.all.includes(:user).order(created_at: :desc)
+      @search = OutputReport.search do
+        fulltext params[:search] if params[:search].present?
+        
+        # Filtro por estado
+        with(:status, params[:fq].split(':').last) if params[:fq].present?
+        
+        # Filtro por fecha
+        if params[:date_filter].present?
+          with(:date).greater_than(params[:date_filter].to_date)
+        end
+
+        # Ordenación
+        if params[:order].present?
+          order_by params[:order].gsub('_ss', '').gsub('_dt', '').to_sym, params[:sort] || 'asc'
+        end
+
+        paginate page: params[:page], per_page: 20
+      end
+
+      @output_reports = @search.results
     end
   
     def show

@@ -1,0 +1,51 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">
+        <%= I18n.t("ingeniario.input_report_stocks.show.title") %>
+      </h3>
+      <div class="float-end">
+        <%= link_to I18n.t("ingeniario.buttons.edit"), edit_input_report_stock_path(@input_report_stock), class: "btn btn-warning me-2" %>
+        <%= link_to I18n.t("ingeniario.buttons.back"), input_report_stocks_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <tbody>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.input_report_stocks.cols.input_report_id") %>
+              </th>
+              <td>
+                <%= @input_report_stock.input_report %>
+              </td>
+            </tr>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.input_report_stocks.cols.stock_id") %>
+              </th>
+              <td>
+                <%= @input_report_stock.stock %>
+              </td>
+            </tr>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.input_report_stocks.cols.section_id") %>
+              </th>
+              <td>
+                <%= @input_report_stock.section %>
+              </td>
+            </tr>
+                      <tr>
+              <th>
+                <%= I18n.t("ingeniario.input_report_stocks.cols.notes") %>
+              </th>
+              <td>
+                <%= @input_report_stock.notes %>
+              </td>
+            </tr>
+                  </tbody>
+      </table>
+    </div>
+  </div>
+</div>

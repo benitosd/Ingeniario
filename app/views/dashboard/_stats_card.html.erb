@@ -1,10 +1,43 @@
-
-<div class="col-md-3 mb-4">
-  <div class="card bg-<%= bg_color %> text-white">
-    <div class="card-body">
-      <h5 class="card-title"><%= title %></h5>
-      <h2 class="display-4"><%= value %></h2>
-      <p class="card-text"><%= description %></p>
+<div class="col-xl-3 col-md-6 mb-4">
+  <% if local_assigns[:link].present? %>
+    <%= link_to link, class: "text-decoration-none", data: (local_assigns[:data] || {}) do %>
+      <div class="card border-<%= bg_color %> shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-<%= bg_color %> text-uppercase mb-1">
+                <%= title %>
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= value %></div>
+              <div class="text-xs text-gray-600"><%= description %></div>
+            </div>
+            <% if local_assigns[:icon].present? %>
+              <div class="col-auto">
+                <i class="<%= icon %> fa-2x text-gray-300"></i>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="card border-<%= bg_color %> shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-<%= bg_color %> text-uppercase mb-1">
+              <%= title %>
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= value %></div>
+            <div class="text-xs text-gray-600"><%= description %></div>
+          </div>
+          <% if local_assigns[:icon].present? %>
+            <div class="col-auto">
+              <i class="<%= icon %> fa-2x text-gray-300"></i>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

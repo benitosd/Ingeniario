@@ -1,0 +1,79 @@
+<div class="card h-100">
+  <div class="card-header">
+    <h5 class="card-title mb-0">Historial de Movimientos</h5>
+  </div>
+  <div class="card-body">
+    <div class="timeline">
+      <% movements.each do |movement| %>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h6 class="timeline-title">
+              <%= movement.action_text %>
+              <small class="text-muted">
+                por <%= movement.user.email %> - 
+                <%= l movement.created_at, format: :short %>
+              </small>
+            </h6>
+            <% if movement.status.present? %>
+              <p class="mb-0">
+                <span class="badge <%= status_badge_class(movement.status) %>">
+                  <i class="<%= stock_status_icon(movement.status) %> me-1"></i>
+                  <%= movement.status_text %>
+                </span>
+              </p>
+            <% end %>
+            <% if movement.notes.present? %>
+              <p class="mb-0 text-muted"><small><%= movement.notes %></small></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for :styles do %>
+  <style>
+    .timeline {
+      position: relative;
+      padding: 1rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.75rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #e9ecef;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: #6c757d;
+      border: 2px solid #fff;
+    }
+
+    .timeline-content {
+      padding: 0.5rem;
+      background: #f8f9fa;
+      border-radius: 0.25rem;
+    }
+
+    .timeline-title {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+<% end %> 

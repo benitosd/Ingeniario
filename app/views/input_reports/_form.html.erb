@@ -1,0 +1,101 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">
+      <%= @input_report.new_record? ? I18n.t("ingeniario.input_reports.new") : I18n.t("ingeniario.input_reports.edit") %>
+    </h3>
+  </div>
+
+  <div class="card-body">
+    <%= form_with(model: [@output_report, @input_report], local: true) do |f| %>
+      <!-- Error notifications -->
+      <% if @input_report.errors.any? %>
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@input_report.errors.count, "error") %> prohibited this report from being saved:</h4>
+          <ul>
+            <% @input_report.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- Form fields -->
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <%= f.label :date, "Fecha", class: "form-label" %>
+          <%= f.date_field :date, class: "form-control" %>
+        </div>
+
+        <div class="col-md-4">
+          <%= f.label :user_id, "Usuario Asignado", class: "form-label" %>
+          <%= f.collection_select :user_id,
+              User.order(:email),
+              :id,
+              :email,
+              { prompt: "Seleccionar usuario" },
+              { class: "form-select" }
+          %>
+        </div>
+
+        <div class="col-md-4">
+          <%= f.label :status, "Estado", class: "form-label d-block mb-2" %>
+          <div class="status-buttons" role="group">
+            <% [
+              ['Pendiente', 'pending', 'btn-warning'],
+              ['Aprobado', 'approved', 'btn-success'],
+              ['Cancelado', 'cancelled', 'btn-danger']
+            ].each do |label, status_value, btn_class| %>
+              <div class="me-3 d-inline-block">
+                <%= f.radio_button :status, 
+                    status_value, 
+                    class: 'd-none status-radio',
+                    checked: (@input_report.status || 'pending') == status_value,
+                    data: { btn_class: btn_class } %>
+                <button type="button" 
+                        class="btn <%= (@input_report.status || 'pending') == status_value ? btn_class : 'btn-light' %> status-btn"
+                        data-value="<%= status_value %>">
+                  <%= label %>
+                </button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-12">
+          <%= f.label :notes, "Notas", class: "form-label" %>
+          <%= f.text_area :notes, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <h4>Items a Devolver</h4>
+        </div>
+        <div class="card-body">
+          <div id="input_report_stocks">
+            <%= f.fields_for :input_report_stocks do |stock_form| %>
+              <%= render 'input_report_stock_fields', f: stock_form %>
+            <% end %>
+          </div>
+
+          <div class="links mt-3">
+            <%= link_to_add_association 'Añadir Item', f, :input_report_stocks, 
+                class: "btn btn-secondary",
+                data: {
+                  association_insertion_node: '#input_report_stocks',
+                  association_insertion_method: 'append'
+                } %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <div class="actions">
+        <%= f.submit "Guardar", class: "btn btn-primary" %>
+        <%= link_to "Cancelar", input_reports_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
