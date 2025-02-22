@@ -11,4 +11,4 @@ import "flatpickr"
 import "corejs-typeahead"
 import "chartkick"
 import "chart.js"
-import "../assets/javascripts/custom/status_buttons"
+
