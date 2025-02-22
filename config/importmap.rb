@@ -33,3 +33,4 @@ pin "chart.js", to: "chart.umd.min.js" # Esto buscará en vendor/javascript
 pin "html5-qrcode", to: "html5-qrcode.js" 
 #pin "html5-qrcode", to: "https://ga.jspm.io/npm:html5-qrcode@2.3.8/html5-qrcode.min.js"
 #pin "@nathanvda/cocoon", to: "cocoon.js"
+pin_all_from "app/javascript/custom", under: "custom"
