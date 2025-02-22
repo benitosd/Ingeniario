@@ -4,3 +4,4 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link html5-qrcode.min.js
+//= require_tree ../javascripts/custom
