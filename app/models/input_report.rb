@@ -48,19 +48,31 @@ class InputReport < ApplicationRecord
 
   def approve!
     transaction do
-      update!(status: :approved)
-      
+      # Guardar el estado actual de cada stock antes de hacer cambios
       input_report_stocks.each do |input_report_stock|
         stock = input_report_stock.stock
         location = stock.item_location
         
-        # Actualizar la ubicación con la nueva sección
+        # Guardar el estado actual antes de cualquier cambio
+        input_report_stock.update!(original_status: location&.status_text)
+        
+        # Actualizar la sección en todos los casos
         location.update!(
           section: input_report_stock.section,
-          status: :in_storage,
-          notes: input_report_stock.notes.presence || "Movido a almacén por informe de entrada ##{id}"
+          notes: input_report_stock.notes.presence || "Movido por informe de entrada ##{id}"
         )
+
+        # Solo cambiar el estado a almacenado si está asignado
+        if location.status == 'assigned'
+          location.update!(status: :in_storage)
+          Rails.logger.info "Stock #{stock.id} cambiado de asignado a almacenado"
+        else
+          Rails.logger.info "Stock #{stock.id} mantiene su estado actual: #{location.status}"
+        end
       end
+
+      # Actualizar el estado del informe al final
+      update!(status: :approved)
     end
   end
 

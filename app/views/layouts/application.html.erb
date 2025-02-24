@@ -26,11 +26,7 @@
   <%= render "layouts/side_navigation" %>
   <div id="layoutSidenav_content">
     <main>
-    <% if user_signed_in? %>
-       
-    <%= render "home/cards", controller: "users" %>
-  
-<% end %>
+    
 
       <div class="container-fluid px-4">
         <%= render "layouts/flash" %>

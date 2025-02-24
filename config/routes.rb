@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       patch :store_stock
       patch :repair_stock
       patch :mark_as_broken_stock
+      patch :mark_as_missing_stock
     end
   end
   resources :output_reports do

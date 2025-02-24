@@ -79,41 +79,59 @@
               <tr>
                 <td><%= report_stock.stock.reference %></td>
                 <td><%= report_stock.stock.item.name %></td>
-                <td><%= report_stock.stock.item_location&.status_text %></td>
+                <td>
+                  <% if @input_report.approved? %>
+                    <%= report_stock.original_status %>
+                  <% else %>
+                    <%= report_stock.stock.item_location&.status_text %>
+                  <% end %>
+                </td>
                 <td><%= report_stock.section.name %></td>
                 <td><%= report_stock.notes %></td>
                 <td>
-                  <div class="dropdown">
-                    <button class="btn btn-secondary btn-sm dropdown-toggle" 
-                            type="button" 
-                            data-bs-toggle="dropdown" 
-                            aria-expanded="false">
-                      Cambiar Estado
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <%= button_to 'Almacenar', 
-                            store_stock_input_report_path(@input_report, stock_id: report_stock.stock.id),
-                            method: :patch,
-                            class: 'dropdown-item',
-                            data: { turbo_confirm: '¿Estás seguro?' } %>
-                      </li>
-                      <li>
-                        <%= button_to 'Enviar a Reparación',
-                            repair_stock_input_report_path(@input_report, stock_id: report_stock.stock.id),
-                            method: :patch,
-                            class: 'dropdown-item',
-                            data: { turbo_confirm: '¿Estás seguro?' } %>
-                      </li>
-                      <li>
-                        <%= button_to 'Marcar como Roto',
-                            mark_as_broken_stock_input_report_path(@input_report, stock_id: report_stock.stock.id),
-                            method: :patch,
-                            class: 'dropdown-item',
-                            data: { turbo_confirm: '¿Estás seguro?' } %>
-                      </li>
-                    </ul>
-                  </div>
+                  <% case @input_report.status %>
+                  <% when 'approved' %>
+                    <span class="badge bg-success">Aprobado</span>
+                  <% else %>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary btn-sm dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Cambiar Estado
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <%= button_to 'Almacenar', 
+                              store_stock_input_report_path(@input_report, stock_id: report_stock.stock.id),
+                              method: :patch,
+                              class: 'dropdown-item',
+                              data: { turbo_confirm: '¿Estás seguro?' } %>
+                        </li>
+                        <li>
+                          <%= button_to 'Enviar a Reparación',
+                              repair_stock_input_report_path(@input_report, stock_id: report_stock.stock.id),
+                              method: :patch,
+                              class: 'dropdown-item',
+                              data: { turbo_confirm: '¿Estás seguro?' } %>
+                        </li>
+                        <li>
+                          <%= button_to 'Marcar como Roto',
+                              mark_as_broken_stock_input_report_path(@input_report, stock_id: report_stock.stock.id),
+                              method: :patch,
+                              class: 'dropdown-item',
+                              data: { turbo_confirm: '¿Estás seguro?' } %>
+                        </li>
+                        <li>
+                          <%= button_to 'Marcar como Desaparecido',
+                              mark_as_missing_stock_input_report_path(@input_report, stock_id: report_stock.stock.id),
+                              method: :patch,
+                              class: 'dropdown-item',
+                              data: { turbo_confirm: '¿Estás seguro?' } %>
+                        </li>
+                      </ul>
+                    </div>
+                  <% end %>
                 </td>
               </tr>
             <% end %>

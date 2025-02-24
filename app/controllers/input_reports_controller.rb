@@ -2,7 +2,7 @@ class InputReportsController < ApplicationController
   before_action :set_output_report, only: [:new, :create]
   before_action :set_input_report, only: [:show, :edit, :update, :destroy, 
                                         :store_stock, :repair_stock, :mark_as_broken_stock,
-                                        :approve]
+                                        :approve, :mark_as_missing_stock]
 
   # GET /input_reports or /input_reports.json
   def index
@@ -24,10 +24,12 @@ class InputReportsController < ApplicationController
     
     # Construir input_report_stocks para todos los stocks del output_report
     @output_report.output_report_stocks.each do |output_stock|
-      @input_report.input_report_stocks.build(
+      input_report_stock = @input_report.input_report_stocks.build(
         stock: output_stock.stock,
         section: output_stock.stock.item_location&.section
       )
+      # Almacenar el estado original del stock
+      input_report_stock.original_status = output_stock.stock.item_location&.status
     end
 
     # Cargar datos necesarios para el formulario
@@ -114,14 +116,38 @@ class InputReportsController < ApplicationController
     handle_stock_status_change(:mark_as_broken!)
   end
 
+  def mark_as_missing_stock
+    handle_stock_status_change(:mark_as_missing!)
+  end
+
   def approve
     respond_to do |format|
-      if @input_report.approve!
-        format.html { redirect_to @input_report, notice: 'Informe de entrada aprobado correctamente.' }
-        format.turbo_stream { redirect_to @input_report, notice: 'Informe de entrada aprobado correctamente.' }
-      else
-        format.html { redirect_to @input_report, alert: "No se pudo aprobar el informe: #{@input_report.errors.full_messages.join(', ')}" }
-        format.turbo_stream { redirect_to @input_report, alert: "No se pudo aprobar el informe: #{@input_report.errors.full_messages.join(', ')}" }
+      ActiveRecord::Base.transaction do
+        if @input_report.approve!
+          # Procesar solo los stocks que están en estado asignado
+          @input_report.input_report_stocks.includes(stock: :item_location).each do |input_stock|
+            stock = input_stock.stock
+            location = stock.item_location
+
+            # Solo cambiar el estado si está asignado, mantener el resto como están
+            if location&.status == 'assigned'
+              begin
+                location.store!
+                Rails.logger.info "Stock #{stock.id} cambiado de asignado a almacenado"
+              rescue => e
+                Rails.logger.error "Error cambiando estado del stock #{stock.id}: #{e.message}"
+              end
+            else
+              Rails.logger.info "Stock #{stock.id} mantiene su estado actual: #{location&.status}"
+            end
+          end
+
+          format.html { redirect_to @input_report, notice: 'Informe de entrada aprobado correctamente.' }
+          format.turbo_stream { redirect_to @input_report, notice: 'Informe de entrada aprobado correctamente.' }
+        else
+          format.html { redirect_to @input_report, alert: "No se pudo aprobar el informe: #{@input_report.errors.full_messages.join(', ')}" }
+          format.turbo_stream { redirect_to @input_report, alert: "No se pudo aprobar el informe: #{@input_report.errors.full_messages.join(', ')}" }
+        end
       end
     rescue => e
       format.html { redirect_to @input_report, alert: "Error al aprobar el informe: #{e.message}" }
@@ -149,6 +175,23 @@ class InputReportsController < ApplicationController
       end
 
       begin
+        case action
+        when :mark_as_broken!
+          # Solo permitir marcar como roto si está en reparación
+          unless location.status == 'en_reparacion'
+            redirect_to @input_report, 
+                      alert: "Solo se pueden marcar como rotos stocks en estado 'En Reparación'. Estado actual: #{location.status_text}"
+            return
+          end
+        when :mark_as_missing!
+          # Solo permitir marcar como desaparecido si está asignado
+          unless location.status == 'assigned'
+            redirect_to @input_report, 
+                      alert: "Solo se pueden marcar como desaparecidos stocks en estado 'Asignado'. Estado actual: #{location.status_text}"
+            return
+          end
+        end
+
         if location.send(action)
           redirect_to @input_report, notice: mensaje_exito(action)
         else
@@ -170,6 +213,8 @@ class InputReportsController < ApplicationController
         'Stock enviado a reparación'
       when :mark_as_broken!
         'Stock marcado como roto'
+      when :mark_as_missing!
+        'Stock marcado como desaparecido'
       end
     end
 
@@ -181,6 +226,8 @@ class InputReportsController < ApplicationController
         "Solo se pueden enviar a reparación stocks en estado 'Asignado' o 'Almacenado'. Estado actual: #{estado_actual}"
       when :mark_as_broken!
         "Solo se pueden marcar como rotos stocks en estado 'En Reparación'. Estado actual: #{estado_actual}"
+      when :mark_as_missing!
+        "Solo se pueden marcar como desaparecidos stocks en estado 'Asignado'. Estado actual: #{estado_actual}"
       end
     end
 
