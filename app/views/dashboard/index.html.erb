@@ -38,7 +38,7 @@
           description: "Stocks en mantenimiento",
           icon: "fas fa-tools",
           bg_color: "warning",
-          link: stocks_path(fq: 'stock_status_ss:in_repair'),
+          link: stocks_path(fq: 'stock_status_ss:en_reparacion'),
           data: { turbo: false } %>
 
       <%= render "dashboard/stats_card", 
@@ -47,7 +47,7 @@
           description: "Stocks dados de baja",
           icon: "fas fa-ban",
           bg_color: "danger",
-          link: stocks_path(fq: 'stock_status_ss:broken'),
+          link: stocks_path(fq: 'stock_status_ss:rotos'),
           data: { turbo: false } %>
           
       <%= render "dashboard/stats_card", 
@@ -56,7 +56,7 @@
           description: "Stocks no retornados",
           icon: "fas fa-question-circle",
           bg_color: "dark",
-          link: stocks_path(fq: 'stock_status_ss:missing'),
+          link: stocks_path(fq: 'stock_status_ss:desaparecidos'),
           data: { turbo: false } %>
     </div>
 
