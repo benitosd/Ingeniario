@@ -69,6 +69,7 @@
               <th>Referencia</th>
               <th>Item</th>
               <th>Estado</th>
+              <th>Almacén</th>
               <th>Sección</th>
               <th>Notas</th>
               <th>Acciones</th>
@@ -86,6 +87,7 @@
                     <%= report_stock.stock.item_location&.status_text %>
                   <% end %>
                 </td>
+                <td><%= report_stock.section.warehouse.name %></td>
                 <td><%= report_stock.section.name %></td>
                 <td><%= report_stock.notes %></td>
                 <td>

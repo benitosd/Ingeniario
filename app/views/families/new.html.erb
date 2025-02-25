@@ -1,6 +1,7 @@
-
-
-<%= render TurboModalComponent.new(title: "Nueva Familia") do %>>
-  <%= render "form", family: @family %>
-  
-<% end %>
+<div class="container mt-4">
+  <div class="card">
+    <div id="form-container" class="card-body">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>

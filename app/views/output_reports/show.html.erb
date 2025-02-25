@@ -5,7 +5,12 @@
         <div class="card-header">
           <h3 class="card-title">
             Informe de Salida #<%= @output_report.id %>
-            <span class="badge <%= status_badge_class(@output_report.status) %>">
+            <!-- Debug info -->
+            <% Rails.logger.debug "Estado actual: #{@output_report.status.inspect}" %>
+            <% badge_class = status_badge_class2(@output_report.status) %>
+            <% Rails.logger.debug "Clase del badge: #{badge_class.inspect}" %>
+            
+            <span class="badge <%= badge_class %>">
               <%= @output_report.status_text %>
             </span>
           </h3>
@@ -39,7 +44,7 @@
                 <tr>
                   <th>Estado:</th>
                   <td>
-                    <span class="badge <%= status_badge_class(@output_report.status) %>">
+                    <span class="badge <%= badge_class %>">
                       <%= @output_report.status_text %>
                     </span>
                   </td>
@@ -73,7 +78,7 @@
                     <td><%= report_stock.stock.description %></td>
                     <td>
                       <% if report_stock.stock.item_location %>
-                        <span class="badge <%= status_badge_class(report_stock.stock.item_location.status) %>">
+                        <span class="badge <%= status_badge_class2(report_stock.stock.item_location.status) %>">
                           <%= report_stock.stock.item_location.status_text %>
                         </span>
                       <% else %>

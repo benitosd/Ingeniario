@@ -153,6 +153,7 @@ es:
         capacity: "Capacidad"
         location_code: "Código de ubicación"
         items_count: "Cantidad de items"
+        warehouse_id: "Almacén"
 
     stocks:
       list:
@@ -175,6 +176,11 @@ es:
         assignment_error: "Error al asignar el stock"
         return_error: "Error al devolver el stock"
         no_location: "Sin ubicación"
+        no_family: "Sin familia"
+        no_group: "Sin grupo"
+        no_item: "Sin item"
+        no_section: "Sin sección"
+        no_warehouse: "Sin almacén"
       no_location: "No asignado"
 
     item_locations:
@@ -206,6 +212,12 @@ es:
       show:
         title: "Detalles del artículo: %{name}"
       edit: "Editar Artículo"
+      photo: "Foto"
+      properties: "Propiedades"
+      properties_attributes:
+        key: "Clave"
+        value: "Valor"  
+      no_stocks: "Sin stocks"
 
     groups:
       list:
@@ -257,6 +269,8 @@ es:
       no_items: "No hay elementos"
       form_errors: "Error en el formulario"
       no_stocks: "No hay stocks disponibles"
+      no_groups: "No hay grupos disponibles"
+      no_families: "No hay familias disponibles"
 
     search_order_bar:
       data_filter: "Criterios de búsqueda"

@@ -28,14 +28,10 @@ class FamiliesController < ApplicationController
   def create
     @family = Family.new(family_params)
 
-    respond_to do |format|
-      if @family.save
-        format.turbo_stream { render turbo_stream: turbo_stream.prepend('families', partial: 'families/families', locals: {families: @families}) }
-        format.html { redirect_to family_url(@family), notice: "Family was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @family.errors, status: :unprocessable_entity }
-      end
+    if @family.save
+      redirect_to @family, notice: 'Family was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

@@ -52,10 +52,11 @@ class SectionsController < ApplicationController
   private
 
   def set_warehouse
-    # Primero intentamos obtener warehouse_id de los parámetros
-    if params[:warehouse_id].present?
-      @warehouse = Warehouse.find(params[:warehouse_id])
-    # Si no hay warehouse_id pero hay section_id, obtenemos el warehouse a través de la sección
+    # Intentamos obtener warehouse_id de los parámetros de section o directamente
+    warehouse_id = params.dig(:section, :warehouse_id) || params[:warehouse_id]
+    
+    if warehouse_id.present?
+      @warehouse = Warehouse.find(warehouse_id)
     elsif params[:id].present?
       begin
         section = Section.find(params[:id])
@@ -64,7 +65,6 @@ class SectionsController < ApplicationController
         flash[:alert] = 'No se encontró la sección especificada.'
         redirect_to warehouses_path and return
       end
-    # Si no hay ni warehouse_id ni section_id válido, redirigimos
     else
       flash[:alert] = 'Se requiere especificar un almacén.'
       redirect_to warehouses_path and return
@@ -79,6 +79,6 @@ class SectionsController < ApplicationController
   end
 
   def section_params
-    params.require(:section).permit(:name, :description, :capacity, :location_code)
+    params.require(:section).permit(:name, :description, :capacity, :location_code, :warehouse_id)
   end
 end

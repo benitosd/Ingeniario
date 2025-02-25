@@ -51,23 +51,33 @@
             <tbody data-nested-form-target="container">
               <%= f.fields_for :input_report_stocks do |stock_form| %>
                 <% if stock_form.object.stock %>
-                  <tr class="nested-fields">
+                  <tr class="nested-fields" data-controller="warehouse-sections">
                     <td><%= stock_form.object.stock.reference %></td>
                     <td><%= stock_form.object.stock.item.name %></td>
-                    <td><%= stock_form.object.stock.item_location&.status_text %></td>
                     <td>
-                      <%= stock_form.collection_select :section_id, 
-                          Section.all, 
-                          :id, 
-                          :name, 
-                          { prompt: "Seleccione una sección" }, 
-                          class: "form-select" %>
+                      <!-- Selección de almacén y sección -->
+                      <div class="mb-2">
+                        <%= select_tag "input_report[input_report_stocks_attributes][#{stock_form.index}][warehouse_id]",
+                            options_from_collection_for_select(Warehouse.all, :id, :name),
+                            { prompt: "Seleccione un almacén", 
+                              class: "form-select",
+                              data: { 
+                                warehouse_sections_target: "warehouseSelect",
+                                action: "change->warehouse-sections#updateSections"
+                              }
+                            } %>
+                      </div>
+                      <div>
+                        <%= stock_form.collection_select :section_id, 
+                            [], 
+                            :id, :name, 
+                            { prompt: "Seleccione una sección" }, 
+                            { class: "form-select",
+                              data: { warehouse_sections_target: "sectionSelect" } } %>
+                      </div>
                     </td>
                     <td>
-                      <%= stock_form.text_area :notes, 
-                          class: "form-control", 
-                          rows: 2, 
-                          placeholder: "Notas de devolución" %>
+                      <%= stock_form.text_area :notes, class: "form-control", rows: 2 %>
                     </td>
                     <td>
                       <%= stock_form.hidden_field :stock_id %>
@@ -95,7 +105,7 @@
       <!-- Template para nuevos stocks -->
       <template data-nested-form-target="template">
         <%= fields_for :input_report_stocks do |stock_form| %>
-          <tr class="nested-fields">
+          <tr class="nested-fields" data-controller="warehouse-sections">
             <td>
               <span class="stock-reference"></span>
             </td>
@@ -103,13 +113,25 @@
               <span class="stock-name"></span>
             </td>
             <td>
-              <select name="input_report[input_report_stocks_attributes][NEW_RECORD][section_id]" 
-                      class="form-select">
-                <option value="">Seleccione una sección</option>
-                <% Section.all.each do |section| %>
-                  <option value="<%= section.id %>"><%= section.name %></option>
-                <% end %>
-              </select>
+              <!-- Selección de almacén y sección -->
+              <div class="mb-2">
+                <%= select_tag "input_report[input_report_stocks_attributes][NEW_RECORD][warehouse_id]",
+                    options_from_collection_for_select(Warehouse.all, :id, :name),
+                    { prompt: "Seleccione un almacén", 
+                      class: "form-select",
+                      data: { 
+                        warehouse_sections_target: "warehouseSelect",
+                        action: "change->warehouse-sections#updateSections"
+                      }
+                    } %>
+              </div>
+              <div>
+                <%= select_tag "input_report[input_report_stocks_attributes][NEW_RECORD][section_id]",
+                    options_for_select([]),
+                    { prompt: "Seleccione una sección", 
+                      class: "form-select",
+                      data: { warehouse_sections_target: "sectionSelect" } } %>
+              </div>
             </td>
             <td>
               <textarea name="input_report[input_report_stocks_attributes][NEW_RECORD][notes]" 

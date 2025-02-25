@@ -1,4 +1,5 @@
 class OutputReportsController < ApplicationController
+  
     before_action :set_output_report, only: [:show, :edit, :update, :destroy, :approve]
   
     def index
@@ -49,8 +50,8 @@ class OutputReportsController < ApplicationController
           redirect_to @output_report, notice: 'Informe de salida creado correctamente.'
         else
           @available_stocks = available_stocks_for_selection
-          flash[:alert] = @output_report.errors.full_messages.join(', ')
-          render new_output_report_path, status: :unprocessable_entity
+          flash.now[:alert] = @output_report.errors.full_messages.join(', ')
+          render :new, status: :unprocessable_entity
         end
       end
   

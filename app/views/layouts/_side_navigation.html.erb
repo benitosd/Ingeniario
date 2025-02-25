@@ -24,6 +24,10 @@
 					<div class="sb-nav-link-icon"><i class="fas fa-warehouse"></i></div>
 					Almacenes
 				<% end %>
+				<%= link_to families_path, class: "nav-link" do %>
+					<div class="sb-nav-link-icon"><i class="fas fa-sitemap"></i></div>
+					Familias
+				<% end %>
 
 				<% if current_user && current_user.has_directive?(Directives::EDIT_USER) %>
 					<%= link_to users_path, class: "nav-link" do %>

@@ -4,7 +4,13 @@
       <h3 class="card-title">Nuevo Informe de Salida</h3>
     </div>
     <div class="card-body" data-controller="nested-form qr-scanner">
-      <%= form_with(model: @output_report, local: true) do |f| %>
+      <%= form_with(model: @output_report, 
+                    local: true, 
+                    id: 'new_output_report_form',
+                    data: { 
+                      turbo: false,
+                      controller: "output-report-form"
+                    }) do |f| %>
         <% if @output_report.errors.any? %>
           <div class="alert alert-danger">
             <h4><%= pluralize(@output_report.errors.count, "error") %> impidieron guardar este informe:</h4>

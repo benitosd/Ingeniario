@@ -1,14 +1,14 @@
 module OutputReportsHelper
-  def status_badge_class(status)
-    case status.to_s
+  def status_badge_class2(status)
+    case status
     when 'pending'
-      'warning'
+      'bg-warning text-dark'
     when 'approved'
-      'success'
+      'bg-success text-white'
     when 'rejected'
-      'danger'
+      'bg-danger text-white'
     else
-      'secondary'
+      'bg-secondary text-white'
     end
   end
 end 
