@@ -2,6 +2,7 @@ class Section < ApplicationRecord
   
     belongs_to :warehouse
     has_many :item_locations
+    has_many :stocks, through: :item_locations
   # Validaciones
       validates :name, presence: true, length: { maximum: 255 }
         validates :description, presence: true, length: { maximum: 255 }
@@ -22,5 +23,19 @@ class Section < ApplicationRecord
   # Métodos adicionales
   def to_s
     name
+  end
+
+  def items_with_count
+    stocks.joins(:item)
+          .group('items.id, items.name')
+          .select('items.*, COUNT(stocks.id) as stock_count')
+  end
+
+  def current_occupancy
+    stocks.count
+  end
+
+  def available_capacity
+    capacity - current_occupancy
   end
 end

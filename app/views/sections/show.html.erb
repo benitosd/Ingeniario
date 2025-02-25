@@ -10,50 +10,101 @@
       </div>
     </div>
     <div class="card-body">
-      <table class="table table-striped">
+      <!-- Información básica -->
+      <table class="table table-striped mb-4">
         <tbody>
-                      <tr>
-              <th>
-                <%= I18n.t("ingeniario.sections.cols.name") %>
-              </th>
-              <td>
-                <%= @section.name %>
-              </td>
-            </tr>
-                      <tr>
-              <th>
-                <%= I18n.t("ingeniario.sections.cols.description") %>
-              </th>
-              <td>
-                <%= @section.description %>
-              </td>
-            </tr>
-                      <tr>
-              <th>
-                <%= I18n.t("ingeniario.sections.cols.warehouse_id") %>
-              </th>
-              <td>
-                <%= @section.warehouse %>
-              </td>
-            </tr>
-                      <tr>
-              <th>
-                <%= I18n.t("ingeniario.sections.cols.capacity") %>
-              </th>
-              <td>
-                <%= @section.capacity %>
-              </td>
-            </tr>
-                      <tr>
-              <th>
-                <%= I18n.t("ingeniario.sections.cols.location_code") %>
-              </th>
-              <td>
-                <%= @section.location_code %>
-              </td>
-            </tr>
-                  </tbody>
+          <tr>
+            <th><%= I18n.t("ingeniario.sections.cols.name") %></th>
+            <td><%= @section.name %></td>
+          </tr>
+          <tr>
+            <th><%= I18n.t("ingeniario.sections.cols.description") %></th>
+            <td><%= @section.description %></td>
+          </tr>
+          <tr>
+            <th><%= I18n.t("ingeniario.sections.cols.warehouse_id") %></th>
+            <td><%= @section.warehouse %></td>
+          </tr>
+          <tr>
+            <th><%= I18n.t("ingeniario.sections.cols.location_code") %></th>
+            <td><%= @section.location_code %></td>
+          </tr>
+          <tr>
+            <th>Ocupación</th>
+            <td>
+              <%= @section.current_occupancy %> / <%= @section.capacity %>
+              <div class="progress" style="height: 20px;">
+                <div class="progress-bar <%= @section.current_occupancy >= @section.capacity ? 'bg-danger' : 'bg-success' %>" 
+                     role="progressbar" 
+                     style="width: '<%= (@section.current_occupancy.to_f / @section.capacity * 100).round %>%'">
+                  <%= (@section.current_occupancy.to_f / @section.capacity * 100).round %>%
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
       </table>
+
+      <!-- Items en la sección -->
+      <h4 class="mt-4 mb-3">Items Almacenados</h4>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Cantidad</th>
+              <th>Referencias</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @section.items_with_count.each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.stock_count %></td>
+                <td>
+                  <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" data-bs-target="#references<%= item.id %>" aria-expanded="false">
+                    Ver Referencias
+                  </button>
+                </td>
+                <td>
+                  <%= link_to item_path(item), class: "btn btn-info btn-sm" do %>
+                    <i class="fas fa-info-circle"></i> Ver Detalles
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" class="p-0">
+                  <div class="collapse" id="references<%= item.id %>">
+                    <table class="table table-sm table-bordered mb-0">
+                      <thead>
+                        <tr>
+                          <th style="width: 20%">Referencia</th>
+                          <th style="width: 60%">Descripción</th>
+                          <th style="width: 20%" class="text-center">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @section.stocks.where(item: item).each do |stock| %>
+                          <tr>
+                            <td class="text-start"><%= stock.reference %></td>
+                            <td class="text-start"><%= stock.description %></td>
+                            <td class="text-center">
+                              <%= link_to stock_path(stock), class: "btn btn-info btn-sm" do %>
+                                <i class="fas fa-info-circle"></i> Ver Stock
+                              <% end %>
+                            </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
