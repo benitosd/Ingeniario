@@ -208,6 +208,7 @@ es:
         description: "Descripción"
         group_id: "Grupo"
         actions: "Acciones"
+        photo: "Foto"
       new: "Nuevo artículo"
       show:
         title: "Detalles del artículo: %{name}"

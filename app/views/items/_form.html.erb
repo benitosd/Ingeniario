@@ -56,7 +56,7 @@
         </div>
         <div class="col-md-6 mb-3 text-end">
           <% if @item.photo.attached? %>
-            <p class="mt-2">Current photo:</p>
+            <p class="mt-2">Imagen</p>
             <%= image_tag @item.photo, class: "img-thumbnail", size: "200x200" %>
              <% else %>
             <%= image_tag "default-item.jpg", class: "img-fluid rounded", alt: "Default photo" %>
