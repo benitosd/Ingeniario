@@ -45,13 +45,32 @@ class SectionsController < ApplicationController
   end
 
   def destroy
-    if @section.item_locations.any?
-      redirect_to warehouse_sections_path(@warehouse), 
-        alert: 'No se puede eliminar la sección porque contiene ubicaciones con artículos.'
-    else
-      @section.destroy
-      redirect_to warehouse_sections_path(@warehouse), 
-        notice: 'Sección eliminada exitosamente.'
+    respond_to do |format|
+      if @section.item_locations.any?
+        format.turbo_stream { 
+          render turbo_stream: turbo_stream.update("flash", 
+            partial: "shared/flash", 
+            locals: { alert: 'No se puede eliminar la sección porque contiene ubicaciones con artículos.' })
+        }
+        format.html { 
+          redirect_to warehouse_sections_path(@warehouse), 
+            alert: 'No se puede eliminar la sección porque contiene ubicaciones con artículos.' 
+        }
+      else
+        @section.destroy
+        format.turbo_stream { 
+          render turbo_stream: [
+            turbo_stream.remove(@section),
+            turbo_stream.update("flash", 
+              partial: "shared/flash", 
+              locals: { notice: 'Sección eliminada exitosamente.' })
+          ]
+        }
+        format.html { 
+          redirect_to warehouse_sections_path(@warehouse), 
+            notice: 'Sección eliminada exitosamente.' 
+        }
+      end
     end
   end
 
