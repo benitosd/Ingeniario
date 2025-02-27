@@ -45,9 +45,9 @@ class SectionsController < ApplicationController
   end
 
   def destroy
-    if @section.articles.any?
+    if @section.item_locations.any?
       redirect_to warehouse_sections_path(@warehouse), 
-        alert: 'No se puede eliminar la sección porque contiene artículos.'
+        alert: 'No se puede eliminar la sección porque contiene ubicaciones con artículos.'
     else
       @section.destroy
       redirect_to warehouse_sections_path(@warehouse), 
