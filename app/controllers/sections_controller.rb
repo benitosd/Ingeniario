@@ -45,8 +45,14 @@ class SectionsController < ApplicationController
   end
 
   def destroy
-    @section.destroy
-    redirect_to warehouse_sections_path(@warehouse), notice: 'Sección eliminada exitosamente.'
+    if @section.articles.any?
+      redirect_to warehouse_sections_path(@warehouse), 
+        alert: 'No se puede eliminar la sección porque contiene artículos.'
+    else
+      @section.destroy
+      redirect_to warehouse_sections_path(@warehouse), 
+        notice: 'Sección eliminada exitosamente.'
+    end
   end
 
   private
