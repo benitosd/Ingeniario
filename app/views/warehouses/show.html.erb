@@ -51,6 +51,9 @@
     <div class="card-header">
       <h3 class="card-title">Secciones del Almacén</h3>
     </div>
+    <div id="flash">
+      <%= render "shared/flash" %>
+    </div>
     <div class="card-body">
       <% if @warehouse.sections.any? %>
         <div class="table-responsive">
@@ -67,28 +70,30 @@
             </thead>
             <tbody>
               <% @warehouse.sections.each do |section| %>
-                <tr>
-                  <td><%= section.name %></td>
-                  <td><%= section.description %></td>
-                  <td><%= section.capacity %></td>
-                  <td><%= section.location_code %></td>
-                  <td><%= section.item_locations.count %></td>
-                  <td class="text-center">
-                    <%= link_to I18n.t("ingeniario.buttons.show"), 
-                        warehouse_section_path(@warehouse, section), 
-                        class: "btn btn-info btn-sm me-2" %>
-                    <%= link_to I18n.t("ingeniario.buttons.edit"), 
-                        edit_warehouse_section_path(@warehouse, section), 
-                        class: "btn btn-warning btn-sm me-2" %>
-                    <%= link_to I18n.t("ingeniario.buttons.delete"), 
-                        warehouse_section_path(@warehouse, section), 
-                        data: { 
-                          turbo_method: :delete, 
-                          turbo_confirm: I18n.t("ingeniario.messages.confirm_delete") 
-                        }, 
-                        class: "btn btn-danger btn-sm" %>
-                  </td>
-                </tr>
+                <%= turbo_frame_tag dom_id(section) do %>
+                  <tr id="<%= dom_id(section) %>">
+                    <td><%= section.name %></td>
+                    <td><%= section.description %></td>
+                    <td><%= section.capacity %></td>
+                    <td><%= section.location_code %></td>
+                    <td><%= section.item_locations.count %></td>
+                    <td class="text-center">
+                      <%= link_to I18n.t("ingeniario.buttons.show"), 
+                          warehouse_section_path(@warehouse, section), 
+                          class: "btn btn-info btn-sm me-2" %>
+                      <%= link_to I18n.t("ingeniario.buttons.edit"), 
+                          edit_warehouse_section_path(@warehouse, section), 
+                          class: "btn btn-warning btn-sm me-2" %>
+                      <%= link_to I18n.t("ingeniario.buttons.delete"), 
+                          warehouse_section_path(@warehouse, section), 
+                          data: { 
+                            turbo_method: :delete, 
+                            turbo_confirm: I18n.t("ingeniario.messages.confirm_delete") 
+                          }, 
+                          class: "btn btn-danger btn-sm" %>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
             </tbody>
           </table>
