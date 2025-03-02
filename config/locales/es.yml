@@ -140,6 +140,10 @@ es:
         location: "Ubicación"
         contact_info: "Información de contacto"
       no_sections: "Sin secciones"
+      no_stocks: "Sin stocks"
+      no_items: "Sin items"
+      no_groups: "Sin grupos"
+      no_families: "Sin familias"
     sections:
       list:
         title: "Secciones"
@@ -154,7 +158,13 @@ es:
         location_code: "Código de ubicación"
         items_count: "Cantidad de items"
         warehouse_id: "Almacén"
-
+      no_warehouse: "Sin almacén"
+      no_items: "Sin items"
+      no_stocks: "Sin stocks"
+      no_groups: "Sin grupos"
+      no_families: "Sin familias"
+      messages:
+        created: "Sección creada correctamente"
     stocks:
       list:
         title: "Stocks"
@@ -181,6 +191,7 @@ es:
         no_item: "Sin item"
         no_section: "Sin sección"
         no_warehouse: "Sin almacén"
+        created: "Stock creado correctamente"
       no_location: "No asignado"
 
     item_locations:

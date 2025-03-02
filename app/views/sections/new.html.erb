@@ -1,6 +1,14 @@
 <div class="container mt-4">
   <div class="card">
-   
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title">Sección de <%= @warehouse.name %></h3>
+      <%= link_to I18n.t("ingeniario.buttons.back"), warehouse_path(@warehouse), class: "btn btn-secondary" %>
+    </div>
+    
+    <div id="flash">
+      <%= render "shared/flash" %>
+    </div>
+
     <div id="form-container" class="card-body">
       <%= render 'form' %>
     </div>

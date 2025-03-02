@@ -12,47 +12,88 @@
       <%= render 'layouts/search_order_bar', controller: 'warehouses' %>
     </div>
 
-    <!-- Tabla de datos -->
-    <div class="table-responsive">
-      <table class="table table-striped table-hover">
-        <thead class="thead-dark">
-          <tr>
-            <th><%= I18n.t("ingeniario.warehouses.cols.name") %></th>
-            <th><%= I18n.t("ingeniario.warehouses.cols.description") %></th>
-            <th><%= I18n.t("ingeniario.warehouses.cols.location") %></th>
-            <th><%= I18n.t("ingeniario.warehouses.cols.contact_info") %></th>
-            <th colspan="3" width="10%" class="text-center">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @warehouses.each do |warehouse| %>
-            <tr>
-              <td><%= warehouse.name %></td>
-              <td><%= warehouse.description %></td>
-              <td><%= warehouse.location %></td>
-              <td><%= warehouse.contact_info %></td>
-              <td class="text-center">
-                <%= link_to I18n.t("ingeniario.buttons.show"), warehouse, class: "btn btn-success btn-sm" %>
-              </td>
-              <td class="text-center">
-                <%= link_to I18n.t("ingeniario.buttons.edit"), edit_warehouse_path(warehouse), class: "btn btn-warning btn-sm" %>
-              </td>
-              <td class="text-center">
-                <%= link_to I18n.t("ingeniario.buttons.delete"), warehouse_path(warehouse), 
+    <!-- Cards de almacenes -->
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @warehouses.each do |warehouse| %>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-img-wrapper" style="height: 200px; overflow: hidden;">
+              <% if warehouse.image.attached? %>
+                <%= image_tag warehouse.image.variant(resize_to_fill: [800, 400]), 
+                    class: "card-img-top w-100 h-100", 
+                    style: "object-fit: cover;" %>
+              <% else %>
+                <%= image_tag "default_warehouse.jpg", 
+                    class: "card-img-top w-100 h-100", 
+                    style: "object-fit: cover;" %>
+              <% end %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= warehouse.name %></h5>
+              <p class="card-text"><%= warehouse.description %></p>
+              
+              <!-- Información de ubicación y contacto -->
+              <div class="mb-2">
+                <small class="text-muted">
+                  <i class="fas fa-map-marker-alt"></i> <%= warehouse.location %>
+                </small>
+              </div>
+              <div class="mb-2">
+                <small class="text-muted">
+                  <i class="fas fa-phone"></i> <%= warehouse.contact_info %>
+                </small>
+              </div>
+
+              <!-- Información de secciones -->
+              <div class="mt-3">
+                <h6 class="mb-2">
+                  <i class="fas fa-layer-group"></i> 
+                  Secciones (<%= warehouse.sections.count %>)
+                </h6>
+                <div class="small">
+                  <% warehouse.sections.each do |section| %>
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span><%= section.name %></span>
+                      <span class="badge bg-info">
+                        <%= section.item_locations.count %> items
+                      </span>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="mt-2 text-end">
+                  <span class="badge bg bg-special">
+                    Total Items: <%= warehouse.total_items %>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="card-footer bg-transparent border-top-0">
+              <div class="btn-group w-100" role="group">
+                <%= link_to warehouse, class: "btn btn-success btn-sm" do %>
+                  <i class="fas fa-eye"></i> <%= I18n.t("ingeniario.buttons.show") %>
+                <% end %>
+                <%= link_to edit_warehouse_path(warehouse), class: "btn btn-warning btn-sm" do %>
+                  <i class="fas fa-edit"></i> <%= I18n.t("ingeniario.buttons.edit") %>
+                <% end %>
+                <%= link_to warehouse_path(warehouse), 
+                    class: "btn btn-danger btn-sm",
                     data: { 
                       turbo_method: :delete, 
                       turbo_confirm: I18n.t("ingeniario.messages.confirm_delete") 
-                    }, 
-                    class: "btn btn-danger btn-sm" %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+                    } do %>
+                  <i class="fas fa-trash"></i> <%= I18n.t("ingeniario.buttons.delete") %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <!-- Paginación -->
-    <div class="custom-pagination">
+    <div class="custom-pagination mt-4">
       <%= will_paginate @warehouses, renderer: BootstrapPagination::Rails %>
     </div>
   </div>

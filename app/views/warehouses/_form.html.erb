@@ -14,8 +14,8 @@
         <div class="alert alert-danger">
           <h4><%= pluralize(@warehouse.errors.count, "error") %> prohibited this warehouse from being saved:</h4>
           <ul>
-            <% @warehouse.errors.each do |error| %>
-              <li><%= error.full_message %></li>
+            <% @warehouse.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
             <% end %>
           </ul>
         </div>
@@ -37,19 +37,30 @@
         <!-- Descripción -->
         <div class="col-12 mb-3">
           <%= form.label :description, I18n.t("ingeniario.warehouses.cols.description"), class: "form-label" %>
-          <%= form.text_area :description, class: "form-control", rows: 3 %>
+          <%= form.text_area :description, class: "form-control" %>
         </div>
 
         <!-- Información de contacto -->
         <div class="col-12 mb-3">
           <%= form.label :contact_info, I18n.t("ingeniario.warehouses.cols.contact_info"), class: "form-label" %>
-          <%= form.text_area :contact_info, class: "form-control", rows: 2 %>
+          <%= form.text_field :contact_info, class: "form-control" %>
+        </div>
+
+        <div class="col-12 mb-3">
+          <%= form.label :image, I18n.t("ingeniario.warehouses.cols.image"), class: "form-label" %>
+          <%= form.file_field :image, class: "form-control", accept: "image/*" %>
+          <% if @warehouse.persisted? && @warehouse.image.attached? %>
+            <div class="mt-2">
+              <%= image_tag @warehouse.image, class: "img-thumbnail", style: "max-height: 200px" %>
+            </div>
+          <% end %>
         </div>
       </div>
 
       <!-- Submit button -->
       <div class="d-grid mt-4">
         <%= form.submit I18n.t("ingeniario.buttons.save"), class: "btn btn-primary" %>
+        <%= link_to I18n.t("ingeniario.buttons.cancel"), warehouses_path, class: "btn btn-secondary" %>
       </div>
     <% end %>
   </div>

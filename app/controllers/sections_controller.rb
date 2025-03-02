@@ -28,19 +28,58 @@ class SectionsController < ApplicationController
 
   def create
     @section = @warehouse.sections.build(section_params)
-    if @section.save
-      redirect_to warehouse_section_path(@warehouse, @section), notice: 'Sección creada exitosamente.'
-    else
-      render :new
+
+    respond_to do |format|
+      if @section.save
+        format.turbo_stream { 
+          redirect_to warehouse_path(@warehouse), 
+            notice: I18n.t("ingeniario.sections.messages.created") 
+        }
+        format.html { 
+          redirect_to warehouse_path(@warehouse), 
+            notice: I18n.t("ingeniario.sections.messages.created") 
+        }
+      else
+        format.turbo_stream { 
+          render turbo_stream: [
+            turbo_stream.update("flash", 
+              partial: "shared/flash", 
+              locals: { alert: @section.errors.full_messages.to_sentence }),
+            turbo_stream.update("form-container", 
+              partial: "form", 
+              locals: { warehouse: @warehouse, section: @section })
+          ]
+        }
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
   # Agregamos el método update que falta
   def update
-    if @section.update(section_params)
-      redirect_to warehouse_section_path(@warehouse, @section), notice: 'Sección actualizada exitosamente.'
-    else
-      render :edit
+    respond_to do |format|
+      if @section.update(section_params)
+        format.turbo_stream { 
+          redirect_to warehouse_path(@warehouse), 
+            notice: I18n.t("ingeniario.sections.messages.updated") 
+        }
+        format.html { 
+          redirect_to warehouse_path(@warehouse), 
+            notice: I18n.t("ingeniario.sections.messages.updated") 
+        }
+      else
+        format.turbo_stream { 
+          render turbo_stream: [
+            turbo_stream.update("flash", 
+              partial: "shared/flash", 
+              locals: { alert: @section.errors.full_messages.to_sentence }),
+            turbo_stream.update("form-container", 
+              partial: "form", 
+              locals: { warehouse: @warehouse, section: @section })
+          ]
+        }
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 
