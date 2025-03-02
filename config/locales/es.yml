@@ -139,6 +139,7 @@ es:
         description: "Descripción"
         location: "Ubicación"
         contact_info: "Información de contacto"
+        image: "Imagen"
       no_sections: "Sin secciones"
       no_stocks: "Sin stocks"
       no_items: "Sin items"
